@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ペルソナシート - プロジェクトアーカイブ</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <button class="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="page-wrapper">
+    <aside class="sidebar" data-nav-level="docs"></aside>
+
+    <main class="main-content">
+      <header class="doc-header">
+        <div class="doc-category">DOCUMENT 03</div>
+        <h1 class="doc-title">ペルソナシート</h1>
+        <div class="doc-meta">
+          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-XX-XX</span>
+          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者：（氏名を入力）</span>
+          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.0</span>
+        </div>
+      </header>
+
+      <div class="doc-body">
+
+        <div class="external-link-box">
+          <div class="external-link-box-title">
+            <span class="material-symbols-outlined">link</span>
+            詳細ドキュメント（Google スプレッドシート）
+          </div>
+          <div class="external-link-box-desc">
+            このページは概要のみを記載しています。詳細なペルソナシートは以下のリンクからご確認ください。
+          </div>
+          <div class="external-link-input">
+            <input type="text" placeholder="https://docs.google.com/spreadsheets/d/xxxxx" id="external-link-03">
+            <a href="#" class="link-btn"
+              onclick="window.open(document.getElementById('external-link-03').value || 'https://docs.google.com', '_blank'); return false;">
+              <span class="material-symbols-outlined">open_in_new</span>
+              開く
+            </a>
+          </div>
+        </div>
+
+        <div class="toc">
+          <div class="toc-title">目次</div>
+          <ol class="toc-list">
+            <li><a href="#sec1">基本プロフィール</a></li>
+            <li><a href="#sec2">ライフスタイル</a></li>
+            <li><a href="#sec3">デジタル行動</a></li>
+            <li><a href="#sec4">課題とニーズ</a></li>
+            <li><a href="#sec5">カスタマージャーニーマップ</a></li>
+          </ol>
+        </div>
+
+
+        <section class="section" id="sec1">
+          <h2 class="section-title"><span class="section-icon">1</span> 基本プロフィール</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">ペルソナ基本情報 <span class="required">必須</span></div>
+            <div class="fill-hint">架空の人物として具体的に設定してください</div>
+            <div class="fill-content">
+              <h3>木村 優里（きむら ゆうり）</h3>
+              <dl>
+                <dt>年齢・性別</dt>
+                <dd>28歳・女性</dd>
+                <dt>職業</dt>
+                <dd>株式会社東都サービス 総務部 一般社員</dd>
+                <dt>居住地</dt>
+                <dd>神奈川県横浜市</dd>
+                <dt>年収</dt>
+                <dd>約320万円</dd>
+                <dt>家族構成</dt>
+                <dd>両親・妹と4人暮らし</dd>
+                <dt>学歴</dt>
+                <dd>私立大学 文学部卒業</dd>
+              </dl>
+            </div>
+          </div>
+
+          <div class="fill-block">
+            <div class="fill-label">人物像 <span class="required">必須</span></div>
+            <div class="fill-hint">生活スタイル、興味・関心、サービスとの接点</div>
+            <div class="fill-content">
+              <p>平日は総務部の仕事を中心に過ごし、帰宅後は家族と過ごすことが多い。休日はあえて一人で出かけ、限られた時間を自分のために使いながら、好きな場所や体験を自分のペースで巡ることを大切にしている。</p>
+              <p>神社仏閣や歴史のある街歩き、御朱印集め、ライブ、カフェ巡り、ものづくり体験に関心がある。観光地をただ見るだけではなく、その土地の文化や背景を知ったり、自分で何かを作ったりする体験に魅力を感じる。</p>
+              <p>外出時にはスマートフォンで情報を検索し、体験内容、料金、所要時間、アクセス、予約方法などを確認して、自分の予定に無理なく組み込めるかを判断する。</p>
+              <p>香水そのものを目的に出かけることは多くないが、浅草観光の中で「その土地らしい体験」として香りづくりを知れば興味を持つ可能性がある。</p>
+            </div>
+          </div>
+
+          <div class="fill-block">
+            <div class="fill-label">ペルソナ設定の考え方 <span class="required">必須</span></div>
+            <div class="fill-hint">ターゲット設定で重視する行動特性・価値観</div>
+            <div class="fill-content">
+              <p>本ペルソナは女性として設定しているが、旅香 - TABIKA - のターゲットを女性に限定するものではない。</p>
+              <p>性別よりも、次のような行動特性や価値観を重視したペルソナとして設定する。</p>
+              <ul>
+                <li>浅草観光や歴史ある街歩きが好き</li>
+                <li>日本文化やものづくりに関心がある</li>
+                <li>自分のペースで過ごす時間を大切にしている</li>
+                <li>旅先で思い出に残る体験をしたい</li>
+                <li>限られた休日の時間を、自分が興味を持った場所や体験に使いたい</li>
+              </ul>
+            </div>
+          </div>
+
+        </section>
+
+        <section class="section" id="sec2">
+          <h2 class="section-title"><span class="section-icon">2</span> ライフスタイル</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">平日のタイムスケジュール <span class="required">必須</span></div>
+            <div class="fill-hint">朝起きてから寝るまでの1日の流れ</div>
+            <div class="fill-content">
+              <p><strong>木村 優里（28歳・株式会社東都サービス 総務部 一般社員）</strong></p>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>時間帯</th>
+                    <th>行動</th>
+                    <th>使用するサービス・デバイス</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>6:30〜7:30</td>
+                    <td>起床、身支度、朝食。天気や電車の運行状況を確認する</td>
+                    <td>スマートフォン、天気アプリ、乗換案内</td>
+                  </tr>
+                  <tr>
+                    <td>7:30〜9:00</td>
+                    <td>通勤。移動中にニュースやSNSを見たり、休日に行きたい場所を調べたりする</td>
+                    <td>スマートフォン、Instagram、検索エンジン、地図アプリ</td>
+                  </tr>
+                  <tr>
+                    <td>9:00〜12:00</td>
+                    <td>総務部の業務。社内連絡、書類作成、スケジュール調整などを行う</td>
+                    <td>PC、メール、社内システム</td>
+                  </tr>
+                  <tr>
+                    <td>12:00〜13:00</td>
+                    <td>昼休み。昼食をとりながらSNSやWebサイトを閲覧する</td>
+                    <td>スマートフォン、Instagram、検索エンジン</td>
+                  </tr>
+                  <tr>
+                    <td>13:00〜18:00</td>
+                    <td>午後の業務。社内対応や事務作業を中心に過ごす</td>
+                    <td>PC、メール、社内システム</td>
+                  </tr>
+                  <tr>
+                    <td>18:00〜19:30</td>
+                    <td>退勤・帰宅。移動中にライブ情報や休日のお出かけ先をチェックする</td>
+                    <td>スマートフォン、SNS、乗換案内、地図アプリ</td>
+                  </tr>
+                  <tr>
+                    <td>19:30〜21:00</td>
+                    <td>夕食をとり、家族と過ごす</td>
+                    <td>テレビ、スマートフォン</td>
+                  </tr>
+                  <tr>
+                    <td>21:00〜23:00</td>
+                    <td>自分の時間。次の休日に行きたい場所や体験を検索する</td>
+                    <td>スマートフォン、Instagram、Google検索、Googleマップ、予約サイト</td>
+                  </tr>
+                  <tr>
+                    <td>23:00〜24:00</td>
+                    <td>入浴、翌日の準備。気になる場所を保存し、予定を簡単に整理する</td>
+                    <td>スマートフォン、カレンダー、メモアプリ</td>
+                  </tr>
+                  <tr>
+                    <td>24:00頃</td>
+                    <td>就寝</td>
+                    <td>―</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="fill-block">
+            <div class="fill-label">平日の特徴 <span class="required">必須</span></div>
+            <div class="fill-hint">平日の時間の使い方と休日の計画に影響する特徴</div>
+            <div class="fill-content">
+              <p>平日は仕事と家族との時間が中心で、自分のために使える時間は限られている。そのため、通勤時間や就寝前にスマートフォンで休日の予定を調べることが多い。</p>
+              <p>休日の外出先を探す際は、場所の魅力だけでなく、<strong>所要時間・料金・アクセス・予約方法まで確認し、自分の予定に無理なく組み込めるかを重視する。</strong></p>
+            </div>
+          </div>
+          <div class="fill-block">
+            <div class="fill-label">休日の過ごし方 <span class="required">必須</span></div>
+            <div class="fill-hint">休日にどのように過ごしているか</div>
+            <div class="fill-content">
+              <p>木村優里さんは、休日には家族と過ごすこともあるが、<strong>一人で自分の好きな場所を自分のペースで巡る時間</strong>を大切にしている。</p>
+              <p>
+                神社仏閣や歴史のある街を訪れ、御朱印を集めたり、その土地の歴史や文化を知りながら街歩きを楽しんだりすることが多い。観光名所を見るだけではなく、ものづくり体験や地域ならではの文化に触れられる場所にも興味を持つ。
+              </p>
+              <p>
+                ライブへ出かけることもあり、開演前後に時間がある場合は、ただカフェで時間をつぶすのではなく、周辺の観光地や体験スポットをスマートフォンで検索する。予定を細かく決めすぎず、<strong>その日の時間・天候・場所に合わせて、限られた時間でも楽しめる行き先を追加したり変更したりする</strong>こともある。
+              </p>
+              <p>
+                外出先を探す際は、Google検索、Googleマップ、Instagramなどを利用し、写真や口コミを見ながら候補を探す。気になる場所を見つけた後は、公式サイトで料金、所要時間、アクセス、予約方法などを確認し、自分の予定に無理なく組み込めるかを判断する。
+              </p>
+              <h4>主な休日の過ごし方</h4>
+              <ul>
+                <li>神社仏閣・御朱印巡り</li>
+                <li>歴史のある街の散策</li>
+                <li>お城や文化施設を訪れる</li>
+                <li>カフェ巡り</li>
+                <li>ライブ・イベントへの参加</li>
+                <li>ものづくり体験</li>
+                <li>旅行先でその土地ならではの体験を探す</li>
+                <li>すき間時間にスマートフォンで周辺のスポットを探す</li>
+              </ul>
+              <p>特に、<strong>「見るだけの観光」より、土地の文化を知ったり、自分で何かを作って持ち帰ったりできる体験に魅力を感じる</strong>人物として設定する。</p>
+            </div>
+          </div>
+          <div class="fill-block">
+            <div class="fill-label">趣味・関心事 <span class="required">必須</span></div>
+            <div class="fill-hint">興味のある分野・趣味</div>
+            <div class="fill-content">
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>趣味・関心事</th>
+                    <th>興味を持つ理由</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>神社仏閣・御朱印巡り</td>
+                    <td>建物や歴史だけでなく、その土地に残る文化や背景を知ることが好きだから</td>
+                  </tr>
+                  <tr>
+                    <td>歴史ある街歩き</td>
+                    <td>有名な観光地を見るだけでなく、街並みや昔から続く店、土地の物語を自分のペースで楽しみたいから</td>
+                  </tr>
+                  <tr>
+                    <td>ライブ・イベント</td>
+                    <td>日常から離れて気分転換でき、好きな音楽や空間を楽しむ時間を大切にしているから</td>
+                  </tr>
+                  <tr>
+                    <td>カフェ巡り</td>
+                    <td>街歩きの途中に一人でゆっくり過ごしたり、次の予定までの時間を自分らしく使ったりできるから</td>
+                  </tr>
+                  <tr>
+                    <td>ものづくり体験</td>
+                    <td>完成したものを見るだけでなく、自分で選び、作る過程そのものを楽しみ、思い出として形に残したいから</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>木村優里さんは、単に空いた時間を埋めるのではなく、<strong>その土地の歴史や文化を知り、自分自身も体験に参加できること</strong>に価値を感じる人物として設定する。</p>
+            </div>
+          </div>
+
+        </section>
+
+        <section class="section" id="sec3">
+          <h2 class="section-title"><span class="section-icon">3</span> デジタル行動</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">使用デバイス・サービス <span class="required">必須</span></div>
+            <div class="fill-hint">日常的に使用するデバイス、SNS、Webサービス</div>
+            <div class="fill-content">
+              <p>木村優里さんは、日常的な情報収集や外出先探しを主にスマートフォンで行う。特に休日の予定を考える際は、SNSで興味を持った場所を見つけ、検索エンジンや地図アプリで詳細を確認する使い方が多い。</p>
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>項目</th>
+                    <th>内容</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>メインデバイス</td>
+                    <td>iPhone。通勤中や外出先でも検索・予約・地図確認に使用する</td>
+                  </tr>
+                  <tr>
+                    <td>PC</td>
+                    <td>自宅のノートPC。旅行やライブなど、複数の予定をまとめて調べるときに使用する</td>
+                  </tr>
+                  <tr>
+                    <td>Instagram</td>
+                    <td>ほぼ毎日利用。カフェ、街歩き、観光地、ものづくり体験などを写真や動画から探す</td>
+                  </tr>
+                  <tr>
+                    <td>X</td>
+                    <td>1日数回利用。ライブ・イベント情報、混雑状況、開催情報などを確認する</td>
+                  </tr>
+                  <tr>
+                    <td>Google検索</td>
+                    <td>行きたい場所や体験を具体的に調べるときに利用する</td>
+                  </tr>
+                  <tr>
+                    <td>Googleマップ</td>
+                    <td>場所、口コミ、営業時間、現在地からの移動時間を確認する</td>
+                  </tr>
+                  <tr>
+                    <td>乗換案内</td>
+                    <td>電車の経路や移動時間を確認し、次の予定に間に合うか判断する</td>
+                  </tr>
+                  <tr>
+                    <td>予約サイト</td>
+                    <td>体験の空き状況や料金を確認し、必要に応じてそのまま予約する</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h4>情報収集の方法</h4>
+              <p>最初から「香水づくり」と目的を決めて検索するとは限らず、その日の<strong>場所・時間・天候・次の予定</strong>に合わせて検索する。</p>
+              <p>例えば、次のようなキーワードから候補を探す。</p>
+              <ul>
+                <li>「浅草 体験」</li>
+                <li>「浅草 ものづくり」</li>
+                <li>「浅草 一人 体験」</li>
+                <li>「浅草 2時間」</li>
+                <li>「浅草 雨の日」</li>
+                <li>「東京 ライブ前 過ごし方」</li>
+              </ul>
+              <p>
+                SNSや検索結果で気になる場所を見つけた後は、公式サイトで<strong>体験内容、料金、所要時間、アクセス、予約方法</strong>を確認する。特に、次の予定がある日は移動時間も確認し、無理なく旅程に組み込めるかを判断してから予約する。
+              </p>
+            </div>
+          </div>
+
+        </section>
+
+        <section class="section" id="sec4">
+          <h2 class="section-title"><span class="section-icon">4</span> 課題とニーズ</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">抱えている課題・悩み <span class="required">必須</span></div>
+            <div class="fill-hint">このペルソナが日常で抱えている課題（サービスに関連するもの）</div>
+            <div class="fill-content">
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>課題</th>
+                    <th>内容</th>
+                    <th>なぜ困っているのか</th>
+                    <th>現在の対処法</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>休日の時間を有意義に使いたい</td>
+                    <td>せっかくの休日なので、移動や待ち時間も含めて自分の興味がある場所や体験を楽しみたい</td>
+                    <td>数時間のすき間時間ができても、その時間内で行ける場所をすぐに見つけにくい</td>
+                    <td>Google検索やGoogleマップで、現在地や次の予定から行けそうな場所を探している</td>
+                  </tr>
+                  <tr>
+                    <td>行きたい場所を予定に組み込みにくい</td>
+                    <td>興味のある体験を見つけても、所要時間や移動時間が分からないと予定に入れられない</td>
+                    <td>次の予定に遅れたくないため、魅力だけでは行く判断ができない</td>
+                    <td>乗換案内、公式サイト、地図アプリを使って一つずつ時間を確認している</td>
+                  </tr>
+                  <tr>
+                    <td>一人でも安心して楽しめるか分かりにくい</td>
+                    <td>一人で参加できる体験でも、実際の雰囲気や初心者でも楽しめるかが分からないことがある</td>
+                    <td>一人で落ち着いて楽しみたいが、グループ向けの雰囲気だと参加をためらう</td>
+                    <td>SNSや口コミを見て、一人参加でも自然かを確認している</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="fill-block">
+            <div class="fill-label">サービスに期待すること <span class="required">必須</span></div>
+            <div class="fill-hint">このペルソナが（サービス名）に期待する価値</div>
+            <div class="fill-content">
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>期待する価値・体験</th>
+                    <th>内容</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>限られた休日の時間を有意義に使えること</td>
+                    <td>すき間時間でも、ただ時間をつぶすのではなく、自分が興味を持てる体験を見つけたい。所要時間や移動時間、料金、空き状況、予約方法が分かり、自分の予定に無理なく組み込めることを期待する。</td>
+                  </tr>
+                  <tr>
+                    <td>一人でも自分のペースで楽しめること</td>
+                    <td>周囲を気にせず、自分の感覚で香りを選び、落ち着いて体験できることを期待する。初心者や一人参加でも安心できる体験の流れや雰囲気が事前に分かると利用しやすい。</td>
+                  </tr>
+                  <tr>
+                    <td>浅草ならではの思い出を形にして持ち帰れること</td>
+                    <td>観光地を見るだけでなく、浅草のものづくり文化に触れながら、自分だけの香りを作る体験をしたい。完成した香りを、その日の記憶や旅の思い出として持ち帰れることに価値を感じる。</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+        <section class="section" id="sec5">
+          <h2 class="section-title"><span class="section-icon">5</span> カスタマージャーニーマップ</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">カスタマージャーニーマップ <span class="required">必須</span></div>
+            <div class="fill-hint">ペルソナがサービスを認知してから利用・共有するまでの行動を時系列で記載</div>
+
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>段階</th>
+                  <th>行動</th>
+                  <th>接点（タッチポイント）</th>
+                  <th>感情</th>
+                  <th>課題・機会</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>認知</strong></td>
+                  <td>休日の浅草観光やライブ前後にすき間時間ができ、「浅草 体験」「浅草 一人」「浅草 ものづくり」などで検索する</td>
+                  <td>Google検索、Googleマップ、Instagram、X</td>
+                  <td>🤔 何か面白いことはないかな</td>
+                  <td>香りづくりを目的に検索していないため、「浅草観光」「すき間時間」「ものづくり」などの入口から旅香を発見できるようにする</td>
+                </tr>
+                <tr>
+                  <td><strong>興味</strong></td>
+                  <td>「浅草で、自分だけの香りをつくる旅。」というコンセプトを見て、香りづくり体験に興味を持つ</td>
+                  <td>旅香トップページ、香りづくり体験ページ、写真</td>
+                  <td>😊 面白そう。浅草らしい思い出になりそう</td>
+                  <td>体験内容だけでなく、浅草のものづくり文化とのつながりや完成品を分かりやすく伝える</td>
+                </tr>
+                <tr>
+                  <td><strong>比較検討</strong></td>
+                  <td>料金、所要時間、一人参加のしやすさ、アクセス、次の予定までの移動時間を確認し、カフェや他の体験と比較する</td>
+                  <td>旅香の「おすすめの過ごし方」「アクセス・周辺情報」「FAQ」、既存予約ページ、口コミ</td>
+                  <td>🤨 行ってみたいけど、予定に間に合うかな</td>
+                  <td>所要時間・移動時間・料金・一人参加可否などをまとめ、予定に組み込めるか短時間で判断できるようにする</td>
+                </tr>
+                <tr>
+                  <td><strong>行動</strong></td>
+                  <td>空き状況を確認し、自分の予定に組み込める時間帯のワークショップを予約して参加する</td>
+                  <td>予約CTA、既存予約サービス、inimu店舗</td>
+                  <td>😃 予定に入れられた。楽しみ</td>
+                  <td>「空き状況を見る」「予約する」まで迷わず進める導線を設け、予約前の不安を減らす</td>
+                </tr>
+                <tr>
+                  <td><strong>共有・継続</strong></td>
+                  <td>完成した香りを旅の思い出として持ち帰り、家族や友人に話したり、写真をSNSで共有したりする</td>
+                  <td>完成品、写真、SNS、口コミ</td>
+                  <td>😍 自分だけの思い出ができた</td>
+                  <td>写真に残したくなる体験やラベル、再来店・再購入につながる仕組みを検討する</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+
+</html>

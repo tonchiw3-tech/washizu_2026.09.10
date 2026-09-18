@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サイトマップ -  プロジェクトアーカイブ</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <button class="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="page-wrapper">
+  <aside class="sidebar" data-nav-level="docs"></aside>
+
+    <main class="main-content">
+      <header class="doc-header">
+        <div class="doc-category">DOCUMENT 04</div>
+        <h1 class="doc-title">サイトマップ</h1>
+        <div class="doc-meta">
+          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-XX-XX</span>
+          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者：（氏名を入力）</span>
+          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.0</span>
+        </div>
+      </header>
+
+      <div class="doc-body">
+
+        <div class="external-link-box">
+          <div class="external-link-box-title">
+            <span class="material-symbols-outlined">link</span>
+            詳細ドキュメント（Google スプレッドシート）
+          </div>
+          <div class="external-link-box-desc">
+            このページは概要のみを記載しています。詳細なサイトマップは以下のリンクからご確認ください。
+          </div>
+          <div class="external-link-input">
+            <input type="text" placeholder="https://docs.google.com/spreadsheets/d/xxxxx" id="external-link-04">
+            <a href="#" class="link-btn" onclick="window.open(document.getElementById('external-link-04').value || 'https://docs.google.com', '_blank'); return false;">
+              <span class="material-symbols-outlined">open_in_new</span>
+              開く
+            </a>
+          </div>
+        </div>
+
+        <div class="toc">
+          <div class="toc-title">目次</div>
+          <ol class="toc-list">
+            <li><a href="#sec1">サイト構造図</a></li>
+            <li><a href="#sec2">ページ一覧</a></li>
+            <li><a href="#sec3">ユーザーフロー</a></li>
+            <li><a href="#sec4">URL設計</a></li>
+          </ol>
+        </div>
+
+        <section class="section" id="sec1">
+          <h2 class="section-title"><span class="section-icon">1</span> サイト構造図</h2>
+
+        <div class="fill-block">
+          <div class="fill-label">Webサイト構造図 <span class="required">必須</span></div>
+          <div class="fill-hint">トップページから下層ページまでの階層構造をツリー形式で記載</div>
+          <div class="fill-content">
+            <pre>トップページ
+├── 香りづくり体験
+│   ├── 体験内容
+│   ├── 香りづくりの流れ
+│   ├── 料金・所要時間・完成品
+│   └── 予約案内
+│
+├── 浅草・ものづくり
+│   ├── 浅草のものづくり文化
+│   ├── 香りづくりとのつながり
+│   └── 歴史を歩くモデルコース
+│
+├── おすすめの過ごし方
+│   ├── 浅草観光モデルコース
+│   ├── ものづくりを楽しむ
+│   ├── 時間から探す
+│   │   ├── 2時間
+│   │   ├── 3時間
+│   │   └── 半日
+│   ├── 一人時間を楽しむ
+│   ├── イベント前後を楽しむ
+│   └── 雨の日・予定変更から探す
+│       ├── 上野動物園から予定変更
+│       ├── 屋外観光から予定変更
+│       └── 室内体験を探す
+│
+├── アクセス・周辺情報
+│   ├── 新幹線・主要駅から
+│   │   ├── 上野駅
+│   │   └── 東京駅
+│   ├── 空港から
+│   │   └── 羽田空港
+│   ├── イベント会場から
+│   │   ├── 東京ドーム
+│   │   ├── 両国国技館
+│   │   ├── 日本武道館
+│   │   └── 国立代々木競技場 第一体育館
+│   └── 浅草周辺から
+│       ├── 浅草寺
+│       ├── 上野
+│       └── 浅草周辺の宿泊エリア
+│
+├── FAQ
+│   ├── 予約について
+│   ├── 体験について
+│   ├── 一人参加について
+│   ├── 持ち物・服装について
+│   └── 雨の日について
+│
+└── 予約
+    ├── 空き状況を見る
+    └── 既存予約ページへ移動</pre>
+            <p>本サイトでは、香水づくりを最初から目的としている人だけでなく、浅草観光、ものづくり、空き時間、一人時間、イベント前後、雨天による予定変更など、利用者の状況からinimuの香りづくり体験を発見できる構成とする。</p>
+            <p>また、新幹線・空港・イベント会場・浅草周辺からのアクセス情報を設けることで、東京滞在中の予定に香りづくり体験を組み込みやすくし、体験内容の確認から既存予約ページまで迷わず進めるWeb導線を目指す。</p>
+          </div>
+        </div>
+        <div class="fill-block">
+          <div class="fill-label">Webアプリケーション構造図 <span class="required">必須</span></div>
+          <div class="fill-hint">Spring Bootアプリケーションの画面構造をツリー形式で記載</div>
+          <div class="fill-content">
+            <p>本企画は会員登録やデータ管理を行うWebアプリケーションではなく、inimuのワークショップを紹介し、既存予約ページへ誘導するWebサイトとして構築する。そのため、Spring Bootによるアプリケーション画面は設けず、サイト内ページと外部予約ページへの導線を中心に設計する。</p>
+          </div>
+        </div>
+
+        </section>
+
+        <section class="section" id="sec2">
+          <h2 class="section-title"><span class="section-icon">2</span> ページ一覧</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">Webサイト ページ一覧 <span class="required">必須</span></div>
+        <table class="doc-table">
+          <thead><tr><th>No.</th><th>ページ名</th><th>ページの目的</th><th>主要コンテンツ</th></tr></thead>
+          <tbody>
+          <tr><td>1</td><td>トップページ</td><td>利用者の状況から体験を発見してもらい、各ページへ誘導する</td><td>コンセプト、利用シーン、体験紹介、予約CTA</td></tr>
+          <tr><td>2</td><td>香りづくり体験</td><td>体験内容を理解して予約を検討してもらう</td><td>体験内容、流れ、料金、所要時間、完成品、予約案内</td></tr>
+          <tr><td>3</td><td>浅草・ものづくり</td><td>浅草とinimuの体験のつながりを伝える</td><td>ものづくり文化、香りとのつながり、歴史を歩くモデルコース</td></tr>
+          <tr><td>4</td><td>おすすめの過ごし方</td><td>観光・時間・同行者・天候から体験を探してもらう</td><td>モデルコース、2時間・3時間・半日、一人時間、イベント前後、雨天</td></tr>
+          <tr><td>5</td><td>アクセス・周辺情報</td><td>東京滞在中の予定に体験を組み込みやすくする</td><td>駅、空港、イベント会場、浅草周辺からのアクセス</td></tr>
+          <tr><td>6</td><td>FAQ</td><td>予約前の不安や疑問を解消する</td><td>予約、体験、一人参加、持ち物・服装、雨の日</td></tr>
+          <tr><td>7</td><td>予約</td><td>空き状況を確認し、既存予約ページへ進んでもらう</td><td>空き状況確認、予約CTA、既存予約ページへのリンク</td></tr>
+          </tbody>
+        </table>
+
+          </div>
+
+          <div class="fill-block">
+            <div class="fill-label">Webアプリ 画面一覧 <span class="required">必須</span></div>
+        <table class="doc-table">
+          <thead><tr><th>No.</th><th>画面名</th><th>画面の目的</th><th>主要機能</th></tr></thead>
+          <tbody>
+          <tr class="template-row"><td>1</td><td>（ログイン画面）</td><td>（ユーザー認証）</td><td>（メールアドレス/パスワード入力）</td></tr>
+          <tr class="template-row"><td>2</td><td>（一覧画面）</td><td>（データの一覧表示）</td><td>（検索・ソート・ページネーション）</td></tr>
+          <tr class="template-row"><td>3</td><td>（登録画面）</td><td>（新規データ登録）</td><td>（入力フォーム・バリデーション）</td></tr>
+          <tr class="template-row"><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+          </tbody>
+        </table>
+
+          </div>
+        </section>
+
+        <section class="section" id="sec3">
+          <h2 class="section-title"><span class="section-icon">3</span> ユーザーフロー</h2>
+
+        <div class="fill-block">
+          <div class="fill-label">メインシナリオ <span class="required">必須</span></div>
+          <div class="fill-hint">ペルソナがサイトに訪問してから目的を達成するまでの動線（メインの行動パターン）</div>
+          <div class="fill-content">
+            <p>ライブ前の空き時間がある利用者が、「東京 ものづくり体験」「浅草 一人 体験」などで検索する。</p>
+            <p>検索結果から旅香 - TABIKA - を訪問し、浅草観光と組み合わせられる香りづくり体験であることを知る。体験内容、香りづくりの流れ、料金、所要時間、完成品、アクセスを確認し、自分の予定に組み込めると判断する。</p>
+            <p>「空き状況を見る」または「ワークショップを予約する」から既存予約ページへ移動し、予約を完了する。</p>
+          </div>
+        </div>
+        <div class="fill-block">
+          <div class="fill-label">サブシナリオ <span class="optional">任意</span></div>
+          <div class="fill-hint">その他の行動パターン（1〜2パターン）</div>
+          <div class="fill-content">
+            <p>雨天で屋外観光の予定を変更した利用者が、「浅草 雨の日」「室内体験」からおすすめの過ごし方を見つけ、FAQで一人参加や雨の日の対応を確認して予約する。</p>
+            <p>浅草寺や上野周辺を観光中の利用者が、2〜3時間の過ごし方や周辺からのアクセスを確認し、旅程の合間にinimuへ立ち寄る。</p>
+          </div>
+        </div>
+
+        </section>
+
+        <section class="section" id="sec4">
+          <h2 class="section-title"><span class="section-icon">4</span> URL設計</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">URL一覧 <span class="required">必須</span></div>
+        <table class="doc-table">
+          <thead><tr><th>URL</th><th>HTTPメソッド</th><th>画面/機能</th><th>説明</th></tr></thead>
+          <tbody>
+          <tr><td>/</td><td>GET</td><td>トップページ</td><td>利用シーンから体験を発見し、各ページへ誘導</td></tr>
+          <tr><td>/experience</td><td>GET</td><td>香りづくり体験</td><td>体験内容、流れ、料金、所要時間、完成品、予約案内</td></tr>
+          <tr><td>/asakusa-craft</td><td>GET</td><td>浅草・ものづくり</td><td>浅草の文化と香りづくりのつながり</td></tr>
+          <tr><td>/scenes</td><td>GET</td><td>おすすめの過ごし方</td><td>観光、時間、一人、イベント前後、雨天から探す</td></tr>
+          <tr><td>/access</td><td>GET</td><td>アクセス・周辺情報</td><td>駅、空港、会場、浅草周辺からのアクセス</td></tr>
+          <tr><td>/faq</td><td>GET</td><td>FAQ</td><td>予約・体験・一人参加・雨の日などの疑問を解消</td></tr>
+          <tr><td>/booking</td><td>GET</td><td>予約</td><td>空き状況確認と既存予約ページへのリンク</td></tr>
+          </tbody>
+        </table>
+
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
