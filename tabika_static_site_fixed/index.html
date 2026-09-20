@@ -34,7 +34,7 @@
       </div>
     </section>
 
-    <section class="summary section-wide" aria-label="体験概要">
+    <section class="summary section-wide fade-in-section" aria-label="体験概要">
       <h2 class="section-title compact">香りづくり体験 <span>使用時間：60分</span></h2>
       <div class="summary-box">
         <div class="summary-item">
@@ -55,12 +55,12 @@
       </div>
     </section>
 
-    <section id="experience" class="experience section-wide">
+    <section id="experience" class="experience section-wide fade-in-section">
       <div class="section-head-row">
         <h2 class="section-title compact">香りづくり体験 <span>使用時間：60分</span></h2>
         <a class="pill" href="#reserve">空き状況</a>
       </div>
-      <div class="experience-panel">
+      <div class="experience-panel" id="experience-carousel" role="group" aria-label="香りづくり体験の流れ">
         <article class="step-card">
           <img src="./assets/workbench.png" alt="香料が並ぶ作業台">
           <h3>01 選ぶ</h3>
@@ -82,39 +82,41 @@
           <p>できあがった香りを、<br>旅の記憶とともに持ち帰る。</p>
         </article>
       </div>
+      <div class="experience-pagination" role="group" aria-label="表示する工程を選択" hidden></div>
     </section>
 
-    <section id="plans" class="plans section-wide">
+    <section id="plans" class="plans section-wide fade-in-section">
       <h2 class="section-title">あなたにぴったりプラン</h2>
-      <div class="plans-panel">
+      <div class="plans-panel" id="plans-carousel" tabindex="0" aria-label="プラン一覧">
         <article class="plan-card">
           <img src="./assets/asakusa.png" alt="浅草の仲見世通り">
-          <span>浅草観光</span>
+          <a class="plan-link" href="#experience">浅草観光</a>
         </article>
         <article class="plan-card">
           <img src="./assets/oldtown.png" alt="浅草の街並み">
-          <span>江戸情緒散歩</span>
+          <a class="plan-link" href="#experience">江戸情緒散歩</a>
         </article>
         <article class="plan-card">
           <img src="./assets/rain.png" alt="雨の日の上野周辺">
-          <span>雨の日</span>
+          <a class="plan-link" href="#experience">雨の日</a>
         </article>
         <article class="plan-card">
           <img src="./assets/event.png" alt="イベント会場周辺">
-          <span>イベント前後</span>
+          <a class="plan-link" href="#experience">イベント前後</a>
         </article>
         <article class="plan-card">
           <img src="./assets/transit.png" alt="東京駅と羽田空港の移動イメージ">
-          <span>移動の合間</span>
+          <a class="plan-link" href="#experience">移動の合間</a>
         </article>
         <article class="plan-card">
           <img src="./assets/nature.png" alt="自然の中で香りを感じるイメージ">
-          <span>自然の香りを感じる</span>
+          <a class="plan-link" href="#experience">自然の香りを感じる</a>
         </article>
       </div>
+      <div class="plans-pagination" role="group" aria-label="表示するプランを選択" hidden></div>
     </section>
 
-    <section id="faq" class="faq section-wide">
+    <section id="faq" class="faq section-wide fade-in-section">
       <h2 class="section-title">気になること、まとめました</h2>
       <div class="faq-panel">
         <img class="faq-photo" src="./assets/faq.png" alt="スタッフと相談しながら香りを選ぶ様子">
@@ -129,12 +131,12 @@
       </div>
     </section>
 
-    <section id="reserve" class="reserve-cta section-wide">
+    <section id="reserve" class="reserve-cta section-wide fade-in-section">
       <a href="#">ワークショップを予約する</a>
       <p>自分だけの香りをつくる時間を、浅草で楽しんでみませんか？</p>
     </section>
 
-    <section id="access" class="access section-wide">
+    <section id="access" class="access section-wide fade-in-section">
       <h2 class="section-title">アクセス</h2>
       <div class="access-panel">
         <img class="map" src="./assets/map-reference.png" alt="浅草周辺の地図">
@@ -145,6 +147,22 @@
             <div><dt>お問い合わせ</dt><dd>TEL：070-7400-3099<br>営業時間：10:30〜18:00<br>定休日：月曜</dd></div>
           </dl>
         </div>
+      </div>
+      <div class="google-map">
+        <!-- Googleマップの「共有」→「地図を埋め込む」で取得したiframeをここに貼り付けてください。
+             下のひな形を使う場合は、コメントを外してsrcを取得した埋め込みURLに差し替えてください。
+             titleは残してください。地図の幅・高さはCSSで調整します。
+        <iframe
+          src="about:blank"
+          title="旅香・inimu浅草店へのアクセスマップ"
+          width="600"
+          height="400"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        -->
       </div>
     </section>
   </main>
@@ -165,5 +183,6 @@
     </div>
     <div class="copyright">© 2026 TABIKA</div>
   </footer>
+  <script src="./js/main.js" defer></script>
 </body>
 </html>
