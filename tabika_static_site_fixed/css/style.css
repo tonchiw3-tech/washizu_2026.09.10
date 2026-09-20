@@ -148,6 +148,21 @@ img{display:block;max-width:100%}
 .asakusa-aroma{margin-top:28px}
 .asakusa-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
 .asakusa-actions .pill{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px}
+.edo-page{padding:72px 0 96px;background:linear-gradient(180deg,#fff 0%,var(--pink) 100%)}
+.edo-page .section-title{text-align:center;margin-bottom:42px}
+.edo-intro{text-align:center;color:var(--muted);margin:-20px auto 42px;max-width:560px}
+.edo-flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
+.edo-stop,.edo-aroma{position:relative;min-height:285px;padding:26px 22px;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.82);box-shadow:0 8px 24px rgba(51,37,45,.06)}
+.edo-stop:not(:last-child)::after{content:"→";position:absolute;right:-25px;top:50%;z-index:1;color:var(--accent);font-size:30px;line-height:1}
+.edo-stop h3,.edo-aroma h2{font-family:"Noto Serif JP",serif;font-size:23px;font-weight:400;margin:0 0 14px}
+.edo-highlight{font-size:17px;margin:0 0 14px;color:var(--ink)}
+.edo-stop p,.edo-aroma p{margin:6px 0;line-height:1.9}
+.edo-time{display:inline-flex;margin-top:18px;padding:5px 12px;border-radius:999px;background:var(--pink2);color:var(--muted);font-size:13px}
+.edo-aroma{grid-column:1/-1;min-height:0;margin-top:20px;text-align:center;background:rgba(255,255,255,.92)}
+.edo-aroma h2{font-size:26px}
+.edo-aroma .edo-highlight{font-size:19px}
+.edo-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:28px}
+.edo-actions .pill{width:auto;min-width:190px;padding:0 24px}
 .faq{padding-top:165px}
 .faq-panel{
   background:var(--pink);
@@ -294,6 +309,14 @@ img{display:block;max-width:100%}
   .site-footer{margin-top:64px}
   .footer-inner{margin-bottom:48px;padding:32px 24px}
   .footer-col a{display:flex;align-items:center;min-height:44px;margin:0}
+  .edo-page{padding:48px 0 64px}
+  .edo-page .section-title{margin-bottom:30px}
+  .edo-intro{margin:-10px auto 28px}
+  .edo-flow{display:flex;flex-direction:column;gap:0}
+  .edo-stop,.edo-aroma{min-height:0;padding:22px 20px;border-radius:18px}
+  .edo-stop:not(:last-child)::after{content:"↓";right:auto;top:auto;bottom:-32px;left:50%;font-size:26px;transform:translateX(-50%)}
+  .edo-stop:not(:last-child){margin-bottom:42px}
+  .edo-aroma{margin-top:0}
 }
 @media (max-width:480px){
   body{font-size:14px}
