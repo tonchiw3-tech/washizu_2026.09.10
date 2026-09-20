@@ -36,14 +36,15 @@ img{display:block;max-width:100%}
   gap:26px;
   padding:0 30px;
 }
-.brand img{width:182px;height:auto;object-fit:contain}
+.brand img{width:140px;height:auto;object-fit:contain}
 .global-nav{
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:82px;
-  font-size:16px;
+  gap:42px;
+  font-size:14px;
   letter-spacing:.04em;
+  white-space:nowrap;
 }
 .reserve-small,.pill,.faq-more{
   display:inline-flex;
