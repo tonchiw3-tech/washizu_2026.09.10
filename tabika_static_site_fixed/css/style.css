@@ -137,6 +137,17 @@ img{display:block;max-width:100%}
   color:#fff;
   font-size:12px;
 }
+.asakusa-content{padding-top:100px;padding-bottom:100px}
+.asakusa-walk,.asakusa-aroma{padding:34px 40px;border:1px solid var(--line);background:rgba(255,255,255,.55)}
+.asakusa-content h2{font-family:"Noto Serif JP",serif;font-size:26px;font-weight:400;margin:0 0 28px}
+.asakusa-stop{padding:22px 0;border-top:1px solid var(--line)}
+.asakusa-stop h3{font-family:"Noto Serif JP",serif;font-size:24px;font-weight:400;margin:0 0 12px}
+.asakusa-stop p,.asakusa-aroma p{line-height:2;margin:4px 0}
+.asakusa-highlight{font-size:18px}
+.asakusa-arrow{text-align:center;color:var(--accent);font-size:24px;margin:0!important}
+.asakusa-aroma{margin-top:28px}
+.asakusa-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+.asakusa-actions .pill{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px}
 .faq{padding-top:165px}
 .faq-panel{
   background:var(--pink);
