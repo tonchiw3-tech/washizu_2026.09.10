@@ -120,18 +120,115 @@
 
         <div class="fill-block">
           <div class="fill-label">ボタン <span class="required">必須</span></div>
-          <div class="fill-hint">プライマリ・セカンダリ・デンジャーの3種類のボタンスタイル（実物のHTMLサンプル付き）</div>
+          <div class="fill-hint">プライマリ・セカンダリの2種類のボタンスタイル（HTML・CSSサンプル付き）</div>
           <div class="fill-content">
-            <p>予約導線を明確にするため、プライマリ・セカンダリ・デンジャーの3種類を使い分けます。</p>
-            <div class="component-preview"><button type="button" class="link-btn" style="background:#BE95BB;color:#fff;border-color:#BE95BB;border-radius:999px">プライマリ：空き状況を見る</button> <button type="button" class="link-btn" style="background:#fff;color:#411818;border-color:#411818;border-radius:999px">セカンダリ：体験について詳しく見る</button> <button type="button" class="link-btn" style="background:#411818;color:#fff;border-color:#411818;border-radius:999px">デンジャー：選択を取り消す</button></div>
+            <p>予約導線を明確にするため、プライマリ・セカンダリの2種類のボタンを使い分けます。</p>
+            <div class="component-preview"><button type="button" class="link-btn" style="background:#BE8FBD;color:#fff;border-color:#BE8FBD;border-radius:999px">空き状況を見る</button> <button type="button" class="link-btn" style="background:#fff;color:#4A1616;border-color:#4A1616;border-radius:999px">体験について詳しく見る</button></div>
+            <pre><code>&lt;a href="#" class="btn btn-primary"&gt;空き状況を見る&lt;/a&gt;
+&lt;a href="#" class="btn btn-secondary"&gt;体験について詳しく見る&lt;/a&gt;</code></pre>
+            <pre><code>.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: #BE8FBD;
+  color: #ffffff;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: #4A1616;
+  border: 1px solid #4A1616;
+}</code></pre>
           </div>
         </div>
         <div class="fill-block">
           <div class="fill-label">フォーム要素 <span class="required">必須</span></div>
-          <div class="fill-hint">テキスト入力・セレクト・テキストエリア・チェックボックス・ラジオボタン（実物のHTMLサンプル付き）</div>
+          <div class="fill-hint">テキスト入力・セレクト・テキストエリア・チェックボックス・ラジオボタンの共通スタイルを定義します。</div>
           <div class="fill-content">
-            <p>入力欄は角丸10px、文字サイズ16pxを基本とし、フォーカス時に藍色で状態を示します。</p>
-            <div class="component-preview" style="background:#F5F5F5;border-radius:10px;padding:16px"><label>テキスト入力 <input type="text" placeholder="例：雨の日" style="border-color:#BE95BB;border-radius:10px;background:#fff;color:#333"></label><label>セレクト <select style="border-color:#BE95BB;border-radius:10px;background:#fff;color:#333"><option>浅草</option><option>上野</option></select></label><label>テキストエリア <textarea rows="3" placeholder="お問い合わせ" style="border-color:#BE95BB;border-radius:10px;background:#fff;color:#333"></textarea></label><label><input type="checkbox" style="accent-color:#BE95BB"> 室内で楽しめるプラン</label><label><input type="radio" name="guide-time" style="accent-color:#BE95BB"> 2時間</label><label><input type="radio" name="guide-time" style="accent-color:#BE95BB"> 3時間</label></div>
+            <p>入力欄は角丸10px、文字サイズ16pxを基本とし、フォーカス時はアクセントカラー、エラー時は赤系の色で状態を示します。</p>
+            <div class="component-preview" style="background:#F5F5F5;border-radius:10px;padding:16px">
+              <form class="sample-form" style="max-width:600px;color:#4a1616">
+                <div class="form-group"><label for="name">テキスト入力</label><input type="text" id="name" name="name" placeholder="お名前を入力"></div>
+                <div class="form-group"><label for="select">セレクト</label><select id="select" name="select"><option value="">選択してください</option><option value="a">選択肢A</option><option value="b">選択肢B</option></select></div>
+                <div class="form-group"><label for="message">テキストエリア</label><textarea id="message" name="message" rows="4" placeholder="お問い合わせ内容を入力してください"></textarea></div>
+                <div class="form-group"><label class="option-label"><input type="checkbox" name="check"><span>内容を確認しました</span></label></div>
+                <fieldset class="form-group"><legend>ラジオボタン</legend><label class="option-label"><input type="radio" name="choice" value="a"><span>選択肢A</span></label><label class="option-label"><input type="radio" name="choice" value="b"><span>選択肢B</span></label></fieldset>
+              </form>
+            </div>
+            <pre><code>.sample-form {
+  max-width: 600px;
+  font-family: "Noto Sans JP", sans-serif;
+  color: #4a1616;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label,
+.form-group legend {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: #4a1616;
+  background-color: #ffffff;
+  border: 1px solid #be8fbd;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #be8fbd;
+  box-shadow: 0 0 0 3px rgba(190, 143, 189, 0.18);
+}
+
+textarea { min-height: 100px; resize: vertical; }
+
+.option-label {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  margin-right: 20px;
+  cursor: pointer;
+  font-weight: 400 !important;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #be8fbd;
+}
+
+fieldset { padding: 0; border: none; }
+
+.is-error { border-color: #b94a48 !important; background-color: #fff7f7; }
+.error-message { margin-top: 6px; font-size: 14px; color: #b94a48; }</code></pre>
+            <p><strong>エラー表示サンプル</strong></p>
+            <pre><code>&lt;div class="form-group"&gt;
+  &lt;label for="error-input"&gt;テキスト入力（エラー例）&lt;/label&gt;
+  &lt;input type="text" id="error-input" class="is-error" value="" placeholder="入力してください"&gt;
+  &lt;p class="error-message"&gt;入力内容を確認してください。&lt;/p&gt;
+&lt;/div&gt;</code></pre>
           </div>
         </div>
         <div class="fill-block">
