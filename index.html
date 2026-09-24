@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>旅香 - TABIKA -</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="tabika-app">
+  <header class="app-header">
+    <a class="app-brand" href="./index.html" aria-label="旅香 TABIKA トップへ">
+      <img src="./assets/logo.png" alt="旅香 TABIKA">
+      <span>旅香 - TABIKA -</span>
+    </a>
+    <nav class="app-nav" aria-label="メインナビゲーション">
+      <a href="#search">おすすめを探す</a>
+      <a href="#plans">プラン一覧</a>
+      <a href="./admin.html">管理画面</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="app-hero">
+      <img src="./assets/hero-background.png" alt="浅草で香りづくりを楽しむ旅香のイメージ">
+      <div class="app-hero-copy">
+        <p>浅草観光と香りづくりを、その日の気分で選ぶ</p>
+        <h1>いまの予定に合う過ごし方を見つける</h1>
+        <a class="app-button" href="#search">おすすめを探す</a>
+      </div>
+    </section>
+
+    <section id="search" class="app-section app-search" aria-labelledby="search-title">
+      <div class="app-section-head">
+        <p>Condition Search</p>
+        <h2 id="search-title">おすすめ条件選択</h2>
+      </div>
+      <form id="plan-search-form" class="search-form" novalidate>
+        <label>
+          <span>利用シーン</span>
+          <select name="scene">
+            <option value="">指定なし</option>
+            <option value="観光">観光</option>
+            <option value="ものづくり">ものづくり</option>
+            <option value="空き時間">空き時間</option>
+            <option value="一人時間">一人時間</option>
+            <option value="イベント">イベント</option>
+            <option value="雨天">雨天</option>
+          </select>
+        </label>
+        <label>
+          <span>利用可能時間</span>
+          <select name="duration">
+            <option value="">指定なし</option>
+            <option value="120">2時間</option>
+            <option value="180">3時間</option>
+            <option value="240">半日</option>
+          </select>
+        </label>
+        <label>
+          <span>出発地点</span>
+          <select name="location">
+            <option value="">指定なし</option>
+            <option value="浅草">浅草</option>
+            <option value="上野">上野</option>
+            <option value="両国">両国</option>
+            <option value="東京駅">東京駅</option>
+            <option value="羽田空港">羽田空港</option>
+          </select>
+        </label>
+        <label>
+          <span>天候</span>
+          <select name="weather">
+            <option value="">指定なし</option>
+            <option value="晴れ">晴れ</option>
+            <option value="雨">雨</option>
+          </select>
+        </label>
+        <p id="search-error" class="form-message" role="alert"></p>
+        <button class="app-button search-button" type="submit">この条件で探す</button>
+      </form>
+    </section>
+
+    <section id="plans" class="app-section" aria-labelledby="plans-title">
+      <div class="app-section-head">
+        <p>Recommended Plans</p>
+        <h2 id="plans-title">検索結果一覧</h2>
+      </div>
+      <div class="result-toolbar">
+        <p id="result-summary" aria-live="polite"></p>
+        <button id="reset-search" class="text-button" type="button">条件を変更する</button>
+      </div>
+      <div id="plan-results" class="result-grid"></div>
+      <p id="empty-message" class="empty-message" hidden>条件に合うプランが見つかりませんでした。条件を変更して再度検索してください。</p>
+    </section>
+
+    <section id="plan-detail" class="app-section detail-section" aria-labelledby="detail-title" hidden>
+      <div id="detail-content"></div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>旅香 - TABIKA -</p>
+    <p>予約機能・決済機能は既存予約サービスへ遷移します。</p>
+  </footer>
+
+  <script src="./js/app.js" defer></script>
+</body>
+</html>
