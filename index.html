@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>旅香 - TABIKA -</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="旅香 TABIKA トップへ">
+        <img src="./assets/logo.png" alt="旅香 TABIKA">
+      </a>
+      <nav class="global-nav" aria-label="メインナビゲーション">
+        <a href="#experience">香りづくり体験</a>
+        <a href="#plans">あなたにぴったりプラン</a>
+        <a href="#faq">予約前のよくある質問</a>
+        <a href="#access">アクセス</a>
+      </nav>
+      <a class="reserve-small" href="./reserve.html">予約受付</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-image" src="./assets/hero-background.png" alt="桜の浅草で香水づくりを楽しむ旅香のイメージ">
+      <svg class="hero-scent" viewBox="0 0 1200 694" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path class="scent-trail scent-trail-1" d="M-60 560 C170 490 110 330 340 300 S570 410 760 270 S1030 120 1260 190" />
+        <path class="scent-trail scent-trail-2" d="M-80 420 C150 350 230 470 420 380 S650 170 850 230 S1070 360 1280 230" />
+        <path class="scent-trail scent-trail-3" d="M-50 650 C180 570 280 610 430 500 S670 320 900 390 S1080 500 1260 390" />
+        <path class="scent-trail scent-trail-4" d="M40 170 C220 250 330 190 500 130 S760 70 920 170 S1100 250 1260 150" />
+        <circle class="scent-particle scent-particle-1" cx="340" cy="300" r="7" />
+        <circle class="scent-particle scent-particle-2" cx="850" cy="230" r="5" />
+        <circle class="scent-particle scent-particle-3" cx="900" cy="390" r="6" />
+      </svg>
+      <div class="hero-copy">
+        <p>旅香-TABIKA-</p>
+        <h1 id="hero-title">浅草で、自分だけの日本の香りをつくる旅。</h1>
+      </div>
+    </section>
+
+    <section class="summary section-wide fade-in-section" aria-label="体験概要">
+      <h2 class="section-title compact">香りづくり体験 <span>使用時間：60分</span></h2>
+      <div class="summary-box">
+        <div class="summary-item">
+          <img src="./assets/icon-calendar-hires.png" width="110" height="110" alt="カレンダーのアイコン">
+          <p class="summary-kicker">その日に</p>
+          <p>予定に組み込める</p>
+        </div>
+        <div class="summary-item">
+          <img src="./assets/icon-people-hires.png" width="110" height="110" alt="人のアイコン">
+          <p class="summary-kicker">1人でも</p>
+          <p>気軽に参加</p>
+        </div>
+        <div class="summary-item">
+          <img src="./assets/icon-aroma-hires.png" width="110" height="110" alt="香りのアイコン">
+          <p class="summary-kicker">26種類</p>
+          <p>香りから選べる</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="experience section-wide fade-in-section">
+      <div class="section-head-row">
+        <h2 class="section-title compact">香りづくり体験 <span>使用時間：60分</span></h2>
+        <a class="pill" href="./reserve.html">予約</a>
+      </div>
+      <div class="experience-panel" id="experience-carousel" role="group" aria-label="香りづくり体験の流れ">
+        <article class="step-card">
+          <img src="./assets/workbench.png" alt="香料が並ぶ作業台">
+          <h3>01 選ぶ</h3>
+          <p>26種類の香りから、<br>心ひかれる香りを選ぶ。</p>
+        </article>
+        <article class="step-card">
+          <img src="./assets/friends.png" alt="香りを試す二人">
+          <h3>02 試す</h3>
+          <p>香りの違いを楽しみながら、<br>自分好みを見つける。</p>
+        </article>
+        <article class="step-card">
+          <img src="./assets/blending.png" alt="香りを調合する手元">
+          <h3>03 調合する</h3>
+          <p>香りを組み合わせて、<br>旅の記憶をかたちにする。</p>
+        </article>
+        <article class="step-card">
+          <img src="./assets/product.png" alt="完成した旅香の香水">
+          <h3>04 持ち帰る</h3>
+          <p>できあがった香りを、<br>旅の記憶とともに持ち帰る。</p>
+        </article>
+      </div>
+      <div class="experience-pagination" role="group" aria-label="表示する工程を選択" hidden></div>
+    </section>
+
+    <section id="plans" class="plans section-wide fade-in-section">
+      <h2 class="section-title">あなたにぴったりプラン</h2>
+      <div class="plans-panel" id="plans-carousel" tabindex="0" aria-label="プラン一覧">
+        <article class="plan-card">
+          <img src="./assets/asakusa.png" alt="浅草の仲見世通り">
+          <a class="plan-link" href="./asakusa.html">浅草観光</a>
+        </article>
+        <article class="plan-card">
+          <img src="./assets/oldtown.png" alt="浅草の街並み">
+          <a class="plan-link" href="./edo-walk.html">江戸街道歩き</a>
+        </article>
+        <article class="plan-card">
+          <img src="./assets/rain.png" alt="雨の日の上野周辺">
+          <a class="plan-link" href="./rainy-day.html">雨の日</a>
+        </article>
+        <article class="plan-card">
+          <img src="./assets/event.png" alt="イベント会場周辺">
+          <a class="plan-link" href="./event-before.html">イベント前後</a>
+        </article>
+        <article class="plan-card">
+          <img src="./assets/transit.png" alt="東京駅と羽田空港の移動イメージ">
+          <a class="plan-link" href="./travel-gap.html">移動までのすき間時間</a>
+        </article>
+        <article class="plan-card">
+          <img src="./assets/nature.png" alt="自然の中で香りを感じるイメージ">
+          <a class="plan-link" href="./nature-scent.html">自然の香りを感じる</a>
+        </article>
+      </div>
+      <div class="plans-pagination" role="group" aria-label="表示するプランを選択" hidden></div>
+    </section>
+
+    <section id="faq" class="faq section-wide fade-in-section">
+      <h2 class="section-title">予約前のよくある質問  </h2>
+      <div class="faq-panel">
+        <img class="faq-photo" src="./assets/faq.png" alt="スタッフと相談しながら香りを選ぶ様子">
+        <div class="faq-list">
+          <h3>所要時間はどれくらいですか？</h3>
+          <h3>一人でも参加できますか？</h3>
+          <h3>香水づくりが初めてでも大丈夫ですか？</h3>
+          <h3>予約は必要ですか？</h3>
+          <h3>作った香りは持ち帰れますか？</h3>
+          <a class="faq-more" href="./faq.html">詳しく見る</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="reserve" class="reserve-cta section-wide fade-in-section">
+      <a href="./reserve.html">ワークショップを予約する</a>
+      <p>自分だけの香りをつくる時間を、浅草で楽しんでみませんか？</p>
+    </section>
+
+    <section id="access" class="access section-wide fade-in-section">
+      <h2 class="section-title">アクセス</h2>
+      <div class="access-panel">
+        <div class="access-map" aria-label="inimu浅草店のGoogleマップ">
+          <iframe src="https://www.google.com/maps?q=inimu%20浅草店%20東京都台東区浅草2丁目31-5&output=embed" title="inimu浅草店へのアクセスマップ" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <div class="access-copy">
+          <dl>
+            <div><dt>所在地</dt><dd>inimu（イニム）浅草店<br>〒111-0032<br>東京都台東区浅草2丁目31-5</dd></div>
+            <div><dt>最寄駅</dt><dd>東京メトロ銀座線 浅草駅より徒歩約5分<br>都営浅草線 浅草駅より徒歩約7分<br>東武線 浅草駅より徒歩約5分<br>つくばエクスプレス 浅草駅より徒歩約8分</dd></div>
+            <div><dt>お問い合わせ</dt><dd>TEL：070-7400-3099<br>営業時間：10:30〜18:00<br>定休日：月曜</dd></div>
+          </dl>
+          <a class="map-directions" href="https://www.google.com/maps/dir/?api=1&destination=inimu%20浅草店%20東京都台東区浅草2丁目31-5" target="_blank" rel="noopener noreferrer">Googleマップで経路を調べる ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <p class="footer-brand">旅香 - TABIKA -</p>
+        <a href="#experience">体験について</a>
+        <a href="#plans">あなたにぴったりプラン</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="footer-col footer-contact">
+        <p class="footer-address">アクセス：inimu（いにむ） 東京都台東区浅草2丁目31-5</p>
+        <p>TEL：070-7400-3099</p>
+      </div>
+      <div class="footer-col footer-reserve">［ワークショップを予約する］</div>
+    </div>
+    <div class="copyright">© 2026 TABIKA</div>
+  </footer>
+  <script src="./js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>テスト報告書 -  プロジェクトアーカイブ</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <button class="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="page-wrapper">
+  <aside class="sidebar" data-nav-level="docs"></aside>
+
+    <main class="main-content">
+      <header class="doc-header">
+        <div class="doc-category">DOCUMENT 09</div>
+        <h1 class="doc-title">テスト報告書</h1>
+        <div class="doc-meta">
+          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-09-24</span>
+          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者：鷲巣 友香</span>
+          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.0</span>
+        </div>
+      </header>
+
+      <div class="doc-body">
+
+        <div class="external-link-box">
+          <div class="external-link-box-title">
+            <span class="material-symbols-outlined">link</span>
+            詳細ドキュメント（Google スプレッドシート）
+          </div>
+          <div class="external-link-box-desc">
+            このページは概要のみを記載しています。詳細なテスト報告書は以下のリンクからご確認ください。
+          </div>
+          <div class="external-link-input">
+            <input type="text" placeholder="https://docs.google.com/spreadsheets/d/xxxxx" id="external-link-09">
+            <a href="#" class="link-btn" onclick="window.open(document.getElementById('external-link-09').value || 'https://docs.google.com', '_blank'); return false;">
+              <span class="material-symbols-outlined">open_in_new</span>
+              開く
+            </a>
+          </div>
+        </div>
+
+        <div class="toc">
+          <div class="toc-title">目次</div>
+          <ol class="toc-list">
+            <li><a href="#sec1">テスト計画</a></li>
+            <li><a href="#sec2">テストケース一覧</a></li>
+            <li><a href="#sec3">テスト結果サマリー</a></li>
+            <li><a href="#sec4">バグ一覧</a></li>
+            <li><a href="#sec5">ブラウザ・デバイス対応</a></li>
+            <li><a href="#sec6">テスト実施時の確認ポイント</a></li>
+          </ol>
+        </div>
+
+        <section class="section" id="sec1">
+          <h2 class="section-title"><span class="section-icon">1</span> テスト計画</h2>
+
+        <div class="fill-block">
+          <div class="fill-label">テスト対象・範囲 <span class="required">必須</span></div>
+          <div class="fill-hint">テストの対象となる機能・画面と、テストの種類</div>
+          <div class="fill-content">
+            <p>本テストでは、Webサービス「旅香 - TABIKA -」のフロントエンドについて、画面表示・ページ遷移・ボタン操作・レスポンシブ表示などが設計どおりに動作するかを確認する。</p>
+            <p>本サイトは、浅草観光・ものづくり・空き時間・一人時間・イベント前後・雨の日など、利用者の状況からinimuの香りづくり体験を発見し、既存の予約サービスへ進んでもらうことを目的としている。</p>
+            <p><strong>テスト対象：</strong>トップページ、香りづくり体験紹介、利用シーン別コンテンツ、浅草観光・おすすめの過ごし方、アクセス・周辺情報、FAQ、予約CTA、ヘッダー・ナビゲーション、フッター、外部リンク、Googleマップ、PC・スマートフォン表示。</p>
+            <p><strong>テスト種別：</strong>機能テスト、画面テスト、レスポンシブテスト、リンクテスト、基本的なセキュリティ確認。</p>
+            <p><strong>テスト環境：</strong>Windows 11、Google Chrome / Microsoft Edge / Firefox、スマートフォンのChrome / Safari、PC 1440px前後、スマートフォン390px前後、GitHub Pages。</p>
+            <p><strong>テスト期間：</strong>2026年9月24日 ～ 2026年10月1日</p>
+          </div>
+        </div>
+
+        </section>
+
+        <section class="section" id="sec2">
+          <h2 class="section-title"><span class="section-icon">2</span> テストケース一覧</h2>
+
+
+          <div class="fill-block">
+            <div class="fill-label">テストケース一覧 <span class="required">必須</span></div>
+        <table class="doc-table">
+          <thead><tr><th>ID</th><th>対象機能</th><th>テスト種別</th><th>テスト内容</th><th>期待結果</th><th>結果</th></tr></thead>
+          <tbody>
+          <tr><td>TC-001</td><td>トップページ</td><td>正常系</td><td>トップページを開く</td><td>ページ全体が正常に表示される</td><td>未実施</td></tr>
+          <tr><td>TC-002</td><td>ヘッダー</td><td>正常系</td><td>ロゴをクリックする</td><td>トップページへ移動する</td><td>未実施</td></tr>
+          <tr><td>TC-003</td><td>ナビゲーション</td><td>正常系</td><td>各メニューをクリックする</td><td>対応するページまたはセクションへ移動する</td><td>未実施</td></tr>
+          <tr><td>TC-004</td><td>ヒーローエリア</td><td>画面</td><td>メインビジュアルを表示する</td><td>画像・タイトル・キャッチコピーが正しく表示される</td><td>未実施</td></tr>
+          <tr><td>TC-005</td><td>利用シーン</td><td>正常系</td><td>「浅草観光」を選択する</td><td>対応する内容が表示される</td><td>未実施</td></tr>
+          <tr><td>TC-006</td><td>利用シーン</td><td>正常系</td><td>「ものづくり」を選択する</td><td>対応する内容が表示される</td><td>未実施</td></tr>
+          <tr><td>TC-007</td><td>利用シーン</td><td>正常系</td><td>「空き時間」を選択する</td><td>対応する内容が表示される</td><td>未実施</td></tr>
+          <tr><td>TC-008</td><td>利用シーン</td><td>正常系</td><td>「一人時間」を選択する</td><td>対応する内容が表示される</td><td>未実施</td></tr>
+          <tr><td>TC-009</td><td>利用シーン</td><td>正常系</td><td>「イベント前後」を選択する</td><td>対応する内容が表示される</td><td>未実施</td></tr>
+          <tr><td>TC-010</td><td>利用シーン</td><td>正常系</td><td>「雨の日」を選択する</td><td>対応する内容が表示される</td><td>未実施</td></tr>
+          <tr><td>TC-011</td><td>体験紹介</td><td>正常系</td><td>香りづくり体験紹介を表示する</td><td>体験内容・流れなどが正しく表示される</td><td>未実施</td></tr>
+          <tr><td>TC-012</td><td>CTA</td><td>正常系</td><td>「空き状況を見る」をクリックする</td><td>設定した予約先または予約案内へ移動する</td><td>未実施</td></tr>
+          <tr><td>TC-013</td><td>CTA</td><td>正常系</td><td>「ワークショップを予約する」をクリックする</td><td>既存予約ページへ移動する</td><td>未実施</td></tr>
+          <tr><td>TC-014</td><td>CTA</td><td>異常系</td><td>外部予約URLが無効な状態で確認する</td><td>ページ全体が崩れず、リンク以外の表示が維持される</td><td>未実施</td></tr>
+          <tr><td>TC-015</td><td>アクセス</td><td>正常系</td><td>アクセス欄を表示する</td><td>店舗情報が正しく表示される</td><td>未実施</td></tr>
+          <tr><td>TC-016</td><td>Googleマップ</td><td>正常系</td><td>地図を表示する</td><td>Googleマップが正常に表示される</td><td>未実施</td></tr>
+          <tr><td>TC-017</td><td>Googleマップ</td><td>正常系</td><td>地図またはリンクを操作する</td><td>Googleマップを開ける</td><td>未実施</td></tr>
+          <tr><td>TC-018</td><td>FAQ</td><td>正常系</td><td>FAQを表示する</td><td>質問・回答が読める状態で表示される</td><td>未実施</td></tr>
+          <tr><td>TC-019</td><td>フッター</td><td>正常系</td><td>フッターを表示する</td><td>ロゴ・リンク等が正常に表示される</td><td>未実施</td></tr>
+          <tr><td>TC-020</td><td>PC表示</td><td>画面</td><td>1440px前後で表示する</td><td>レイアウトが崩れない</td><td>未実施</td></tr>
+          <tr><td>TC-021</td><td>スマートフォン表示</td><td>画面</td><td>390px前後で表示する</td><td>横スクロールが発生せず正常に表示される</td><td>未実施</td></tr>
+          <tr><td>TC-022</td><td>スマートフォン表示</td><td>画面</td><td>ナビゲーションを表示する</td><td>メニューが画面内に収まり操作できる</td><td>未実施</td></tr>
+          <tr><td>TC-023</td><td>スマートフォン表示</td><td>画面</td><td>CTAを表示する</td><td>ボタン文字が切れずタップできる</td><td>未実施</td></tr>
+          <tr><td>TC-024</td><td>画像</td><td>画面</td><td>全ページの画像を確認する</td><td>画像切れ・縦横比の崩れがない</td><td>未実施</td></tr>
+          <tr><td>TC-025</td><td>テキスト</td><td>境界値</td><td>長めの文章を狭い画面で表示する</td><td>文字が領域外にはみ出さず折り返される</td><td>未実施</td></tr>
+          <tr><td>TC-026</td><td>住所表示</td><td>境界値</td><td>スマートフォンで住所を表示する</td><td>文字が重ならず読める</td><td>未実施</td></tr>
+          <tr><td>TC-027</td><td>ボタン</td><td>境界値</td><td>最小スマートフォン幅でCTAを表示する</td><td>ボタンが画面外にはみ出さない</td><td>未実施</td></tr>
+          <tr><td>TC-028</td><td>ページ表示</td><td>異常系</td><td>存在しないURLへアクセスする</td><td>GitHub Pages側の404表示となり、他ページに影響しない</td><td>未実施</td></tr>
+          <tr><td>TC-029</td><td>外部リンク</td><td>正常系</td><td>外部リンクをクリックする</td><td>正しい外部ページへ移動する</td><td>未実施</td></tr>
+          <tr><td>TC-030</td><td>セキュリティ確認</td><td>確認</td><td>公開ソースを確認する</td><td>APIキー・パスワード等の機密情報が含まれていない</td><td>未実施</td></tr>
+          <tr><td>TC-031</td><td>HTTPS確認</td><td>確認</td><td>公開URLへアクセスする</td><td>HTTPSで正常に表示される</td><td>未実施</td></tr>
+          <tr><td>TC-032</td><td>ブラウザ互換</td><td>画面</td><td>Chrome・Edge・Firefoxで表示する</td><td>大きな表示差異や機能不良がない</td><td>未実施</td></tr>
+          </tbody>
+        </table>
+        <div class="fill-content">
+          <p><strong>重大度の基準</strong></p>
+          <p><strong>高：</strong>ページが表示できない、予約導線が利用できないなど、サービスの目的に大きく影響するもの。</p>
+          <p><strong>中：</strong>一部のボタンが動作しない、スマートフォンで表示が崩れるなど、利用に支障があるもの。</p>
+          <p><strong>低：</strong>余白・文字サイズ・位置ずれなど、サービス利用自体には大きく影響しないもの。</p>
+        </div>
+
+          </div>
+        </section>
+
+        <section class="section" id="sec3">
+          <h2 class="section-title"><span class="section-icon">3</span> テスト結果サマリー</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">テスト結果サマリー <span class="required">必須</span></div>
+            <div class="fill-hint">テスト実施後に集計結果を記入してください</div>
+        <table class="doc-table">
+          <thead><tr><th>項目</th><th>件数</th></tr></thead>
+          <tbody>
+          <tr><td>総テストケース数</td><td>32</td></tr>
+          <tr><td>OK</td><td>0</td></tr>
+          <tr><td>NG</td><td>0</td></tr>
+          <tr><td>未実施</td><td>32</td></tr>
+          <tr><td>合格率</td><td>テスト実施後に算出</td></tr>
+          </tbody>
+        </table>
+        <p>合格率 ＝ OK件数 ÷ 実施済みテストケース数 × 100</p>
+        <p>テスト実施後、NGとなった項目について修正を行い、再テストする。</p>
+
+          </div>
+        </section>
+
+        <section class="section" id="sec4">
+          <h2 class="section-title"><span class="section-icon">4</span> バグ一覧</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">発見されたバグと対応状況 <span class="required">必須</span></div>
+        <table class="doc-table">
+          <thead><tr><th>バグID</th><th>発見日</th><th>対象機能</th><th>内容</th><th>重大度</th><th>対応状況</th></tr></thead>
+          <tbody>
+          <tr><td>BUG-001</td><td>―</td><td>―</td><td>現在テスト実施前のため未登録</td><td>―</td><td>未発生</td></tr>
+          </tbody>
+        </table>
+        <div class="fill-content">
+          <p><strong>判定基準：</strong>○：問題なく表示・操作できる　△：軽微な表示差異はあるが利用可能　×：表示崩れや機能不良があり修正が必要</p>
+        </div>
+
+          </div>
+        </section>
+
+        <section class="section" id="sec5">
+          <h2 class="section-title"><span class="section-icon">5</span> ブラウザ・デバイス対応</h2>
+
+          <div class="fill-block">
+            <div class="fill-label">対応状況 <span class="required">必須</span></div>
+        <table class="doc-table">
+          <thead><tr><th>ブラウザ/デバイス</th><th>バージョン</th><th>表示</th><th>機能</th><th>備考</th></tr></thead>
+          <tbody>
+          <tr><td>Chrome（PC）</td><td>テスト時の最新版</td><td>未実施</td><td>未実施</td><td>Windows 11で確認予定</td></tr>
+          <tr><td>Firefox（PC）</td><td>テスト時の最新版</td><td>未実施</td><td>未実施</td><td>Windows 11で確認予定</td></tr>
+          <tr><td>Edge（PC）</td><td>テスト時の最新版</td><td>未実施</td><td>未実施</td><td>Windows 11で確認予定</td></tr>
+          <tr><td>Chrome（スマートフォン）</td><td>テスト時の最新版</td><td>未実施</td><td>未実施</td><td>390px前後で確認</td></tr>
+          <tr><td>Safari（iPhone）</td><td>テスト時の最新版</td><td>未実施</td><td>未実施</td><td>iPhone相当画面で確認</td></tr>
+          </tbody>
+        </table>
+
+          </div>
+        </section>
+
+        <section class="section" id="sec6">
+          <h2 class="section-title"><span class="section-icon">確認</span> テスト実施時の確認ポイント</h2>
+          <div class="fill-block">
+            <div class="fill-content">
+              <p>トップページ → 利用シーンを選ぶ → おすすめの過ごし方を知る → 香りづくり体験を見る → 空き状況を見る → 予約ページへ進む、という一連の流れが途中で途切れず利用できることを重点的に確認する。</p>
+              <p>特に「空き状況を見る」「ワークショップを予約する」は、本サイトの目的である予約導線に直接関係するため、PC・スマートフォンの両方で必ず確認する。</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
