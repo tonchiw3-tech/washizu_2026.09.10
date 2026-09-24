@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>データベース設計書 -  プロジェクトアーカイブ</title>
+  <title>データベース設計書 - プロジェクトアーカイブ</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -20,8 +20,8 @@
         <div class="doc-category">DOCUMENT 08</div>
         <h1 class="doc-title">データベース設計書</h1>
         <div class="doc-meta">
-          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-XX-XX</span>
-          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者：（氏名を入力）</span>
+          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-09-24</span>
+          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者：鷲巣 友香</span>
           <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.0</span>
         </div>
       </header>
@@ -52,39 +52,138 @@
             <li><a href="#sec2">テーブル定義</a></li>
             <li><a href="#sec3">インデックス設計</a></li>
             <li><a href="#sec4">初期データ</a></li>
+            <li><a href="#sec5">DB設計の考え方</a></li>
           </ol>
         </div>
 
         <section class="section" id="sec1">
           <h2 class="section-title"><span class="section-icon">1</span> ER図</h2>
 
-        <div class="fill-block">
-          <div class="fill-label">ER図 <span class="required">必須</span></div>
-          <div class="fill-hint">テーブル間のリレーション図（テキストベースまたは画像で記載）</div>
-          <div class="fill-content">
-            <p>（ER図を記載）</p>
+          <div class="fill-block">
+            <div class="fill-label">システム概要</div>
+            <div class="fill-content">
+              <p>「旅香 - TABIKA -」は、浅草観光・ものづくり・空き時間・一人時間・イベント前後・雨の日など、利用者の状況に応じて、inimuの香りづくり体験を含むおすすめの過ごし方を提案するWebサービスです。</p>
+              <p>利用シーン、利用可能時間、出発地点、天候などの条件からおすすめプランを表示し、最終的に既存のワークショップ予約ページへ誘導します。予約情報そのものは本システムでは管理しません。</p>
+            </div>
           </div>
-        </div>
 
+          <div class="fill-block">
+            <div class="fill-label">ER図 <span class="required">必須</span></div>
+            <div class="fill-content">
+              <div class="ascii-diagram"><pre>[scenes]
+ id (PK)
+ name
+ description
+ created_at
+ updated_at
+       1
+       |
+       *
+[plan_scenes]
+ id (PK)
+ plan_id (FK)
+ scene_id (FK)
+ created_at
+ updated_at
+       *
+       |
+       1
+[plans]
+ id (PK)
+ title
+ description
+ duration_minutes
+ start_location_id (FK)
+ weather_type
+ route_description
+ recommendation_text
+ reservation_url
+ display_order
+ active
+ created_at
+ updated_at
+       *
+       |
+       1
+[locations]
+ id (PK)
+ name
+ area
+ description
+ created_at
+ updated_at</pre></div>
+            </div>
+          </div>
+
+          <div class="fill-block">
+            <div class="fill-label">リレーションの意味</div>
+            <div class="fill-content">
+              <p><strong>scenes と plans：</strong>1つの利用シーンに複数のおすすめプランを設定できます。また、1つのおすすめプランを複数の利用シーンに対応させる多対多の関係です。</p>
+              <p><strong>locations と plans：</strong>1つの出発地点から、複数のお出かけプランを設定できます。例えば、浅草を出発地点として2時間・3時間・半日コースを登録できます。</p>
+            </div>
+          </div>
         </section>
 
         <section class="section" id="sec2">
           <h2 class="section-title"><span class="section-icon">2</span> テーブル定義</h2>
 
+          <div class="fill-block">
+            <div class="fill-label">scenes</div>
+            <div class="fill-hint">ユーザーが選択する「利用シーン」を管理する。例：浅草観光、ものづくり、空き時間、一人時間、イベント前後、雨の日。</div>
+            <table class="doc-table"><thead><tr><th>カラム名</th><th>データ型</th><th>NULL</th><th>デフォルト</th><th>制約</th><th>説明</th></tr></thead><tbody>
+              <tr><td>id</td><td>BIGINT</td><td>NO</td><td>AUTO_INCREMENT</td><td>PK</td><td>利用シーンID</td></tr>
+              <tr><td>name</td><td>VARCHAR(100)</td><td>NO</td><td>－</td><td>UNIQUE / NOT NULL</td><td>利用シーン名</td></tr>
+              <tr><td>description</td><td>VARCHAR(500)</td><td>YES</td><td>NULL</td><td>－</td><td>利用シーンの説明</td></tr>
+              <tr><td>created_at</td><td>DATETIME</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>NOT NULL</td><td>作成日時</td></tr>
+              <tr><td>updated_at</td><td>DATETIME</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>NOT NULL</td><td>更新日時</td></tr>
+            </tbody></table>
+          </div>
 
           <div class="fill-block">
-            <div class="fill-label">テーブル名：（テーブル名を入力） <span class="required">必須</span></div>
-            <div class="fill-hint">テーブルの目的：（このテーブルが管理するデータの説明）</div>
-        <table class="doc-table">
-          <thead><tr><th>カラム名</th><th>データ型</th><th>NULL</th><th>デフォルト</th><th>制約</th><th>説明</th></tr></thead>
-          <tbody>
-          <tr class="template-row"><td>id</td><td>BIGINT</td><td>NO</td><td>AUTO_INCREMENT</td><td>PK</td><td>主キー</td></tr>
-          <tr class="template-row"><td>（カラム名）</td><td>（VARCHAR(255) 等）</td><td>（YES/NO）</td><td>（デフォルト値）</td><td>（PK/FK/UNIQUE/NOT NULL）</td><td>（説明）</td></tr>
-          <tr class="template-row"><td>created_at</td><td>DATETIME</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>NOT NULL</td><td>作成日時</td></tr>
-          <tr class="template-row"><td>updated_at</td><td>DATETIME</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>NOT NULL</td><td>更新日時</td></tr>
-          </tbody>
-        </table>
+            <div class="fill-label">locations</div>
+            <div class="fill-hint">おすすめプラン検索時に使用する出発地点を管理する。例：浅草、上野、東京ドーム、両国、日本武道館、東京国際フォーラム。</div>
+            <table class="doc-table"><thead><tr><th>カラム名</th><th>データ型</th><th>NULL</th><th>デフォルト</th><th>制約</th><th>説明</th></tr></thead><tbody>
+              <tr><td>id</td><td>BIGINT</td><td>NO</td><td>AUTO_INCREMENT</td><td>PK</td><td>出発地点ID</td></tr>
+              <tr><td>name</td><td>VARCHAR(100)</td><td>NO</td><td>－</td><td>UNIQUE / NOT NULL</td><td>地点名</td></tr>
+              <tr><td>area</td><td>VARCHAR(100)</td><td>YES</td><td>NULL</td><td>－</td><td>エリア名</td></tr>
+              <tr><td>description</td><td>VARCHAR(500)</td><td>YES</td><td>NULL</td><td>－</td><td>地点の説明</td></tr>
+              <tr><td>created_at</td><td>DATETIME</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>NOT NULL</td><td>作成日時</td></tr>
+              <tr><td>updated_at</td><td>DATETIME</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>NOT NULL</td><td>更新日時</td></tr>
+            </tbody></table>
+          </div>
 
+          <div class="fill-block">
+            <div class="fill-label">plans</div>
+            <div class="fill-hint">ユーザーへ表示するおすすめモデルコースを管理する。</div>
+            <table class="doc-table"><thead><tr><th>カラム名</th><th>データ型</th><th>NULL</th><th>デフォルト</th><th>制約</th><th>説明</th></tr></thead><tbody>
+              <tr><td>id</td><td>BIGINT</td><td>NO</td><td>AUTO_INCREMENT</td><td>PK</td><td>プランID</td></tr>
+              <tr><td>title</td><td>VARCHAR(255)</td><td>NO</td><td>－</td><td>NOT NULL</td><td>プラン名</td></tr>
+              <tr><td>description</td><td>TEXT</td><td>YES</td><td>NULL</td><td>－</td><td>プラン概要</td></tr>
+              <tr><td>duration_minutes</td><td>INT</td><td>NO</td><td>－</td><td>NOT NULL</td><td>必要時間（分）</td></tr>
+              <tr><td>start_location_id</td><td>BIGINT</td><td>NO</td><td>－</td><td>FK / NOT NULL</td><td>出発地点ID</td></tr>
+              <tr><td>weather_type</td><td>VARCHAR(20)</td><td>NO</td><td>'ALL'</td><td>NOT NULL</td><td>ALL・SUNNY・RAIN</td></tr>
+              <tr><td>route_description</td><td>TEXT</td><td>YES</td><td>NULL</td><td>－</td><td>コース内容</td></tr>
+              <tr><td>recommendation_text</td><td>VARCHAR(500)</td><td>YES</td><td>NULL</td><td>－</td><td>おすすめ理由</td></tr>
+              <tr><td>reservation_url</td><td>VARCHAR(500)</td><td>YES</td><td>NULL</td><td>－</td><td>既存予約ページURL</td></tr>
+              <tr><td>display_order</td><td>INT</td><td>NO</td><td>0</td><td>NOT NULL</td><td>表示順</td></tr>
+              <tr><td>active</td><td>BOOLEAN</td><td>NO</td><td>TRUE</td><td>NOT NULL</td><td>公開状態</td></tr>
+              <tr><td>created_at</td><td>DATETIME</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>NOT NULL</td><td>作成日時</td></tr>
+              <tr><td>updated_at</td><td>DATETIME</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>NOT NULL</td><td>更新日時</td></tr>
+            </tbody></table>
+            <p><strong>weather_type：</strong>ALL（天候を問わない）、SUNNY（晴れ向け）、RAIN（雨の日向け）</p>
+          </div>
+
+          <div class="fill-block">
+            <div class="fill-label">plan_scenes</div>
+            <div class="fill-hint">おすすめプランと利用シーンを関連付ける中間テーブル。</div>
+            <table class="doc-table"><thead><tr><th>カラム名</th><th>データ型</th><th>NULL</th><th>デフォルト</th><th>制約</th><th>説明</th></tr></thead><tbody>
+              <tr><td>id</td><td>BIGINT</td><td>NO</td><td>AUTO_INCREMENT</td><td>PK</td><td>ID</td></tr>
+              <tr><td>plan_id</td><td>BIGINT</td><td>NO</td><td>－</td><td>FK / NOT NULL</td><td>プランID</td></tr>
+              <tr><td>scene_id</td><td>BIGINT</td><td>NO</td><td>－</td><td>FK / NOT NULL</td><td>利用シーンID</td></tr>
+              <tr><td>created_at</td><td>DATETIME</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>NOT NULL</td><td>作成日時</td></tr>
+              <tr><td>updated_at</td><td>DATETIME</td><td>NO</td><td>CURRENT_TIMESTAMP</td><td>NOT NULL</td><td>更新日時</td></tr>
+            </tbody></table>
+            <p><strong>外部キー：</strong>plan_scenes.plan_id → plans.id、plan_scenes.scene_id → scenes.id、plans.start_location_id → locations.id</p>
           </div>
         </section>
 
@@ -93,14 +192,18 @@
 
           <div class="fill-block">
             <div class="fill-label">インデックス一覧 <span class="required">必須</span></div>
-        <table class="doc-table">
-          <thead><tr><th>テーブル名</th><th>インデックス名</th><th>対象カラム</th><th>種類</th><th>設定理由</th></tr></thead>
-          <tbody>
-          <tr class="template-row"><td>（テーブル名）</td><td>idx_（テーブル）_（カラム）</td><td>（カラム名）</td><td>（UNIQUE / INDEX）</td><td>（検索で頻繁に使用するため等）</td></tr>
-          <tr class="template-row"><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr>
-          </tbody>
-        </table>
-
+            <table class="doc-table"><thead><tr><th>テーブル名</th><th>インデックス名</th><th>対象カラム</th><th>種類</th><th>設定理由</th></tr></thead><tbody>
+              <tr><td>scenes</td><td>uq_scenes_name</td><td>name</td><td>UNIQUE</td><td>利用シーン名の重複を防止するため</td></tr>
+              <tr><td>locations</td><td>uq_locations_name</td><td>name</td><td>UNIQUE</td><td>地点名の重複を防止するため</td></tr>
+              <tr><td>plans</td><td>idx_plans_duration</td><td>duration_minutes</td><td>INDEX</td><td>利用可能時間から検索するため</td></tr>
+              <tr><td>plans</td><td>idx_plans_location</td><td>start_location_id</td><td>INDEX</td><td>出発地点から検索するため</td></tr>
+              <tr><td>plans</td><td>idx_plans_weather</td><td>weather_type</td><td>INDEX</td><td>天候条件から検索するため</td></tr>
+              <tr><td>plans</td><td>idx_plans_active</td><td>active</td><td>INDEX</td><td>公開中プランのみ取得するため</td></tr>
+              <tr><td>plans</td><td>idx_plans_display_order</td><td>display_order</td><td>INDEX</td><td>指定順で表示するため</td></tr>
+              <tr><td>plan_scenes</td><td>idx_plan_scenes_plan</td><td>plan_id</td><td>INDEX</td><td>プランから利用シーンを取得するため</td></tr>
+              <tr><td>plan_scenes</td><td>idx_plan_scenes_scene</td><td>scene_id</td><td>INDEX</td><td>利用シーンからプランを検索するため</td></tr>
+              <tr><td>plan_scenes</td><td>uq_plan_scene</td><td>plan_id, scene_id</td><td>UNIQUE</td><td>同じ関連付けの重複登録を防止するため</td></tr>
+            </tbody></table>
           </div>
         </section>
 
@@ -109,12 +212,59 @@
 
         <div class="fill-block">
           <div class="fill-label">マスタデータ・テストデータ <span class="required">必須</span></div>
-          <div class="fill-hint">初期投入するデータ（カテゴリマスタ、管理者ユーザー等）</div>
+            <div class="fill-hint">利用シーン、出発地点、おすすめプラン、プランと利用シーンの関連を登録する。</div>
           <div class="fill-content">
-            <p>（初期データのSQL INSERT文を記載）</p>
+              <h3>利用シーン</h3>
+              <pre class="code-block"><code>INSERT INTO scenes (name, description) VALUES
+('浅草観光', '浅草観光と香りづくりを組み合わせた過ごし方'),
+('ものづくり', '日本のものづくり文化と香りづくりを楽しむ'),
+('空き時間', '2時間や3時間など空いた時間を活用する'),
+('一人時間', '自分のペースで香りと向き合う時間'),
+('イベント前後', 'ライブやイベント前後の時間を活用する'),
+('雨の日', '雨や予定変更時に楽しめる室内体験');</code></pre>
+
+              <h3>出発地点</h3>
+              <pre class="code-block"><code>INSERT INTO locations (name, area, description) VALUES
+('浅草', '台東区', '浅草観光から香りづくりへ'),
+('上野', '台東区', '上野観光から浅草へ移動'),
+('東京ドーム', '文京区', 'ライブやイベント前後の利用'),
+('両国', '墨田区', '両国周辺から浅草へ移動'),
+('日本武道館', '千代田区', 'イベント前後の利用'),
+('東京国際フォーラム', '千代田区', '東京・有楽町方面から浅草へ移動');</code></pre>
+
+              <h3>おすすめプラン</h3>
+              <pre class="code-block"><code>INSERT INTO plans
+(title, description, duration_minutes, start_location_id, weather_type,
+ route_description, recommendation_text, reservation_url, display_order, active)
+VALUES
+('浅草を楽しむ3時間コース', '浅草観光と香りづくりを楽しむモデルコース', 180, 1, 'ALL', '浅草寺 → ランチ → inimuで香りづくり → カフェ', '浅草観光の中に香りづくりを自然に組み込みたい方におすすめ。', 'https://example.com/reserve', 1, TRUE),
+('2時間の空き時間コース', '次の予定までの時間を使って香りづくりを楽しむプラン', 120, 1, 'ALL', '浅草散策 → inimuで香りづくり → 次の予定へ', '短い時間でも浅草らしいものづくり体験を楽しめます。', 'https://example.com/reserve', 2, TRUE),
+('一人で楽しむ香り時間', '自分のペースで香りと向き合うプラン', 120, 1, 'ALL', '浅草散策 → inimuで香りづくり → カフェ', '一人でゆっくり、自分の感覚で香りを選びたい方におすすめ。', 'https://example.com/reserve', 3, TRUE),
+('雨の日の浅草室内プラン', '雨による予定変更でも楽しめる室内中心のプラン', 180, 2, 'RAIN', '上野 → 浅草へ移動 → inimuで香りづくり → 周辺散策', '雨の日でも楽しめる浅草のものづくり体験です。', 'https://example.com/reserve', 4, TRUE),
+('イベント前の3時間プラン', 'ライブやイベント前の時間を使って浅草を楽しむプラン', 180, 3, 'ALL', '東京ドーム周辺 → 浅草へ移動 → 香りづくり → イベント会場へ', 'イベント前の自由時間を旅の思い出づくりに変えます。', 'https://example.com/reserve', 5, TRUE);</code></pre>
+
+              <h3>プランと利用シーンの関連</h3>
+              <pre class="code-block"><code>INSERT INTO plan_scenes (plan_id, scene_id) VALUES
+(1, 1), (1, 2),
+(2, 3), (2, 1),
+(3, 4), (3, 1),
+(4, 6), (4, 1),
+(5, 5), (5, 3);</code></pre>
+              <p>※ <code>https://example.com/reserve</code> は仮URLであり、実装時に実際の既存予約ページURLへ変更する。</p>
           </div>
         </div>
 
+        </section>
+
+        <section class="section" id="sec5">
+          <h2 class="section-title"><span class="section-icon">5</span> DB設計の考え方</h2>
+          <div class="fill-block">
+            <div class="fill-content">
+              <p>本システムの目的は、予約者や決済情報を管理することではありません。利用シーン、利用可能時間、出発地点、天候などの条件をもとに、おすすめの過ごし方を提示し、inimuの香りづくり体験を知ってもらい、既存予約サービスへ誘導することを目的としています。</p>
+              <p>そのため、本データベースでは主に「おすすめプランを検索・表示するための情報」を管理します。ユーザー情報、パスワード、決済情報、予約情報などは本制作の対象外です。</p>
+              <p>また、天気情報はデータベースへ固定保存せず、天気APIから取得した情報を検索条件として利用します。</p>
+            </div>
+          </div>
         </section>
 
       </div>
