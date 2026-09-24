@@ -70,7 +70,25 @@
           <div class="fill-label">システム構成図 <span class="required">必須</span></div>
           <div class="fill-hint">フロントエンド ↔ バックエンド ↔ データベースの関係を図示</div>
           <div class="fill-content">
-            <p>（システム構成図を記載）</p>
+            <pre style="font-family: 'Courier New', Courier, monospace; white-space: pre-wrap; overflow-x: auto; margin: 0;">【ブラウザ】
+   ↓
+【フロントエンド】
+HTML / CSS / JavaScript
+Thymeleaf
+   ↓
+【バックエンド】
+Spring Boot
+Controller
+   ↓
+Service
+   ↓
+Repository
+   ↓
+【データベース】
+MySQL / H2
+
+戻り方向：
+DB → Repository → Service → Controller → ブラウザ</pre>
           </div>
         </div>
 
@@ -84,16 +102,19 @@
         <table class="doc-table">
           <thead><tr><th>No.</th><th>機能名</th><th>概要</th><th>対応画面</th><th>優先度</th></tr></thead>
           <tbody>
-          <tr class="template-row"><td>F-001</td><td>（ログイン）</td><td>（メール/パスワードで認証）</td><td>（ログイン画面）</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-002</td><td>（一覧表示）</td><td>（データの一覧表示・ページネーション）</td><td>（一覧画面）</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-003</td><td>（新規登録）</td><td>（フォームから新規データ登録）</td><td>（登録画面）</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-004</td><td>（詳細表示）</td><td>（データの詳細情報表示）</td><td>（詳細画面）</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-005</td><td>（編集）</td><td>（既存データの更新）</td><td>（編集画面）</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-006</td><td>（削除）</td><td>（データの削除・確認ダイアログ）</td><td>（一覧画面）</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-007</td><td>（検索）</td><td>（キーワード・条件検索）</td><td>（一覧画面）</td><td><span class="badge badge-should">Should</span></td></tr>
-          <tr class="template-row"><td>F-008</td><td>（ソート）</td><td>（カラムクリックでの並び替え）</td><td>（一覧画面）</td><td><span class="badge badge-should">Should</span></td></tr>
-          <tr class="template-row"><td>F-009</td><td>（CSV出力）</td><td>（データのCSVエクスポート）</td><td>（一覧画面）</td><td><span class="badge badge-could">Could</span></td></tr>
-          <tr class="template-row"><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+          <tr class="template-row"><td>F-001</td><td>利用シーン選択</td><td>浅草観光・ものづくり・空き時間・一人時間・イベント前後・雨の日から目的を選択する</td><td>トップページ／条件選択画面</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-002</td><td>条件選択</td><td>利用可能時間・出発地点・天候などの条件を選択する</td><td>条件選択画面</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-003</td><td>おすすめプラン表示</td><td>選択した条件に合った過ごし方やモデルコースを一覧表示する</td><td>おすすめ一覧画面</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-004</td><td>プラン詳細表示</td><td>モデルコース、所要時間、移動、香りづくり体験などの詳細を表示する</td><td>プラン詳細画面</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-005</td><td>香りづくり体験表示</td><td>inimuの体験内容・流れ・料金・所要時間・完成品などを表示する</td><td>香りづくり体験ページ</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-006</td><td>予約導線</td><td>「空き状況を見る」「予約する」ボタンから既存予約ページへ遷移する</td><td>各ページ／予約案内画面</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-007</td><td>アクセス表示</td><td>inimuの所在地、最寄駅、周辺情報を表示する</td><td>アクセス画面</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-008</td><td>FAQ表示</td><td>料金、所要時間、参加方法など、予約前の疑問を表示する</td><td>FAQ画面</td><td><span class="badge badge-should">Should</span></td></tr>
+          <tr class="template-row"><td>F-009</td><td>天候連動おすすめ</td><td>天気情報を取得し、雨天時に室内で楽しめる香りづくり体験を提案する</td><td>条件選択画面／おすすめ画面</td><td><span class="badge badge-should">Should</span></td></tr>
+          <tr class="template-row"><td>F-010</td><td>出発地点別プラン表示</td><td>浅草・上野・両国など、出発地点に応じたプランを表示する</td><td>条件選択画面／おすすめ画面</td><td><span class="badge badge-should">Should</span></td></tr>
+          <tr class="template-row"><td>F-011</td><td>時間別プラン表示</td><td>2時間・3時間・半日など、利用可能時間に合わせたプランを表示する</td><td>条件選択画面／おすすめ画面</td><td><span class="badge badge-should">Should</span></td></tr>
+          <tr class="template-row"><td>F-012</td><td>レスポンシブ表示</td><td>PC・スマートフォンの画面幅に合わせてレイアウトを調整する</td><td>全画面</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-013</td><td>閲覧・CTA計測</td><td>ページ閲覧や予約ボタンクリックなどを計測する</td><td>全画面</td><td><span class="badge badge-could">Could</span></td></tr>
           </tbody>
         </table>
 
@@ -103,13 +124,88 @@
         <section class="section" id="sec3">
           <h2 class="section-title"><span class="section-icon">3</span> 画面遷移図</h2>
 
-        <div class="fill-block">
-          <div class="fill-label">画面遷移図 <span class="required">必須</span></div>
-          <div class="fill-hint">各画面間の遷移関係を図示</div>
-          <div class="fill-content">
-            <p>（画面遷移図を記載）</p>
+          <div class="fill-block">
+            <div class="fill-label">画面遷移図 <span class="required">必須</span></div>
+            <div class="fill-hint">トップページから各主要情報へ直接進み、おすすめプランの確認や予約まで行う導線</div>
+            <div class="fill-content">
+              <div class="ascii-diagram">
+                <pre>
+【トップページ】
+  ├─「香りづくり体験」→【香りづくり体験ページ】
+  │
+  ├─「おすすめの過ごし方」→【条件選択画面】
+  │                              │「おすすめを見る」
+  │                              ▼
+  │                         【おすすめプラン一覧画面】
+  │                              │「詳細を見る」
+  │                              ▼
+  │                         【プラン詳細画面】
+  │                              ├─「体験内容を見る」→【香りづくり体験ページ】
+  │                              ├─「アクセスを見る」→【アクセス・周辺情報ページ】
+  │                              ├─「FAQを見る」→【FAQページ】
+  │                              └─「空き状況を見る」→【予約案内ページ】
+  │
+  ├─「アクセス」→【アクセス・周辺情報ページ】
+  │
+  ├─「FAQ」→【FAQページ】
+  │
+  └─「予約」→【予約案内ページ】
+                    │「予約する」
+                    ▼
+               【既存予約ページ】
+               （じゃらん等の外部予約サイト）
+                </pre>
+              </div>
+            </div>
           </div>
-        </div>
+
+          <div class="fill-block">
+            <div class="fill-label">画面別の役割</div>
+            <div class="fill-hint">各画面でユーザーが判断・実行する内容</div>
+            <div class="fill-content">
+              <table class="doc-table">
+                <thead>
+                  <tr>
+                    <th>画面</th>
+                    <th>主な役割</th>
+                    <th>次の導線</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="template-row">
+                    <td>トップページ</td>
+                    <td>サービスの概要と香りづくり体験の魅力を伝える</td>
+                    <td>香りづくり体験／おすすめの過ごし方／アクセス／FAQ／予約</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>条件選択画面</td>
+                    <td>時間・出発地・天候・利用シーンなどの条件を選ぶ</td>
+                    <td>おすすめを見る</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>おすすめプラン一覧画面</td>
+                    <td>条件に合う過ごし方やモデルコースを一覧表示する</td>
+                    <td>詳細を見る</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>プラン詳細画面</td>
+                    <td>モデルコース、所要時間、移動、香りづくり体験を確認する</td>
+                    <td>体験内容・アクセス・FAQ・空き状況</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>予約案内ページ</td>
+                    <td>空き状況の確認と外部予約サイトへの案内を行う</td>
+                    <td>予約する</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>既存予約ページ</td>
+                    <td>じゃらん等の外部予約サイトで予約を完了する</td>
+                    <td>外部サイト</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
 
         </section>
 

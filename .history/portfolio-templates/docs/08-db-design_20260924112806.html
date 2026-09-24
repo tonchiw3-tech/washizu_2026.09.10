@@ -52,7 +52,6 @@
             <li><a href="#sec2">テーブル定義</a></li>
             <li><a href="#sec3">インデックス設計</a></li>
             <li><a href="#sec4">初期データ</a></li>
-            <li><a href="#sec5">DB設計の考え方</a></li>
           </ol>
         </div>
 
@@ -192,18 +191,14 @@
 
           <div class="fill-block">
             <div class="fill-label">インデックス一覧 <span class="required">必須</span></div>
-            <table class="doc-table"><thead><tr><th>テーブル名</th><th>インデックス名</th><th>対象カラム</th><th>種類</th><th>設定理由</th></tr></thead><tbody>
-              <tr><td>scenes</td><td>uq_scenes_name</td><td>name</td><td>UNIQUE</td><td>利用シーン名の重複を防止するため</td></tr>
-              <tr><td>locations</td><td>uq_locations_name</td><td>name</td><td>UNIQUE</td><td>地点名の重複を防止するため</td></tr>
-              <tr><td>plans</td><td>idx_plans_duration</td><td>duration_minutes</td><td>INDEX</td><td>利用可能時間から検索するため</td></tr>
-              <tr><td>plans</td><td>idx_plans_location</td><td>start_location_id</td><td>INDEX</td><td>出発地点から検索するため</td></tr>
-              <tr><td>plans</td><td>idx_plans_weather</td><td>weather_type</td><td>INDEX</td><td>天候条件から検索するため</td></tr>
-              <tr><td>plans</td><td>idx_plans_active</td><td>active</td><td>INDEX</td><td>公開中プランのみ取得するため</td></tr>
-              <tr><td>plans</td><td>idx_plans_display_order</td><td>display_order</td><td>INDEX</td><td>指定順で表示するため</td></tr>
-              <tr><td>plan_scenes</td><td>idx_plan_scenes_plan</td><td>plan_id</td><td>INDEX</td><td>プランから利用シーンを取得するため</td></tr>
-              <tr><td>plan_scenes</td><td>idx_plan_scenes_scene</td><td>scene_id</td><td>INDEX</td><td>利用シーンからプランを検索するため</td></tr>
-              <tr><td>plan_scenes</td><td>uq_plan_scene</td><td>plan_id, scene_id</td><td>UNIQUE</td><td>同じ関連付けの重複登録を防止するため</td></tr>
-            </tbody></table>
+        <table class="doc-table">
+          <thead><tr><th>テーブル名</th><th>インデックス名</th><th>対象カラム</th><th>種類</th><th>設定理由</th></tr></thead>
+          <tbody>
+          <tr class="template-row"><td>（テーブル名）</td><td>idx_（テーブル）_（カラム）</td><td>（カラム名）</td><td>（UNIQUE / INDEX）</td><td>（検索で頻繁に使用するため等）</td></tr>
+          <tr class="template-row"><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+          </tbody>
+        </table>
+
           </div>
         </section>
 
@@ -212,59 +207,12 @@
 
         <div class="fill-block">
           <div class="fill-label">マスタデータ・テストデータ <span class="required">必須</span></div>
-            <div class="fill-hint">利用シーン、出発地点、おすすめプラン、プランと利用シーンの関連を登録する。</div>
+          <div class="fill-hint">初期投入するデータ（カテゴリマスタ、管理者ユーザー等）</div>
           <div class="fill-content">
-              <h3>利用シーン</h3>
-              <pre class="code-block"><code>INSERT INTO scenes (name, description) VALUES
-('浅草観光', '浅草観光と香りづくりを組み合わせた過ごし方'),
-('ものづくり', '日本のものづくり文化と香りづくりを楽しむ'),
-('空き時間', '2時間や3時間など空いた時間を活用する'),
-('一人時間', '自分のペースで香りと向き合う時間'),
-('イベント前後', 'ライブやイベント前後の時間を活用する'),
-('雨の日', '雨や予定変更時に楽しめる室内体験');</code></pre>
-
-              <h3>出発地点</h3>
-              <pre class="code-block"><code>INSERT INTO locations (name, area, description) VALUES
-('浅草', '台東区', '浅草観光から香りづくりへ'),
-('上野', '台東区', '上野観光から浅草へ移動'),
-('東京ドーム', '文京区', 'ライブやイベント前後の利用'),
-('両国', '墨田区', '両国周辺から浅草へ移動'),
-('日本武道館', '千代田区', 'イベント前後の利用'),
-('東京国際フォーラム', '千代田区', '東京・有楽町方面から浅草へ移動');</code></pre>
-
-              <h3>おすすめプラン</h3>
-              <pre class="code-block"><code>INSERT INTO plans
-(title, description, duration_minutes, start_location_id, weather_type,
- route_description, recommendation_text, reservation_url, display_order, active)
-VALUES
-('浅草を楽しむ3時間コース', '浅草観光と香りづくりを楽しむモデルコース', 180, 1, 'ALL', '浅草寺 → ランチ → inimuで香りづくり → カフェ', '浅草観光の中に香りづくりを自然に組み込みたい方におすすめ。', 'https://example.com/reserve', 1, TRUE),
-('2時間の空き時間コース', '次の予定までの時間を使って香りづくりを楽しむプラン', 120, 1, 'ALL', '浅草散策 → inimuで香りづくり → 次の予定へ', '短い時間でも浅草らしいものづくり体験を楽しめます。', 'https://example.com/reserve', 2, TRUE),
-('一人で楽しむ香り時間', '自分のペースで香りと向き合うプラン', 120, 1, 'ALL', '浅草散策 → inimuで香りづくり → カフェ', '一人でゆっくり、自分の感覚で香りを選びたい方におすすめ。', 'https://example.com/reserve', 3, TRUE),
-('雨の日の浅草室内プラン', '雨による予定変更でも楽しめる室内中心のプラン', 180, 2, 'RAIN', '上野 → 浅草へ移動 → inimuで香りづくり → 周辺散策', '雨の日でも楽しめる浅草のものづくり体験です。', 'https://example.com/reserve', 4, TRUE),
-('イベント前の3時間プラン', 'ライブやイベント前の時間を使って浅草を楽しむプラン', 180, 3, 'ALL', '東京ドーム周辺 → 浅草へ移動 → 香りづくり → イベント会場へ', 'イベント前の自由時間を旅の思い出づくりに変えます。', 'https://example.com/reserve', 5, TRUE);</code></pre>
-
-              <h3>プランと利用シーンの関連</h3>
-              <pre class="code-block"><code>INSERT INTO plan_scenes (plan_id, scene_id) VALUES
-(1, 1), (1, 2),
-(2, 3), (2, 1),
-(3, 4), (3, 1),
-(4, 6), (4, 1),
-(5, 5), (5, 3);</code></pre>
-              <p>※ <code>https://example.com/reserve</code> は仮URLであり、実装時に実際の既存予約ページURLへ変更する。</p>
+            <p>（初期データのSQL INSERT文を記載）</p>
           </div>
         </div>
 
-        </section>
-
-        <section class="section" id="sec5">
-          <h2 class="section-title"><span class="section-icon">5</span> DB設計の考え方</h2>
-          <div class="fill-block">
-            <div class="fill-content">
-              <p>本システムの目的は、予約者や決済情報を管理することではありません。利用シーン、利用可能時間、出発地点、天候などの条件をもとに、おすすめの過ごし方を提示し、inimuの香りづくり体験を知ってもらい、既存予約サービスへ誘導することを目的としています。</p>
-              <p>そのため、本データベースでは主に「おすすめプランを検索・表示するための情報」を管理します。ユーザー情報、パスワード、決済情報、予約情報などは本制作の対象外です。</p>
-              <p>また、天気情報はデータベースへ固定保存せず、天気APIから取得した情報を検索条件として利用します。</p>
-            </div>
-          </div>
         </section>
 
       </div>
