@@ -45,7 +45,7 @@
     if (!track || !pagination) return;
     const cards = [...track.querySelectorAll('.plan-card')];
     if (!cards.length) return;
-    const mobile = window.matchMedia('(max-width: 480px)');
+    const mobile = window.matchMedia('(max-width: 768px)');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let activeIndex = 0;
     let frame = 0;
@@ -104,7 +104,7 @@
     if (!track || !pagination) return;
     const cards = [...track.querySelectorAll('.step-card')];
     if (!cards.length) return;
-    const mobile = window.matchMedia('(max-width: 768px)');
+    const mobile = window.matchMedia('(max-width: 480px)');
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     let activeIndex = 0;
     let frame = 0;

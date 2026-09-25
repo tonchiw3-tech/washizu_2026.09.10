@@ -1,18 +1,14 @@
 <!doctype html>
 <html lang="ja">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>旅香 - TABIKA -</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
 </head>
-
 <body>
   <header class="site-header">
     <div class="header-inner">
@@ -33,35 +29,32 @@
     <section class="hero" aria-labelledby="hero-title">
       <img class="hero-image" src="./assets/hero-background.png" alt="桜の浅草で香水づくりを楽しむ旅香のイメージ">
       <svg class="hero-scent" viewBox="0 0 1200 694" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <path class="scent-trail scent-trail-1"
-          d="M-60 560 C170 490 110 330 340 300 S570 410 760 270 S1030 120 1260 190" />
-        <path class="scent-trail scent-trail-2"
-          d="M-80 420 C150 350 230 470 420 380 S650 170 850 230 S1070 360 1280 230" />
-        <path class="scent-trail scent-trail-3"
-          d="M-50 650 C180 570 280 610 430 500 S670 320 900 390 S1080 500 1260 390" />
-        <path class="scent-trail scent-trail-4"
-          d="M40 170 C220 250 330 190 500 130 S760 70 920 170 S1100 250 1260 150" />
+        <path class="scent-trail scent-trail-1" d="M-60 560 C170 490 110 330 340 300 S570 410 760 270 S1030 120 1260 190" />
+        <path class="scent-trail scent-trail-2" d="M-80 420 C150 350 230 470 420 380 S650 170 850 230 S1070 360 1280 230" />
+        <path class="scent-trail scent-trail-3" d="M-50 650 C180 570 280 610 430 500 S670 320 900 390 S1080 500 1260 390" />
+        <path class="scent-trail scent-trail-4" d="M40 170 C220 250 330 190 500 130 S760 70 920 170 S1100 250 1260 150" />
         <circle class="scent-particle scent-particle-1" cx="340" cy="300" r="7" />
         <circle class="scent-particle scent-particle-2" cx="850" cy="230" r="5" />
         <circle class="scent-particle scent-particle-3" cx="900" cy="390" r="6" />
       </svg>
       <div class="hero-copy">
-        <p>旅香<span class="hero-brand-suffix">-TABIKA-</span></p>
+        <p>旅香-TABIKA-</p>
         <h1 id="hero-title">浅草で、自分だけの日本の香りをつくる旅。</h1>
       </div>
     </section>
 
     <section class="summary section-wide fade-in-section" aria-label="体験概要">
+      <h2 class="section-title compact">香りづくり体験</h2>
       <div class="summary-box">
         <div class="summary-item">
           <img src="./assets/icon-calendar-hires.png" width="110" height="110" alt="カレンダーのアイコン">
-          <p class="summary-kicker">539件</p>
-          <p>予定確定実績</p>
+          <p class="summary-kicker">その日に</p>
+          <p>予定に組み込める</p>
         </div>
         <div class="summary-item">
           <img src="./assets/icon-people-hires.png" width="110" height="110" alt="人のアイコン">
-          <p class="summary-kicker">1,157人</p>
-          <p>参加実績</p>
+          <p class="summary-kicker">1人でも</p>
+          <p>気軽に参加</p>
         </div>
         <div class="summary-item">
           <img src="./assets/icon-aroma-hires.png" width="110" height="110" alt="香りのアイコン">
@@ -74,6 +67,7 @@
     <section id="experience" class="experience section-wide fade-in-section">
       <div class="section-head-row">
         <h2 class="section-title compact">香りづくり体験 <span>使用時間：60分</span></h2>
+        <a class="pill" href="./reserve.html">予約</a>
       </div>
       <div class="experience-panel" id="experience-carousel" role="group" aria-label="香りづくり体験の流れ">
         <article class="step-card">
@@ -97,7 +91,6 @@
           <p>できあがった香りを、<br>旅の記憶とともに持ち帰る。</p>
         </article>
       </div>
-      <a class="pill experience-cta" href="./reserve.html">予約</a>
       <div class="experience-pagination" role="group" aria-label="表示する工程を選択" hidden></div>
     </section>
 
@@ -105,59 +98,35 @@
       <h2 class="section-title">あなたにぴったりプラン</h2>
       <div class="plans-panel" id="plans-carousel" tabindex="0" aria-label="プラン一覧">
         <article class="plan-card">
-          <a class="plan-card-link" href="./asakusa.html" aria-label="浅草観光のプランを見る">
-            <img src="./assets/asakusa.png" alt="浅草の仲見世通り">
-            <span class="plan-link">浅草観光</span>
-            <p class="plan-description">浅草の街歩きと一緒に<br>香りづくりを楽しむ</p>
-            <span class="plan-more">プランを見る →</span>
-          </a>
+          <img src="./assets/asakusa.png" alt="浅草の仲見世通り">
+          <a class="plan-link" href="./asakusa.html">浅草観光</a>
         </article>
         <article class="plan-card">
-          <a class="plan-card-link" href="./edo-walk.html" aria-label="江戸街道歩きのプランを見る">
-            <img src="./assets/oldtown.png" alt="浅草の街並み">
-            <span class="plan-link">江戸街道歩き</span>
-            <p class="plan-description">浅草の歴史やものづくり文化を<br>感じながら巡る</p>
-            <span class="plan-more">プランを見る →</span>
-          </a>
+          <img src="./assets/oldtown.png" alt="浅草の街並み">
+          <a class="plan-link" href="./edo-walk.html">江戸街道歩き</a>
         </article>
         <article class="plan-card">
-          <a class="plan-card-link" href="./rainy-day.html" aria-label="雨の日のプランを見る">
-            <img src="./assets/rain.png" alt="雨の日の上野周辺">
-            <span class="plan-link">雨の日</span>
-            <p class="plan-description">雨の日でも室内でゆっくり<br>香りづくりを楽しむ</p>
-            <span class="plan-more">プランを見る →</span>
-          </a>
+          <img src="./assets/rain.png" alt="雨の日の上野周辺">
+          <a class="plan-link" href="./rainy-day.html">雨の日</a>
         </article>
         <article class="plan-card">
-          <a class="plan-card-link" href="./event-before.html" aria-label="イベント前後のプランを見る">
-            <img src="./assets/event.png" alt="イベント会場周辺">
-            <span class="plan-link">イベント前後</span>
-            <p class="plan-description">ライブやイベントの前後に<br>浅草時間を楽しむ</p>
-            <span class="plan-more">プランを見る →</span>
-          </a>
+          <img src="./assets/event.png" alt="イベント会場周辺">
+          <a class="plan-link" href="./event-before.html">イベント前後</a>
         </article>
         <article class="plan-card">
-          <a class="plan-card-link" href="./travel-gap.html" aria-label="移動までのすき間時間のプランを見る">
-            <img src="./assets/transit.png" alt="東京駅と羽田空港の移動イメージ">
-            <span class="plan-link">移動までのすき間時間</span>
-            <p class="plan-description">次の予定までの2〜3時間を<br>自分らしく楽しむ</p>
-            <span class="plan-more">プランを見る →</span>
-          </a>
+          <img src="./assets/transit.png" alt="東京駅と羽田空港の移動イメージ">
+          <a class="plan-link" href="./travel-gap.html">移動までのすき間時間</a>
         </article>
         <article class="plan-card">
-          <a class="plan-card-link" href="./nature-scent.html" aria-label="自然の香りを感じるプランを見る">
-            <img src="./assets/nature.png" alt="自然の中で香りを感じるイメージ">
-            <span class="plan-link">自然の香りを感じる</span>
-            <p class="plan-description">季節や植物の香りに触れながら<br>ゆったり過ごす</p>
-            <span class="plan-more">プランを見る →</span>
-          </a>
+          <img src="./assets/nature.png" alt="自然の中で香りを感じるイメージ">
+          <a class="plan-link" href="./nature-scent.html">自然の香りを感じる</a>
         </article>
       </div>
       <div class="plans-pagination" role="group" aria-label="表示するプランを選択" hidden></div>
     </section>
 
     <section id="faq" class="faq section-wide fade-in-section">
-      <h2 class="section-title">予約前のよくある質問 </h2>
+      <h2 class="section-title">予約前のよくある質問  </h2>
       <div class="faq-panel">
         <img class="faq-photo" src="./assets/faq.png" alt="スタッフと相談しながら香りを選ぶ様子">
         <div class="faq-list">
@@ -180,28 +149,15 @@
       <h2 class="section-title">アクセス</h2>
       <div class="access-panel">
         <div class="access-map" aria-label="inimu浅草店のGoogleマップ">
-          <iframe src="https://www.google.com/maps?q=inimu%20浅草店%20東京都台東区浅草2丁目31-5&output=embed"
-            title="inimu浅草店へのアクセスマップ" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen></iframe>
+          <iframe src="https://www.google.com/maps?q=inimu%20浅草店%20東京都台東区浅草2丁目31-5&output=embed" title="inimu浅草店へのアクセスマップ" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         </div>
         <div class="access-copy">
           <dl>
-            <div>
-              <dt>所在地</dt>
-              <dd>inimu（イニム）浅草店<br>〒111-0032<br>東京都台東区浅草2丁目31-5</dd>
-            </div>
-            <div>
-              <dt>最寄駅</dt>
-              <dd>東京メトロ銀座線 浅草駅より徒歩約5分<br>都営浅草線 浅草駅より徒歩約7分<br>東武線 浅草駅より徒歩約5分<br>つくばエクスプレス 浅草駅より徒歩約8分</dd>
-            </div>
-            <div>
-              <dt>お問い合わせ</dt>
-              <dd>TEL：070-7400-3099<br>営業時間：10:30〜18:00<br>定休日：月曜</dd>
-            </div>
+            <div><dt>所在地</dt><dd>inimu（イニム）浅草店<br>〒111-0032<br>東京都台東区浅草2丁目31-5</dd></div>
+            <div><dt>最寄駅</dt><dd>東京メトロ銀座線 浅草駅より徒歩約5分<br>都営浅草線 浅草駅より徒歩約7分<br>東武線 浅草駅より徒歩約5分<br>つくばエクスプレス 浅草駅より徒歩約8分</dd></div>
+            <div><dt>お問い合わせ</dt><dd>TEL：070-7400-3099<br>営業時間：10:30〜18:00<br>定休日：月曜</dd></div>
           </dl>
-          <a class="map-directions"
-            href="https://www.google.com/maps/dir/?api=1&destination=inimu%20浅草店%20東京都台東区浅草2丁目31-5" target="_blank"
-            rel="noopener noreferrer">Googleマップで経路を調べる ↗</a>
+          <a class="map-directions" href="https://www.google.com/maps/dir/?api=1&destination=inimu%20浅草店%20東京都台東区浅草2丁目31-5" target="_blank" rel="noopener noreferrer">Googleマップで経路を調べる ↗</a>
         </div>
       </div>
     </section>
@@ -209,24 +165,20 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-col footer-brand-area">
-        <img class="footer-logo" src="./logo/ChatGPT Image 2026年9月18日 10_25_45.png" alt="旅香 TABIKA ロゴ">
-        <p class="footer-tagline">浅草で、自分だけの日本の香りをつくる旅。</p>
-        <div class="footer-links">
-          <a href="#experience">香りづくり体験</a>
-          <a href="#plans">あなたにぴったりプラン</a>
-          <a href="#faq">FAQ</a>
-          <a href="#access">アクセス</a>
-        </div>
-        <div class="footer-contact">
-          <p class="footer-inimu">inimu（いにむ）</p>
-          <p class="footer-address">東京都台東区浅草2丁目31-5</p>
-        </div>
+      <div class="footer-col">
+        <p class="footer-brand">旅香 - TABIKA -</p>
+        <a href="#experience">体験について</a>
+        <a href="#plans">あなたにぴったりプラン</a>
+        <a href="#faq">FAQ</a>
       </div>
+      <div class="footer-col footer-contact">
+        <p class="footer-address">アクセス：inimu（いにむ） 東京都台東区浅草2丁目31-5</p>
+        <p>TEL：070-7400-3099</p>
+      </div>
+      <div class="footer-col footer-reserve">［ワークショップを予約する］</div>
     </div>
-    <div class="copyright">© 2026 旅香 - TABIKA -</div>
+    <div class="copyright">© 2026 TABIKA</div>
   </footer>
   <script src="./js/main.js" defer></script>
 </body>
-
 </html>

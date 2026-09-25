@@ -205,15 +205,14 @@ img {
 
 .hero-copy {
   position: absolute;
-  left: 3%;
+  left: 50%;
   top: 136px;
-  width: 52%;
+  width: 820px;
+  transform: translateX(-50%);
   text-align: center;
-  color: #5a2f24;
+  color: #fff;
   font-family: "Noto Serif JP", serif;
-  -webkit-text-fill-color: #5a2f24;
-  -webkit-text-stroke: 0;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, .42), 0 2px 5px rgba(51, 37, 45, .22);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, .55), 0 0 2px rgba(0, 0, 0, .35);
   z-index: 3;
 }
 
@@ -222,10 +221,6 @@ img {
   font-size: 40px;
   font-weight: 400;
   line-height: 1.3
-}
-
-.hero-brand-suffix {
-  font-size: .68em;
 }
 
 .hero-copy h1 {
@@ -1600,14 +1595,14 @@ img {
 
 .nature-card h3 {
   font-family: "Noto Serif JP", serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.55;
   margin: 8px 0 14px;
   letter-spacing: -.02em;
   max-width: 100%;
-  white-space: nowrap;
-  overflow-wrap: normal;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .nature-icon {
@@ -1618,12 +1613,12 @@ img {
 }
 
 .nature-highlight {
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.7;
   margin: 0 0 14px;
   max-width: 100%;
-  white-space: nowrap;
-  overflow-wrap: normal;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .nature-card p {
@@ -1647,7 +1642,7 @@ img {
 
 .nature-card:nth-child(3) h3 {
   white-space: nowrap;
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: -.02em
 }
 
@@ -2053,9 +2048,10 @@ img {
   }
 
   .hero-copy {
-    left: 4%;
+    left: 50%;
     top: 19.6%;
-    width: 52%
+    width: min(820px, calc(100% - 48px));
+    transform: translateX(-50%)
   }
 
   .hero-copy p {
@@ -2524,8 +2520,8 @@ img {
   }
 
   .hero-copy {
-    left: 4%;
-    width: 92%;
+    left: 50%;
+    width: calc(100% - 32px);
     top: 16%
   }
 

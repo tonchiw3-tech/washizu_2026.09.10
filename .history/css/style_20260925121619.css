@@ -205,15 +205,14 @@ img {
 
 .hero-copy {
   position: absolute;
-  left: 3%;
+  left: 50%;
   top: 136px;
-  width: 52%;
+  width: 820px;
+  transform: translateX(-50%);
   text-align: center;
-  color: #5a2f24;
+  color: #fff;
   font-family: "Noto Serif JP", serif;
-  -webkit-text-fill-color: #5a2f24;
-  -webkit-text-stroke: 0;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, .42), 0 2px 5px rgba(51, 37, 45, .22);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, .55), 0 0 2px rgba(0, 0, 0, .35);
   z-index: 3;
 }
 
@@ -222,10 +221,6 @@ img {
   font-size: 40px;
   font-weight: 400;
   line-height: 1.3
-}
-
-.hero-brand-suffix {
-  font-size: .68em;
 }
 
 .hero-copy h1 {
@@ -592,8 +587,7 @@ img {
 
 .asakusa-stop:nth-of-type(3) p:last-child {
   font-size: 16px;
-  white-space: normal;
-  overflow-wrap: anywhere
+  white-space: nowrap
 }
 
 .asakusa-arrow {
@@ -1594,20 +1588,18 @@ img {
 
 .nature-card {
   min-height: 285px;
-  min-width: 0;
   padding: 26px 22px
 }
 
 .nature-card h3 {
   font-family: "Noto Serif JP", serif;
-  font-size: 16px;
+  font-size: 21px;
   font-weight: 400;
   line-height: 1.55;
   margin: 8px 0 14px;
-  letter-spacing: -.02em;
-  max-width: 100%;
-  white-space: nowrap;
-  overflow-wrap: normal;
+  letter-spacing: .02em;
+  word-break: keep-all;
+  overflow-wrap: normal
 }
 
 .nature-icon {
@@ -1618,37 +1610,37 @@ img {
 }
 
 .nature-highlight {
-  font-size: 11px;
+  font-size: 16px;
   line-height: 1.7;
   margin: 0 0 14px;
-  max-width: 100%;
-  white-space: nowrap;
-  overflow-wrap: normal;
+  word-break: keep-all;
+  overflow-wrap: normal
 }
 
 .nature-card p {
   font-size: 15px;
   line-height: 1.9;
   margin: 6px 0;
-  max-width: 100%;
-  word-break: normal;
-  overflow-wrap: anywhere
+  word-break: keep-all;
+  overflow-wrap: normal
 }
 
 .nature-card:first-child .nature-highlight {
+  white-space: nowrap;
+  font-size: 15px;
   letter-spacing: -.02em
 }
 
-.nature-card:nth-child(2) p:not(.nature-highlight) {
+.nature-card:nth-child(2) p {
   white-space: normal;
   word-break: normal;
   overflow-wrap: anywhere
 }
 
 .nature-card:nth-child(3) h3 {
-  white-space: nowrap;
-  font-size: 16px;
-  letter-spacing: -.02em
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: anywhere
 }
 
 .nature-section-arrow {
@@ -1722,12 +1714,7 @@ img {
 }
 
 .edo-route-note {
-  white-space: normal;
-  overflow-wrap: anywhere
-}
-
-.edo-stop:nth-child(3) .edo-route-note {
-  font-size: 14px;
+  white-space: nowrap
 }
 
 .event-page h2 {
@@ -1763,8 +1750,7 @@ img {
 }
 
 .event-highlight {
-  font-size: 14px;
-  white-space: nowrap;
+  font-size: 17px;
   margin: 0 0 14px
 }
 
@@ -2053,9 +2039,10 @@ img {
   }
 
   .hero-copy {
-    left: 4%;
+    left: 50%;
     top: 19.6%;
-    width: 52%
+    width: min(820px, calc(100% - 48px));
+    transform: translateX(-50%)
   }
 
   .hero-copy p {
@@ -2218,69 +2205,9 @@ img {
   }
 
   .experience-panel {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 16px;
     padding: 40px 20px;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: 20px;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-    touch-action: pan-x pan-y pinch-zoom
-  }
-
-  .experience-panel::-webkit-scrollbar {
-    display: none
-  }
-
-  .experience-panel .step-card {
-    flex: 0 0 85%;
-    width: auto;
-    scroll-snap-align: start;
-    scroll-snap-stop: always
-  }
-
-  .experience-panel::after {
-    content: "";
-    flex: 0 0 8px
-  }
-
-  .experience-pagination:not([hidden]) {
-    display: flex;
-    justify-content: center;
-    margin-top: 8px
-  }
-
-  .experience-dot {
-    display: grid;
-    place-items: center;
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    cursor: pointer
-  }
-
-  .experience-dot::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--line)
-  }
-
-  .experience-dot[aria-current="true"]::before {
-    background: var(--accent);
-    transform: scale(1.5)
-  }
-
-  .experience-dot:focus-visible {
-    outline: 2px solid var(--ink);
-    outline-offset: -4px;
-    border-radius: 50%
+    column-gap: 24px;
+    row-gap: 26px
   }
 
   .step-card h3 {
@@ -2524,8 +2451,8 @@ img {
   }
 
   .hero-copy {
-    left: 4%;
-    width: 92%;
+    left: 50%;
+    width: calc(100% - 32px);
     top: 16%
   }
 
@@ -2589,29 +2516,20 @@ img {
   }
 
   .experience-panel {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
     padding: 24px 16px;
-    overflow-x: auto;
-    scroll-padding-inline: 16px;
-    scrollbar-width: none
-  }
-
-  .experience-panel::-webkit-scrollbar {
-    display: none
+    overflow: visible
   }
 
   .experience-panel .step-card {
-    flex: 0 0 85%;
-    width: auto;
-    scroll-snap-align: start;
-    scroll-snap-stop: always
+    width: 100%;
+    flex: none
   }
 
   .experience-panel::after {
-    content: "";
-    flex: 0 0 8px
+    display: none
   }
 
   .experience-pagination:not([hidden]) {
@@ -2738,6 +2656,7 @@ img {
   .reserve-cta p {
     font-size: min(11px, calc((100vw - 64px)/29));
     margin-top: 16px;
+    white-space: nowrap
   }
 
   .access {
