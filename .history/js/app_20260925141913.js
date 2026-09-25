@@ -185,7 +185,7 @@ window.TabikaPlans = { loadPlans, savePlans, initialPlans };
             <div><dt>モデルコース</dt><dd>${plan.modelCourse}</dd></div>
             <div><dt>inimuへのアクセス</dt><dd>浅草駅から徒歩圏内。体験前後の散策と組み合わせやすい立地です。</dd></div>
           </dl>
-          <a class="app-button reserve-link" href="https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/" target="_blank" rel="noopener noreferrer">空き状況・予約を見る</a>
+          <a class="app-button reserve-link" href="${plan.reservationUrl || 'https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/'}" target="_blank" rel="noopener noreferrer">空き状況・予約を見る</a>
         </div>
       </div>
     `;

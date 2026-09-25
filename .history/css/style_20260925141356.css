@@ -73,7 +73,7 @@ img {
 .reserve-small,
 .pill,
 .faq-more {
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 34px;
@@ -353,7 +353,7 @@ img {
   z-index: 2;
   pointer-events: auto;
   float: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   margin: 20px 0 0 auto;
