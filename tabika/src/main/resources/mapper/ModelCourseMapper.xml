@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tabika.ModelCourseMapper">
+    <select id="findAll" resultType="com.tabika.ModelCourse">
+        SELECT id, course_name, scene, duration, departure_point, weather,
+               description, display_order, is_published, created_at, updated_at
+        FROM model_course
+        WHERE is_published = TRUE
+        ORDER BY display_order ASC, id ASC
+    </select>
+
+    <select id="findById" parameterType="int" resultType="com.tabika.ModelCourse">
+        SELECT id, course_name, scene, duration, departure_point, weather,
+               description, display_order, is_published, created_at, updated_at
+        FROM model_course
+        WHERE id = #{id}
+          AND is_published = TRUE
+    </select>
+</mapper>

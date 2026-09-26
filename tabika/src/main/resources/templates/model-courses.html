@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おすすめの過ごし方 - 旅香 - TABIKA -</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <div class="page-container page-header">
+        <h1 class="page-title">旅香 - TABIKA -</h1>
+    </div>
+</header>
+<main>
+    <div class="page-container">
+        <h1>おすすめの過ごし方</h1>
+        <p>あなたの予定に合う、浅草での過ごし方を見つけてみてください。</p>
+        <div class="table-wrapper" th:if="${!#lists.isEmpty(courses)}">
+            <table class="data-table">
+                <thead>
+                <tr><th>コース名</th><th>利用シーン</th><th>所要時間</th><th>出発地点</th><th>天候</th><th>コース説明</th><th>詳細</th></tr>
+                </thead>
+                <tbody>
+                <tr th:each="course : ${courses}">
+                    <td th:text="${course.courseName}"></td>
+                    <td th:text="${course.scene}"></td>
+                    <td th:text="${course.duration}"></td>
+                    <td th:text="${course.departurePoint}"></td>
+                    <td th:text="${course.weather}"></td>
+                    <td th:text="${course.description}"></td>
+                    <td><a class="button button-primary" th:href="@{/courses/{id}(id=${course.id})}">詳しく見る</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="empty-message" th:if="${#lists.isEmpty(courses)}">まだおすすめコースが登録されていません</p>
+    </div>
+</main>
+</body>
+</html>

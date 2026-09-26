@@ -1,0 +1,250 @@
+/* 旅香 - TABIKA - 共通スタイル */
+
+:root {
+  --color-background: #f7f3ed;
+  --color-surface: #fffdf9;
+  --color-text: #40372f;
+  --color-muted: #7a6d60;
+  --color-border: #ded3c6;
+  --color-primary: #79604d;
+  --color-primary-dark: #5d4838;
+  --color-accent: #b59a7a;
+  --shadow-soft: 0 4px 16px rgba(72, 54, 39, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+  line-height: 1.8;
+}
+
+header,
+footer {
+  background: var(--color-primary-dark);
+  color: #fffdf9;
+}
+
+header {
+  padding: 1.25rem 0;
+}
+
+main {
+  min-height: 60vh;
+  padding: 3rem 0;
+}
+
+footer {
+  padding: 1.5rem 0;
+  color: #eee5db;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+h1,
+h2 {
+  margin-top: 0;
+  color: var(--color-primary-dark);
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+h2 {
+  margin-bottom: 1.25rem;
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+.page-container {
+  width: min(100% - 2rem, 1120px);
+  margin-inline: auto;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.page-title {
+  margin: 0;
+  color: inherit;
+  font-size: 1.5rem;
+}
+
+.content-section {
+  margin-bottom: 2.5rem;
+}
+
+.card {
+  padding: 1.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.data-table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.data-table th {
+  background: #eee5d9;
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.data-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font: inherit;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.button-primary {
+  background: var(--color-primary);
+  color: #fffdf9;
+}
+
+.button-primary:hover {
+  background: var(--color-primary-dark);
+  color: #fffdf9;
+}
+
+.empty-message {
+  padding: 2rem 1rem;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.course-detail {
+  margin-bottom: 2rem;
+}
+
+.course-detail-list {
+  display: grid;
+  grid-template-columns: minmax(8rem, 12rem) 1fr;
+  margin: 0;
+}
+
+.course-detail-list dt,
+.course-detail-list dd {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.course-detail-list dt {
+  background: #eee5d9;
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
+
+.course-detail-list dd {
+  margin: 0;
+  background: var(--color-surface);
+}
+
+.course-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.reservation-note {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 1rem 0;
+  }
+
+  main {
+    padding: 2rem 0;
+  }
+
+  .page-container {
+    width: min(100% - 1.25rem, 1120px);
+  }
+
+  .page-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .course-detail-list {
+    grid-template-columns: 1fr;
+  }
+
+  .course-detail-list dt {
+    padding-bottom: 0.25rem;
+    border-bottom: 0;
+  }
+
+  .course-detail-list dd {
+    padding-top: 0.25rem;
+  }
+}
