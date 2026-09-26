@@ -1,0 +1,17 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: tabika-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tabika
+      MYSQL_USER: tabika
+      MYSQL_PASSWORD: tabika
+    ports:
+      - "3306:3306"
+    volumes:
+      - tabika-db-data:/var/lib/mysql
+
+volumes:
+  tabika-db-data:
+  

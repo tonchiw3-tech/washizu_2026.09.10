@@ -63,32 +63,56 @@
           <div class="fill-label">システムの目的 <span class="required">必須</span></div>
           <div class="fill-hint">このシステムが解決する課題と提供する価値</div>
           <div class="fill-content">
-            <p>利用者の予定や状況から、自分に合った浅草の香りづくり体験を見つけ、予約まで進めるWebシステムです。</p>
+            <p>旅香 - TABIKA - は、浅草観光や東京滞在中の利用者が、利用シーン・空き時間・出発地点・天候などの条件を選択し、自分に合った過ごし方や香りづくり体験を見つけられるWebアプリケーションです。</p>
+            <p>利用者の状況に合ったプランを提示し、inimuのワークショップを発見して予約へ進みやすくする新しいWeb導線を提供します。</p>
           </div>
         </div>
         <div class="fill-block">
           <div class="fill-label">システム構成図 <span class="required">必須</span></div>
           <div class="fill-hint">フロントエンド ↔ バックエンド ↔ データベースの関係を図示</div>
           <div class="fill-content">
-            <pre style="font-family: 'Courier New', Courier, monospace; white-space: pre-wrap; overflow-x: auto; margin: 0;">【ブラウザ】
-   ↓
-【フロントエンド】
-HTML / CSS / JavaScript
-Thymeleaf
-   ↓
-【バックエンド】
-Spring Boot
-Controller
-   ↓
-Service
-   ↓
-Repository
-   ↓
-【データベース】
-MySQL / H2
+            <pre style="font-family: 'Courier New', Courier, monospace; white-space: pre-wrap; overflow-x: auto; margin: 0;">┌──────────────────────┐
+│        ユーザー        │
+│   PC・スマートフォン    │
+└──────────┬───────────┘
+           │ ブラウザからアクセス
+           ▼
+┌──────────────────────┐
+│     フロントエンド      │
+│ HTML / CSS / JavaScript│
+│ Thymeleaf              │
+│ ・トップページ          │
+│ ・条件選択画面          │
+│ ・おすすめプラン一覧    │
+│ ・プラン詳細画面        │
+└──────────┬───────────┘
+           │ 条件送信・画面表示
+           ▼
+┌──────────────────────┐
+│      バックエンド       │
+│      Spring Boot       │
+│ Controller ↓ Service   │
+│      ↓ Repository      │
+└──────────┬───────────┘
+           │ データ検索・取得
+           ▼
+┌──────────────────────┐
+│      データベース       │
+│        MySQL           │
+│ ・おすすめプラン        │
+│ ・利用シーン            │
+│ ・所要時間              │
+│ ・出発地点              │
+│ ・天候条件              │
+└──────────────────────┘</pre>
+          </div>
+        </div>
 
-戻り方向：
-DB → Repository → Service → Controller → ブラウザ</pre>
+        <div class="fill-block">
+          <div class="fill-label">データの流れ</div>
+          <div class="fill-content">
+            <p>ユーザーがトップページから利用シーンや時間などの条件を選択すると、フロントエンドからSpring Bootへ条件が送信されます。Spring Bootは受け取った条件をもとにデータベースを検索し、該当するおすすめプランを取得します。</p>
+            <p>取得したデータをThymeleafで画面に表示し、利用者はプラン詳細を確認した後、既存のワークショップ予約ページへ進みます。</p>
           </div>
         </div>
 
@@ -102,19 +126,19 @@ DB → Repository → Service → Controller → ブラウザ</pre>
         <table class="doc-table">
           <thead><tr><th>No.</th><th>機能名</th><th>概要</th><th>対応画面</th><th>優先度</th></tr></thead>
           <tbody>
-          <tr class="template-row"><td>F-001</td><td>利用シーン選択</td><td>浅草観光・ものづくり・空き時間・一人時間・イベント前後・雨の日から目的を選択する</td><td>トップページ／条件選択画面</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-002</td><td>条件選択</td><td>利用可能時間・出発地点・天候などの条件を選択する</td><td>条件選択画面</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-003</td><td>おすすめプラン表示</td><td>選択した条件に合った過ごし方やモデルコースを一覧表示する</td><td>おすすめ一覧画面</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-004</td><td>プラン詳細表示</td><td>モデルコース、所要時間、移動、香りづくり体験などの詳細を表示する</td><td>プラン詳細画面</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-005</td><td>香りづくり体験表示</td><td>inimuの体験内容・流れ・料金・所要時間・完成品などを表示する</td><td>香りづくり体験ページ</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-006</td><td>予約導線</td><td>「空き状況を見る」「予約する」ボタンから既存予約ページへ遷移する</td><td>各ページ／予約案内画面</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-007</td><td>アクセス表示</td><td>inimuの所在地、最寄駅、周辺情報を表示する</td><td>アクセス画面</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-008</td><td>FAQ表示</td><td>料金、所要時間、参加方法など、予約前の疑問を表示する</td><td>FAQ画面</td><td><span class="badge badge-should">Should</span></td></tr>
-          <tr class="template-row"><td>F-009</td><td>天候連動おすすめ</td><td>天気情報を取得し、雨天時に室内で楽しめる香りづくり体験を提案する</td><td>条件選択画面／おすすめ画面</td><td><span class="badge badge-should">Should</span></td></tr>
-          <tr class="template-row"><td>F-010</td><td>出発地点別プラン表示</td><td>浅草・上野・両国など、出発地点に応じたプランを表示する</td><td>条件選択画面／おすすめ画面</td><td><span class="badge badge-should">Should</span></td></tr>
-          <tr class="template-row"><td>F-011</td><td>時間別プラン表示</td><td>2時間・3時間・半日など、利用可能時間に合わせたプランを表示する</td><td>条件選択画面／おすすめ画面</td><td><span class="badge badge-should">Should</span></td></tr>
-          <tr class="template-row"><td>F-012</td><td>レスポンシブ表示</td><td>PC・スマートフォンの画面幅に合わせてレイアウトを調整する</td><td>全画面</td><td><span class="badge badge-must">Must</span></td></tr>
-          <tr class="template-row"><td>F-013</td><td>閲覧・CTA計測</td><td>ページ閲覧や予約ボタンクリックなどを計測する</td><td>全画面</td><td><span class="badge badge-could">Could</span></td></tr>
+          <tr class="template-row"><td>F-001</td><td>トップページ表示</td><td>旅香 - TABIKA - の概要、利用シーン、おすすめ導線を表示する</td><td>トップ画面</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-002</td><td>利用シーン選択</td><td>浅草観光・ものづくり・空き時間・一人時間・イベント前後・雨の日から条件を選択する</td><td>条件選択画面</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-003</td><td>時間条件選択</td><td>2時間・3時間・半日など、利用可能な時間を選択する</td><td>条件選択画面</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-004</td><td>出発地点選択</td><td>浅草・上野・両国などから出発地点を選択する</td><td>条件選択画面</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-005</td><td>天候条件選択</td><td>晴れ・雨などの条件を選択する</td><td>条件選択画面</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-006</td><td>おすすめプラン検索</td><td>選択した条件に合うおすすめプランを検索する</td><td>条件選択画面</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-007</td><td>おすすめプラン一覧表示</td><td>条件に合致したモデルコースを一覧で表示する</td><td>プラン一覧画面</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-008</td><td>プラン詳細表示</td><td>選択したプランの内容、所要時間、移動、香りづくり体験の情報を表示する</td><td>プラン詳細画面</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-009</td><td>予約ページ遷移</td><td>「空き状況を見る」「予約する」ボタンから既存予約ページへ移動する</td><td>プラン詳細画面</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-010</td><td>条件未入力チェック</td><td>必要な条件が未入力の場合にメッセージを表示する</td><td>条件選択画面</td><td><span class="badge badge-must">Must</span></td></tr>
+          <tr class="template-row"><td>F-011</td><td>天気API連携</td><td>天気情報を取得し、雨天時におすすめプランを表示する</td><td>トップ／条件選択画面</td><td><span class="badge badge-should">Should</span></td></tr>
+          <tr class="template-row"><td>F-012</td><td>条件変更・再検索</td><td>検索後に条件を変更して再度プランを探せるようにする</td><td>プラン一覧画面</td><td><span class="badge badge-should">Should</span></td></tr>
+          <tr class="template-row"><td>F-013</td><td>プラン管理</td><td>管理者がプラン情報を登録・編集・削除できる</td><td>管理画面</td><td><span class="badge badge-could">Could</span></td></tr>
           </tbody>
         </table>
 
@@ -126,84 +150,113 @@ DB → Repository → Service → Controller → ブラウザ</pre>
 
           <div class="fill-block">
             <div class="fill-label">画面遷移図 <span class="required">必須</span></div>
-            <div class="fill-hint">トップページから各主要情報へ直接進み、おすすめプランの確認や予約まで行う導線</div>
+            <div class="fill-hint">条件を選ぶ → 検索する → おすすめが出る → 詳細を見る → 予約へ進む導線</div>
             <div class="fill-content">
               <div class="ascii-diagram">
-                <pre>
-【トップページ】
-  ├─「香りづくり体験」→【香りづくり体験ページ】
-  │
-  ├─「おすすめの過ごし方」→【条件選択画面】
-  │                              │「おすすめを見る」
-  │                              ▼
-  │                         【おすすめプラン一覧画面】
-  │                              │「詳細を見る」
-  │                              ▼
-  │                         【プラン詳細画面】
-  │                              ├─「体験内容を見る」→【香りづくり体験ページ】
-  │                              ├─「アクセスを見る」→【アクセス・周辺情報ページ】
-  │                              ├─「FAQを見る」→【FAQページ】
-  │                              └─「空き状況を見る」→【予約案内ページ】
-  │
-  ├─「アクセス」→【アクセス・周辺情報ページ】
-  │
-  ├─「FAQ」→【FAQページ】
-  │
-  └─「予約」→【予約案内ページ】
-                    │「予約する」
-                    ▼
-               【既存予約ページ】
-               （じゃらん等の外部予約サイト）
-                </pre>
+                <pre>┌─────────────────────┐
+│      トップ画面       │
+│  旅香 - TABIKA -     │
+└─────────┬───────────┘
+          │「おすすめを探す」
+          │利用シーンを選択
+          ▼
+┌─────────────────────┐
+│     条件選択画面      │
+│ ・利用シーン          │
+│ ・時間                │
+│ ・出発地点            │
+│ ・天候                │
+└─────────┬───────────┘
+          │「検索する」
+          ▼
+┌─────────────────────┐
+│ おすすめプラン一覧画面 │
+│ 条件に合うプランを表示 │
+└───────┬───────┬─────┘
+        │       │「条件を変更する」
+        │       └──────────────┐
+        │                      ▼
+        │              ┌─────────────────┐
+        │              │   条件選択画面   │
+        │              └─────────────────┘
+        │「詳細を見る」
+        ▼
+┌─────────────────────┐
+│   プラン詳細画面      │
+│ ・モデルコース        │
+│ ・所要時間            │
+│ ・移動情報            │
+│ ・香りづくり体験      │
+│ ・アクセス            │
+└─────────┬───────────┘
+          │「空き状況を見る」「予約する」
+          ▼
+┌─────────────────────┐
+│   既存予約サービス     │
+│   外部予約ページ       │
+└─────────────────────┘</pre>
               </div>
             </div>
           </div>
 
           <div class="fill-block">
-            <div class="fill-label">画面別の役割</div>
-            <div class="fill-hint">各画面でユーザーが判断・実行する内容</div>
+            <div class="fill-label">主な画面遷移</div>
+            <div class="fill-hint">各画面でユーザーが実行する操作と遷移先</div>
             <div class="fill-content">
               <table class="doc-table">
                 <thead>
                   <tr>
-                    <th>画面</th>
-                    <th>主な役割</th>
-                    <th>次の導線</th>
+                    <th>遷移元</th>
+                    <th>トリガー</th>
+                    <th>遷移先</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr class="template-row">
-                    <td>トップページ</td>
-                    <td>サービスの概要と香りづくり体験の魅力を伝える</td>
-                    <td>香りづくり体験／おすすめの過ごし方／アクセス／FAQ／予約</td>
+                    <td>トップ画面</td>
+                    <td>「おすすめを探す」または利用シーンを選択</td>
+                    <td>条件選択画面</td>
                   </tr>
                   <tr class="template-row">
                     <td>条件選択画面</td>
-                    <td>時間・出発地・天候・利用シーンなどの条件を選ぶ</td>
-                    <td>おすすめを見る</td>
+                    <td>「検索する」</td>
+                    <td>おすすめプラン一覧画面</td>
                   </tr>
                   <tr class="template-row">
                     <td>おすすめプラン一覧画面</td>
-                    <td>条件に合う過ごし方やモデルコースを一覧表示する</td>
-                    <td>詳細を見る</td>
+                    <td>「詳細を見る」</td>
+                    <td>プラン詳細画面</td>
+                  </tr>
+                  <tr class="template-row">
+                    <td>おすすめプラン一覧画面</td>
+                    <td>「条件を変更する」</td>
+                    <td>条件選択画面</td>
                   </tr>
                   <tr class="template-row">
                     <td>プラン詳細画面</td>
-                    <td>モデルコース、所要時間、移動、香りづくり体験を確認する</td>
-                    <td>体験内容・アクセス・FAQ・空き状況</td>
+                    <td>「一覧に戻る」</td>
+                    <td>おすすめプラン一覧画面</td>
                   </tr>
                   <tr class="template-row">
-                    <td>予約案内ページ</td>
-                    <td>空き状況の確認と外部予約サイトへの案内を行う</td>
-                    <td>予約する</td>
+                    <td>プラン詳細画面</td>
+                    <td>「空き状況を見る」「予約する」</td>
+                    <td>既存予約サービス</td>
                   </tr>
                   <tr class="template-row">
-                    <td>既存予約ページ</td>
-                    <td>じゃらん等の外部予約サイトで予約を完了する</td>
-                    <td>外部サイト</td>
+                    <td>各画面</td>
+                    <td>ロゴまたは「トップへ」</td>
+                    <td>トップ画面</td>
                   </tr>
                 </tbody>
               </table>
+            </div>
+          </div>
+
+          <div class="fill-block">
+            <div class="fill-label">画面遷移の流れ</div>
+            <div class="fill-content">
+              <p>ユーザーはトップ画面から利用シーンやおすすめ検索へ進みます。条件選択画面で、利用シーン・利用可能な時間・出発地点・天候などを指定し、検索を実行します。</p>
+              <p>検索条件に合ったおすすめプランを一覧表示し、興味のあるプランの詳細を確認できます。プラン詳細画面では、モデルコースや所要時間、香りづくり体験、アクセスなどを確認し、「空き状況を見る」または「予約する」から既存の予約サービスへ進みます。</p>
             </div>
           </div>
 
@@ -229,8 +282,19 @@ DB → Repository → Service → Controller → ブラウザ</pre>
         <table class="doc-table">
           <thead><tr><th>項目名</th><th>データ型</th><th>必須</th><th>バリデーション</th><th>備考</th></tr></thead>
           <tbody>
-          <tr class="template-row"><td>（項目名）</td><td>（String / Integer / Date 等）</td><td>（○ / —）</td><td>（必須チェック / 文字数制限 等）</td><td>（備考）</td></tr>
-          <tr class="template-row"><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr>
+          <tr class="template-row"><td>メールアドレス</td><td>String</td><td>○</td><td>必須チェック、メールアドレス形式</td><td>管理者ログイン用</td></tr>
+          <tr class="template-row"><td>パスワード</td><td>String</td><td>○</td><td>必須チェック</td><td>管理者ログイン用</td></tr>
+          <tr class="template-row"><td>プラン名</td><td>String</td><td>○</td><td>必須チェック、100文字以内</td><td>おすすめプラン名</td></tr>
+          <tr class="template-row"><td>利用シーン</td><td>String</td><td>○</td><td>必須チェック、選択肢から選択</td><td>浅草観光、ものづくり、空き時間、一人時間、イベント前後、雨の日</td></tr>
+          <tr class="template-row"><td>所要時間</td><td>Integer</td><td>○</td><td>必須チェック、正の数</td><td>2時間、3時間、半日など</td></tr>
+          <tr class="template-row"><td>出発地点</td><td>String</td><td>○</td><td>必須チェック、選択肢から選択</td><td>浅草、上野、両国など</td></tr>
+          <tr class="template-row"><td>天候条件</td><td>String</td><td>—</td><td>選択肢から選択</td><td>晴れ、雨など</td></tr>
+          <tr class="template-row"><td>プラン概要</td><td>String</td><td>○</td><td>必須チェック、500文字以内</td><td>一覧や詳細画面に表示</td></tr>
+          <tr class="template-row"><td>コース内容</td><td>String</td><td>○</td><td>必須チェック、1000文字以内</td><td>モデルコースの詳細</td></tr>
+          <tr class="template-row"><td>移動情報</td><td>String</td><td>—</td><td>500文字以内</td><td>移動時間・交通手段など</td></tr>
+          <tr class="template-row"><td>アクセス情報</td><td>String</td><td>—</td><td>500文字以内</td><td>inimuまでのアクセス</td></tr>
+          <tr class="template-row"><td>予約URL</td><td>String</td><td>○</td><td>必須チェック、URL形式</td><td>既存予約ページへのリンク</td></tr>
+          <tr class="template-row"><td>公開状態</td><td>Boolean</td><td>○</td><td>true / false</td><td>一般ユーザーに表示するかどうか</td></tr>
           </tbody>
         </table>
 
@@ -245,16 +309,43 @@ DB → Repository → Service → Controller → ブラウザ</pre>
           <div class="fill-label">セキュリティ要件 <span class="required">必須</span></div>
           <div class="fill-hint">認証・認可・データ保護に関する要件</div>
           <div class="fill-content">
-            <p>（セキュリティ要件を記載）</p>
+            <p>本システムでは、管理者向け機能と一般ユーザー向け機能を分け、安全に利用できるように以下のセキュリティ対策を行います。</p>
+            <table class="doc-table">
+              <thead><tr><th>項目</th><th>要件</th></tr></thead>
+              <tbody>
+                <tr><td>認証</td><td>Spring Securityを使用し、管理者ログインを行う。</td></tr>
+                <tr><td>認可</td><td>一般ユーザー向け画面と管理者向け画面を分け、管理機能は認証済み管理者のみ利用できるようにする。</td></tr>
+                <tr><td>パスワード保護</td><td>管理者パスワードは平文で保存せず、BCryptでハッシュ化して保存する。</td></tr>
+                <tr><td>CSRF対策</td><td>Spring SecurityのCSRF対策機能を利用し、不正な登録・更新・削除リクエストを防止する。</td></tr>
+                <tr><td>XSS対策</td><td>Thymeleafのエスケープ機能を利用し、入力文字列をそのままHTMLとして表示しない。</td></tr>
+                <tr><td>SQLインジェクション対策</td><td>MyBatisのパラメータバインドを使用し、入力値をSQL文字列へ直接連結しない。</td></tr>
+                <tr><td>入力値チェック</td><td>Spring Bootのバリデーション機能で、必須項目・文字数・入力形式などをチェックする。</td></tr>
+                <tr><td>セッション管理</td><td>ログイン後はセッションで認証状態を管理し、ログアウト時にセッションを無効化する。</td></tr>
+                <tr><td>未認証アクセス対策</td><td>管理画面へ未ログイン状態でアクセスした場合は、ログイン画面へ遷移させる。</td></tr>
+                <tr><td>エラー情報保護</td><td>エラー発生時にSQL文、パスワード、内部処理などの詳細情報を画面に表示しない。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="fill-block">
+          <div class="fill-label">セキュリティ設計の考え方</div>
+          <div class="fill-content">
+            <p>一般ユーザーは、トップ画面、条件選択画面、おすすめプラン一覧、プラン詳細などをログインせずに利用できるようにします。</p>
+            <p>一方、管理者が使用するおすすめプランの新規登録、編集、削除などの管理機能については、Spring Securityによるログイン認証を必須とします。</p>
+            <p>データベースに保存する管理者パスワードはBCryptを用いてハッシュ化し、平文では保存しません。</p>
           </div>
         </div>
         <div class="fill-block">
           <div class="fill-label">対応環境 <span class="required">必須</span></div>
           <div class="fill-hint">対応ブラウザ・デバイス</div>
           <div class="fill-content">
-            <p>・対応ブラウザ：Chrome（最新版）/ Firefox（最新版）/ Edge（最新版）
-・対応デバイス：PC / タブレット / スマートフォン
-（自分の実際の対応範囲に合わせて編集してください）</p>
+            <p>本システムは、PCおよびスマートフォンからの利用を想定し、レスポンシブデザインに対応します。</p>
+            <ul>
+              <li><strong>対応ブラウザ：</strong>Google Chrome（最新版）、Microsoft Edge（最新版）、Firefox（最新版）</li>
+              <li><strong>対応デバイス：</strong>PC、スマートフォン、タブレット</li>
+              <li><strong>画面対応：</strong>PC画面とスマートフォン画面を中心に表示確認を行う。タブレットは、レスポンシブデザインによる基本的な表示崩れがないことを確認する。</li>
+              <li><strong>対象外：</strong>Internet Explorerなど、サポートが終了しているブラウザは対象外とする。</li>
+            </ul>
           </div>
         </div>
 
