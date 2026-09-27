@@ -2,6 +2,7 @@ package com.tabika;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.ui.Model;
 
@@ -17,6 +18,21 @@ public class HomeController {
     @GetMapping("/")
     public String home() {
         return "index";
+    }
+
+    @GetMapping("/recommend")
+    public String recommend() {
+        return "recommend";
+    }
+
+    @GetMapping("/recommend/result")
+    public String recommendResult() {
+        return "recommend-result";
+    }
+
+    @PostMapping("/recommend/result")
+    public String recommendResultPost() {
+        return "recommend-result";
     }
 
     @GetMapping("/courses")
