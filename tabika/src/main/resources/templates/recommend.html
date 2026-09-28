@@ -1,41 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>あなたにぴったりプラン - 旅香 - TABIKA -</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-<header>
-    <div class="page-container page-header">
-        <h1 class="page-title">旅香 - TABIKA -</h1>
-    </div>
-</header>
-<main>
-    <div class="page-container">
-        <h1>あなたにぴったりプラン</h1>
-        <p>いくつかの質問に答えて、浅草での過ごし方を見つけてみてください。</p>
-        <form class="card" action="/recommend/result" method="post">
-            <p>
-                <label for="scene">利用シーン</label><br>
-                <select id="scene" name="scene">
-                    <option value="散策">散策</option>
-                    <option value="食べ歩き">食べ歩き</option>
-                    <option value="観光">観光</option>
-                </select>
-            </p>
-            <p>
-                <label for="time">利用できる時間</label><br>
-                <select id="time" name="time">
-                    <option value="短時間">短時間</option>
-                    <option value="半日">半日</option>
-                    <option value="一日">一日</option>
-                </select>
-            </p>
-            <button class="button button-primary" type="submit">プランを探す</button>
-        </form>
-    </div>
-</main>
-</body>
-</html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>次の予定まで、浅草でどう過ごす？ - 旅香 - TABIKA -</title><link rel="stylesheet" href="/css/style.css"><script src="/js/recommend.js" defer></script></head>
+<body><header><div class="page-container page-header"><a class="page-title" href="/">旅香 - TABIKA -</a></div></header>
+<main><div class="page-container form-container"><p class="eyebrow">PLAN YOUR TIME</p><h1>次の予定まで、浅草でどう過ごす？</h1><p class="lead">新幹線・飛行機・イベントなど、<br>次の予定に間に合う範囲で、<br>今から楽しめる浅草の過ごし方をご提案します。</p>
+<form class="card search-form" action="/recommend/result" method="post" id="recommend-form">
+<fieldset><legend><span>1</span> 次の予定は？</legend><div class="choice-grid choice-grid-four">
+<label class="choice-card"><input type="radio" name="nextPlan" value="train" required><span>新幹線</span></label><label class="choice-card"><input type="radio" name="nextPlan" value="flight"><span>飛行機</span></label><label class="choice-card"><input type="radio" name="nextPlan" value="event"><span>イベント</span></label><label class="choice-card"><input type="radio" name="nextPlan" value="other"><span>その他</span></label>
+</div></fieldset>
+<fieldset><legend><span>2</span> 次はどこへ行きますか？</legend><select id="destination" name="destination" required disabled><option value="">先に「次の予定」を選択してください</option></select></fieldset>
+<fieldset><legend><span>3</span> 何時までに着きたいですか？</legend><input id="arrivalTime" name="arrivalTime" type="time" required></fieldset>
+<button class="button button-primary submit-button" type="submit">おすすめの過ごし方を見る</button>
+</form></div></main><footer th:replace="~{fragments/footer :: site-footer}"></footer></body></html>

@@ -1,22 +1,48 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>旅香 - TABIKA -</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旅香 - TABIKA -</title><link rel="stylesheet" href="/css/style.css"><script src="/js/top-recommendation.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="page-container page-header">
-            <h1 class="page-title">旅香 - TABIKA -</h1>
-        </div>
-    </header>
-    <main>
-        <div class="page-container content-section">
-            <h1>旅香 - TABIKA -</h1>
-            <p>Spring Bootで表示できました。</p>
-            <a class="button button-primary" href="/courses">おすすめの過ごし方を見る</a>
-        </div>
-    </main>
+<header><div class="page-container page-header"><a class="page-title" href="/">旅香 - TABIKA -</a><a class="button button-primary header-link" href="/courses">過ごし方一覧</a></div></header>
+<main>
+<section class="hero"><div class="page-container hero-content"><p class="eyebrow">浅草で、旅の余白を楽しむ</p><img class="hero-logo" src="/images/logo.png" alt="旅香 - TABIKA -"><p class="hero-copy">旅の予定と予定の間にできた時間を、思い出に変える。</p><p>浅草観光、帰りの新幹線、飛行機、イベント前。<br>次の予定までの時間から、今から楽しめる浅草の過ごし方をご提案します。</p></div></section>
+
+<section class="page-container content-section top-search-section" id="next-plan-search">
+    <div class="section-heading"><p class="eyebrow">PLAN YOUR TIME</p><h1>次の予定までの過ごし方を探す</h1><p>今いる場所と次の予定から、<br class="mobile-break">浅草で香りづくりを楽しめる時間をご提案します。</p></div>
+    <form class="card search-form top-search-form" action="/top-recommendation#recommendation-result" method="post" id="top-recommendation-form">
+        <fieldset><legend><span>1</span> 今どこにいますか？</legend><div class="choice-grid choice-grid-six">
+            <label class="choice-card" th:each="place : ${ {'浅草','上野','東京ドーム','両国国技館','日本武道館','その他'} }"><input type="radio" name="origin" th:value="${place}" th:checked="${submittedOrigin == place}" required><span th:text="${place}">浅草</span></label>
+        </div><div class="conditional-fields" id="origin-other-fields" hidden><label>現在地を入力<input type="text" name="originOther" th:value="${submittedOriginOther}" placeholder="例：新宿駅"></label><a class="travel-lookup" href="https://www.google.com/maps/dir/" target="_blank" rel="noopener noreferrer">移動時間を調べる</a><label>現在地からinimuまでの移動時間（分）<input type="number" name="originTravelMinutes" th:value="${submittedOriginTravelMinutes}" min="0" step="1" inputmode="numeric" placeholder="例：40"></label></div></fieldset>
+        <fieldset><legend><span>2</span> 何時から時間がありますか？</legend><div class="choice-grid choice-grid-two">
+            <label class="choice-card"><input type="radio" name="startMode" value="now" th:checked="${submittedStartMode == null || submittedStartMode == 'now'}" required><span>今から</span></label>
+            <label class="choice-card"><input type="radio" name="startMode" value="specified" th:checked="${submittedStartMode == 'specified'}"><span>時刻を指定</span></label>
+        </div><div class="conditional-fields compact-field" id="start-time-field" hidden><label>開始時刻<input type="time" name="startTime" th:value="${submittedStartTime}"></label></div></fieldset>
+        <fieldset><legend><span>3</span> 次はどこへ行きますか？</legend><div class="choice-grid choice-grid-six">
+            <label class="choice-card" th:each="place : ${ {'東京駅','東京ドーム','両国国技館','日本武道館','羽田空港','その他'} }"><input type="radio" name="destination" th:value="${place}" th:checked="${submittedDestination == place}" required><span th:text="${place}">東京駅</span></label>
+        </div><div class="conditional-fields" id="destination-other-fields" hidden><label>到着したい場所を入力<input type="text" name="destinationOther" th:value="${submittedDestinationOther}" placeholder="例：新宿駅"></label><a class="travel-lookup" href="https://www.google.com/maps/dir/" target="_blank" rel="noopener noreferrer">移動時間を調べる</a><label>inimuから目的地までの移動時間（分）<input type="number" name="destinationTravelMinutes" th:value="${submittedDestinationTravelMinutes}" min="0" step="1" inputmode="numeric" placeholder="例：45"></label></div></fieldset>
+        <fieldset><legend><span>4</span> 何時までに着きたいですか？</legend><div class="compact-field"><label>到着希望時刻<input type="time" name="arrivalTime" th:value="${submittedArrivalTime}" required></label></div></fieldset>
+        <p class="form-error" th:if="${formError}" th:text="${formError}"></p><button class="button button-primary submit-button" type="submit">おすすめの過ごし方を見る</button>
+    </form>
+    <section class="card top-result" id="recommendation-result" th:if="${topPlan}" aria-live="polite">
+        <p class="result-status" th:classappend="${topPlan.workshopPossible} ? ' is-possible' : ' is-difficult'" th:text="${topPlan.workshopPossible} ? '香りづくり体験を楽しめます' : '今回は香りづくり体験を入れるのが難しいです'">判定結果</p>
+        <p class="result-route" th:text="${topPlan.origin + ' → inimu → ' + topPlan.destination}">現在地 → inimu → 目的地</p>
+        <dl class="time-calculation"><div><dt>利用可能時間</dt><dd th:text="${topPlan.availableMinutes + '分'}">0分</dd></div><div><dt>必要時間</dt><dd th:text="${topPlan.requiredMinutes + '分'}">0分</dd></div><div><dt>残り時間</dt><dd th:text="${topPlan.remainingMinutes + '分'}">0分</dd></div></dl>
+        <p class="calculation-detail" th:text="${topPlan.origin + ' → inimu 約' + topPlan.toInimuMinutes + '分 ＋ 香りづくり体験 約60分 ＋ inimu → ' + topPlan.destination + ' 約' + topPlan.fromInimuMinutes + '分'}">計算内容</p>
+        <h2 th:text="${topPlan.suggestion}">おすすめプラン</h2><p class="safety-note">移動時間は目安です。交通状況と体験の予約時刻をご確認のうえ、余裕をもって移動してください。</p>
+    </section>
+</section>
+
+<section class="page-container content-section scene-suggestions" aria-labelledby="scene-suggestions-title">
+    <div class="section-heading scene-heading"><p class="eyebrow">SCENE SUGGESTIONS</p><h2 id="scene-suggestions-title">こんなときにも旅香</h2><p>気になる利用シーンから、おすすめの過ごし方へ直接進めます。</p></div>
+    <div class="scene-grid">
+        <a class="card scene-card" href="/courses/-6"><h3>急な雨の日にも</h3><p>室内だから、急な予定変更でも楽しめます。<br>雨の日の浅草で、香りづくりという選択肢を。</p><span class="scene-card-link">雨の日の過ごし方を見る <span aria-hidden="true">→</span></span></a>
+        <a class="card scene-card" href="/courses/-7"><h3>東京観光に少し疲れたら</h3><p>歩き疲れた旅の途中に、旅香でひと息。<br>約60分、自分のペースで香りづくりを楽しめます。</p><span class="scene-card-link">ひと休みプランを見る <span aria-hidden="true">→</span></span></a>
+        <a class="card scene-card" href="https://tonchiw3-tech.github.io/washizu_2026.09.10/#experience"><h3>香りづくりを体験したい</h3><p>旅の記憶を、自分だけの香りとして持ち帰る。</p><span class="scene-card-link">香りづくり体験を見る <span aria-hidden="true">→</span></span></a>
+    </div>
+</section>
+</main>
+<footer th:replace="~{fragments/footer :: site-footer}"></footer>
 </body>
 </html>

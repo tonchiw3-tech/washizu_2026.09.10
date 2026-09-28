@@ -3,34 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${course.courseName} + ' - 旅香 - TABIKA -'">コース詳細 - 旅香 - TABIKA -</title>
+    <title th:text="${course.courseName} + ' - 旅香'">コース詳細 - 旅香</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <header>
     <div class="page-container page-header">
-        <h1 class="page-title">旅香 - TABIKA -</h1>
+        <a class="page-title" href="/">旅香 - TABIKA -</a>
+        <a class="button button-primary header-link" href="/courses">過ごし方一覧</a>
     </div>
 </header>
 <main>
-    <div class="page-container">
-        <section class="card course-detail" th:if="${course != null}">
+    <div class="page-container" th:if="${course != null}">
+        <section class="detail-hero">
+            <p class="course-scene" th:text="${course.scene}"></p>
             <h1 th:text="${course.courseName}">コース名</h1>
-            <dl class="course-detail-list">
-                <dt>利用シーン</dt><dd th:text="${course.scene}">利用シーン</dd>
-                <dt>所要時間</dt><dd th:text="${course.duration}">所要時間</dd>
-                <dt>出発地点</dt><dd th:text="${course.departurePoint}">出発地点</dd>
-                <dt>天候</dt><dd th:text="${course.weather}">天候</dd>
-                <dt>コース説明</dt><dd th:text="${course.description}">コース説明</dd>
-            </dl>
+            <p class="lead" th:text="${course.description}">説明</p>
+            <div class="detail-tags">
+                <span th:text="${course.duration}">所要時間</span>
+                <span th:text="${course.departurePoint}">目的地</span>
+            </div>
         </section>
-        <p class="empty-message" th:if="${course == null}">コースが見つかりません</p>
-        <div class="course-actions">
-            <a class="button button-primary" href="/courses">コース一覧へ戻る</a>
-            <span class="button" aria-disabled="true">ワークショップを予約する</span>
-            <p class="reservation-note">予約URLは現在準備中です。</p>
+
+        <section class="content-section">
+            <p class="eyebrow">SAMPLE ITINERARY</p>
+            <h2>モデルコース</h2>
+            <p class="sample-note">時間はサンプルです。予約時間や次の予定に合わせて調整してください。</p>
+            <ol class="timeline">
+                <li th:each="step : ${schedule}">
+                    <time th:text="${step.time}"></time>
+                    <strong th:text="${step.activity}"></strong>
+                </li>
+            </ol>
+        </section>
+
+        <section class="card fragrance-section">
+            <p class="eyebrow">FRAGRANCE WORKSHOP</p>
+            <h2>inimuで香りづくり体験</h2>
+            <p>浅草駅から最短徒歩2分。<br>旅の途中にも立ち寄りやすい、浅草の香りのものづくり体験です。</p>
+            <div class="fragrance-actions">
+                <a class="button button-primary"
+                   href="https://tonchiw3-tech.github.io/washizu_2026.09.10/#experience"
+                   target="_blank" rel="noopener noreferrer">香りづくり体験を詳しく見る</a>
+                <a class="button button-reservation"
+                   href="https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/"
+                   target="_blank" rel="noopener noreferrer">じゃらんで空き状況を見る</a>
+            </div>
+        </section>
+
+        <section class="link-panel">
+            <div>
+                <h2>浅草でのランチ・カフェ・周辺散策</h2>
+                <p>個別のお店や観光スポットは、台東区公式観光情報サイト「TAITOおでかけナビ」で探せます。</p>
+            </div>
+            <a class="button button-otomo"
+               href="https://t-navi.city.taito.lg.jp/spot?areaIds=5"
+               target="_blank" rel="noopener noreferrer">浅草の周辺情報を見る</a>
+        </section>
+
+        <div class="back-link">
+            <a class="button button-primary" href="/courses">← 過ごし方一覧へ戻る</a>
         </div>
     </div>
 </main>
+<footer th:replace="~{fragments/footer :: site-footer}"></footer>
 </body>
 </html>

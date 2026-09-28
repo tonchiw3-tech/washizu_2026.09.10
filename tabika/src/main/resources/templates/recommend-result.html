@@ -1,26 +1,12 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>おすすめプラン - 旅香 - TABIKA -</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-<header>
-    <div class="page-container page-header">
-        <h1 class="page-title">旅香 - TABIKA -</h1>
-    </div>
-</header>
-<main>
-    <div class="page-container">
-        <h1>おすすめプラン</h1>
-        <div class="card">
-            <h2>あなたにぴったりの過ごし方</h2>
-            <p>浅草のおすすめコースをご覧ください。</p>
-            <a class="button button-primary" href="/courses">おすすめの過ごし方を見る</a>
-        </div>
-    </div>
-</main>
-</body>
-</html>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>おすすめの過ごし方 - 旅香 - TABIKA -</title><link rel="stylesheet" href="/css/style.css"></head>
+<body><header><div class="page-container page-header"><a class="page-title" href="/">旅香 - TABIKA -</a><a class="button button-primary header-link" href="/recommend">条件を変更する</a></div></header>
+<main><div class="page-container result-container"><p class="eyebrow">YOUR PLAN</p><h1>次の予定に間に合う、浅草での過ごし方</h1>
+<div class="result-summary"><strong th:text="${plan.destination + 'へ ' + plan.arrivalTime + ' までに到着'}">目的地へ到着</strong><span th:text="${'移動・余裕時間：約' + plan.travelBufferMinutes + '分を確保'}">移動時間を確保</span></div>
+<section class="card recommendation-card" th:if="${plan.workshopPossible}"><p class="course-scene" th:text="${plan.planLabel + 'の前に'}">次の予定の前に</p><h2>inimuの香りづくりを中心に楽しむプラン</h2><p th:text="${plan.message}">無理のないプランをご提案します。</p>
+<ol class="timeline compact-timeline"><li th:each="step : ${plan.steps}"><time th:text="${step.time}">目安</time><div><strong th:text="${step.activity}">予定</strong><p th:if="${step.note}" th:text="${step.note}"></p></div></li></ol><p class="safety-note">到着希望時刻と移動時間を優先した目安です。交通状況や体験の予約時刻もあわせてご確認ください。</p></section>
+<section class="card recommendation-card" th:unless="${plan.workshopPossible}"><p class="course-scene">今回は移動を優先</p><h2>香りづくり体験の時間を安全に確保できません</h2><p th:text="${plan.message}">次の予定への移動を優先してください。</p></section>
+<section class="card fragrance-section" th:if="${plan.workshopPossible}"><p class="eyebrow">FRAGRANCE WORKSHOP</p><h2>inimuで香りづくり体験 約60分</h2><p>浅草駅からアクセスしやすく、旅の合間にも立ち寄りやすい香りづくり体験です。</p><div class="fragrance-actions"><a class="button button-primary" href="https://tonchiw3-tech.github.io/washizu_2026.09.10/#experience" target="_blank" rel="noopener noreferrer">香りづくり体験を詳しく見る</a><a class="button button-reservation" href="https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/" target="_blank" rel="noopener noreferrer">じゃらんで予約</a></div></section>
+<section class="link-panel" th:if="${plan.workshopPossible}"><div><h2>時間に余裕があれば</h2><p>浅草散策・ランチ・カフェの情報は、台東区の周辺情報ページでご覧いただけます。</p></div><a class="button button-otomo" href="https://t-navi.city.taito.lg.jp/spot?areaIds=5" target="_blank" rel="noopener noreferrer">浅草の周辺情報を見る</a></section>
+</div></main><footer th:replace="~{fragments/footer :: site-footer}"></footer></body></html>
