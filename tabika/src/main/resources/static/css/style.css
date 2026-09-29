@@ -11,8 +11,16 @@
   --color-accent: #b59a7a;
   --color-action: #a76bae;
   --color-action-hover: #93599a;
+  --color-reservation: #e48d48;
+  --color-reservation-hover: #d4772f;
   --color-otomo: #a14f49;
   --color-otomo-hover: #883f3a;
+  --primary-color: var(--color-reservation);
+  --secondary-color: var(--color-action);
+  --support-color: var(--color-otomo);
+  --card-radius: 10px;
+  --button-radius: 8px;
+  --content-width: 1120px;
   --shadow-soft: 0 4px 16px rgba(72, 54, 39, 0.08);
 }
 
@@ -37,9 +45,9 @@
 .scene-card:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
 .form-container { max-width: 880px; }
 .search-form { margin-top: 2rem; padding: clamp(1.25rem, 4vw, 2.5rem); }
-.search-form fieldset { margin: 0 0 2rem; padding: 0; border: 0; }
-.search-form legend { margin-bottom: 1rem; color: var(--color-primary-dark); font-size: 1.2rem; font-weight: 700; }
-.search-form legend span { display: inline-grid; place-items: center; width: 2rem; height: 2rem; margin-right: 0.4rem; border-radius: 50%; background: var(--color-primary); color: #fffdf9; }
+.search-form fieldset { min-width: 0; margin: 0 0 2rem; padding: 0; border: 0; }
+.search-form legend { display: flex; align-items: flex-start; gap: 0.4rem; width: 100%; min-width: 0; margin-bottom: 1rem; color: var(--color-primary-dark); font-size: 1.2rem; font-weight: 700; line-height: 1.5; white-space: normal; overflow-wrap: anywhere; }
+.search-form legend span { display: inline-grid; flex: 0 0 2rem; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--color-primary); color: #fffdf9; }
 .choice-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.75rem; }
 .choice-grid-four { grid-template-columns: repeat(4, 1fr); }
 .choice-grid-small { grid-template-columns: repeat(4, 1fr); }
@@ -48,7 +56,7 @@
 .choice-card span { display: grid; place-items: center; min-height: 4.5rem; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface); text-align: center; }
 .choice-card input:checked + span { border-color: var(--color-primary); background: #eee5d9; color: var(--color-primary-dark); font-weight: 700; }
 .choice-card input:focus-visible + span { outline: 2px solid var(--color-primary); outline-offset: 2px; }
-select, input[type="time"], input[type="text"], input[type="number"] { width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-surface); color: var(--color-text); font: inherit; }
+select, input[type="time"], input[type="text"], input[type="number"] { width: 100%; max-width: 100%; min-width: 0; padding: 0.8rem 1rem; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-surface); color: var(--color-text); font: inherit; }
 .submit-button { min-width: 18rem; }
 .top-search-section { max-width: 960px; }
 .top-search-form { margin-top: 0; }
@@ -57,6 +65,8 @@ select, input[type="time"], input[type="text"], input[type="number"] { width: 10
 .conditional-fields { display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 1rem; margin-top: 1rem; padding: 1rem; border-left: 3px solid var(--color-accent); background: var(--color-background); }
 .conditional-fields label, .compact-field label { display: grid; gap: 0.35rem; color: var(--color-primary-dark); font-weight: 700; }
 .compact-field { max-width: 320px; }
+.time-range-fields { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 320px); align-items: start; gap: 1.5rem; }
+.field-label { margin: 0 0 0.35rem; color: var(--color-primary-dark); font-weight: 700; }
 .travel-lookup { padding-bottom: 0.8rem; white-space: nowrap; }
 .form-error { color: var(--color-otomo); font-weight: 700; }
 .top-result { margin-top: 2rem; border-top: 5px solid var(--color-action); }
@@ -67,7 +77,17 @@ select, input[type="time"], input[type="text"], input[type="number"] { width: 10
 .time-calculation div { padding: 1rem; background: var(--color-background); text-align: center; }
 .time-calculation dt { color: var(--color-muted); font-size: 0.9rem; }
 .time-calculation dd { margin: 0; color: var(--color-primary-dark); font-size: 1.3rem; font-weight: 700; }
-.calculation-detail { padding: 1rem; border: 1px solid var(--color-border); border-radius: 4px; }
+.calculation-detail { display: grid; gap: 0.25rem; padding: 1rem; border: 1px solid var(--color-border); border-radius: 4px; }
+.result-suggestion { margin: 1.75rem 0 0.5rem; color: var(--color-primary-dark); font-size: 1.25rem; font-weight: 600; line-height: 1.5; text-align: center; white-space: normal; }
+.result-actions { display: flex; justify-content: center; gap: 0.75rem; margin: 1.25rem auto 0; }
+.result-actions .button { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; }
+.result-action-primary { padding-inline: 2rem; box-shadow: 0 4px 12px rgba(167, 100, 52, 0.2); }
+.result-action-secondary { border-color: var(--secondary-color); background: var(--secondary-color); color: #fffdf9; font-weight: 700; }
+.result-action-secondary:hover { border-color: var(--color-action-hover); background: var(--color-action-hover); color: #fffdf9; }
+.result-action-tertiary { border-color: var(--support-color); background: var(--support-color); color: #fffdf9; font-size: 0.95rem; }
+.result-action-tertiary:hover { border-color: var(--color-otomo-hover); background: var(--color-otomo-hover); color: #fff; }
+.external-link-icon { margin-left: 0.4em; font-size: 0.9em; }
+.top-result .safety-note { margin-top: 1rem; text-align: center; }
 .support-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
 .support-links a { display: grid; gap: 0.25rem; padding: 1rem 1.25rem; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-surface); color: inherit; text-decoration: none; }
 .support-links a:hover { border-color: var(--color-accent); }
@@ -93,8 +113,35 @@ select, input[type="time"], input[type="text"], input[type="number"] { width: 10
 .timeline li:not(:last-child)::after { position: absolute; top: 2rem; bottom: 0; left: 3.45rem; width: 1px; background: var(--color-border); content: ""; }
 .timeline time { z-index: 1; align-self: start; padding: 0.35rem; border-radius: 4px; background: var(--color-primary); color: #fffdf9; text-align: center; }
 .timeline strong { padding-top: 0.35rem; }
-.fragrance-section { margin-bottom: 2rem; }
-.fragrance-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.card.fragrance-section {
+  width: min(100%, 920px);
+  margin: 0 auto 2rem;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+  background: var(--color-surface);
+  text-align: left;
+}
+.fragrance-section .eyebrow { margin-bottom: 0.65rem; font-size: 0.82rem; }
+.fragrance-section h2 { margin-bottom: 1rem; }
+.fragrance-section > p:not(.eyebrow) { color: var(--color-muted); }
+.fragrance-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  max-width: 760px;
+  margin-top: 1.75rem;
+}
+.fragrance-actions .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 58px;
+  padding: 0.9rem 1.5rem;
+  color: #fffdf9;
+  font-size: 1rem;
+  font-weight: 700;
+}
 .link-panel { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin: 2rem 0; padding: 2rem 0; border-block: 1px solid var(--color-border); }
 .button-otomo {
   display: inline-flex;
@@ -103,6 +150,7 @@ select, input[type="time"], input[type="text"], input[type="number"] { width: 10
   min-height: 54px;
   padding: 0.8rem 1.75rem;
   border: 0;
+  border-radius: var(--button-radius);
   background: var(--color-otomo);
   color: #fff;
   font-size: 1rem;
@@ -111,7 +159,7 @@ select, input[type="time"], input[type="text"], input[type="number"] { width: 10
 .button-otomo:hover { background: var(--color-otomo-hover); color: #fff; }
 .button-reservation { background: linear-gradient(180deg, #f0b072 0%, #e48d48 100%); color: #fffdf9; font-size: 1.1rem; font-weight: 700; }
 .button-reservation:hover { background: linear-gradient(180deg, #e7a15e 0%, #d77a2f 100%); color: #fffdf9; }
-.fragrance-actions .button-reservation { padding: 0.9rem 2rem; font-size: 1.15rem; }
+.fragrance-actions .button-reservation { color: #fffdf9; }
 .result-container { max-width: 920px; }
 .recommendation-card { margin-bottom: 2rem; }
 .compact-timeline { margin-bottom: 0.5rem; }
@@ -125,9 +173,11 @@ select, input[type="time"], input[type="text"], input[type="number"] { width: 10
 @media (max-width: 600px) {
   .hero-logo { width: 250px; max-width: 70%; margin: 24px auto; }
   .scene-grid, .course-grid, .choice-grid, .choice-grid-small, .choice-grid-four, .support-links, .time-calculation { grid-template-columns: 1fr; }
-  .conditional-fields { grid-template-columns: 1fr; }
+  .conditional-fields, .time-range-fields { grid-template-columns: 1fr; }
   .travel-lookup { padding-bottom: 0; }
   .link-panel { align-items: stretch; flex-direction: column; }
+  .fragrance-actions { grid-template-columns: 1fr; }
+  .result-actions { align-items: stretch; flex-direction: column; }
   .page-footer { flex-direction: column; gap: 0.25rem; }
   .card-meta { grid-template-columns: 1fr; }
   .timeline li { grid-template-columns: 5.5rem 1fr; }
@@ -137,6 +187,10 @@ select, input[type="time"], input[type="text"], input[type="number"] { width: 10
 @media (min-width: 601px) and (max-width: 900px) {
   .scene-grid { grid-template-columns: 1fr; }
   .choice-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 960px) {
+  .result-suggestion { font-size: 1.5rem; white-space: nowrap; }
 }
 
 * {
@@ -191,6 +245,14 @@ h2 {
   font-size: clamp(1.35rem, 3vw, 1.8rem);
 }
 
+h3 {
+  margin-top: 0;
+  color: var(--color-primary-dark);
+  font-size: 1.2rem;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+}
+
 p {
   margin: 0 0 1rem;
 }
@@ -206,7 +268,7 @@ a:hover {
 }
 
 .page-container {
-  width: min(100% - 2rem, 1120px);
+  width: min(100% - 2rem, var(--content-width));
   margin-inline: auto;
 }
 
@@ -223,6 +285,33 @@ a:hover {
   font-size: 1.5rem;
 }
 
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(0.75rem, 2vw, 1.75rem);
+  min-width: 0;
+}
+
+.site-nav a {
+  color: #fffdf9;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-nav a:hover { color: #ead8c8; }
+
+.site-nav .header-cta {
+  padding: 0.65rem 1rem;
+  background: #76518f;
+  border-radius: 999px;
+  box-shadow: 0 0.2rem 0.5rem rgb(0 0 0 / 18%);
+}
+
+.site-nav .header-cta:hover { color: #fffdf9; background: #624277; }
+
 .content-section {
   margin-bottom: 2.5rem;
 }
@@ -231,7 +320,7 @@ a:hover {
   padding: 1.5rem;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: var(--card-radius);
   box-shadow: var(--shadow-soft);
 }
 
@@ -270,9 +359,10 @@ a:hover {
 
 .button {
   display: inline-block;
-  padding: 0.7rem 1.4rem;
+  min-height: 54px;
+  padding: 0.8rem 1.75rem;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: var(--button-radius);
   font: inherit;
   line-height: 1.4;
   text-align: center;
@@ -284,7 +374,15 @@ a:hover {
 .button-primary {
   background: var(--color-action);
   color: #fffdf9;
+  font-weight: 700;
 }
+
+.btn-primary { background: var(--primary-color); color: #fffdf9; font-weight: 700; }
+.btn-primary:hover { background: var(--color-reservation-hover); color: #fffdf9; }
+.btn-secondary { background: var(--secondary-color); color: #fffdf9; font-weight: 700; }
+.btn-secondary:hover { background: var(--color-action-hover); color: #fffdf9; }
+.btn-support { background: var(--support-color); color: #fffdf9; font-weight: 700; }
+.btn-support:hover { background: var(--color-otomo-hover); color: #fff; }
 
 .button-primary:hover {
   background: var(--color-action-hover);
@@ -354,8 +452,35 @@ a:hover {
     flex-direction: column;
   }
 
+  .site-nav {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.65rem 1rem;
+  }
+
+  .site-nav a { font-size: 0.85rem; }
+
+  .site-nav .header-cta { padding: 0.55rem 0.85rem; }
+
   .card {
     padding: 1rem;
+  }
+
+  .search-form {
+    padding: 1rem;
+  }
+
+  .search-form legend {
+    font-size: 1.05rem;
+  }
+
+  .choice-grid-two {
+    max-width: none;
+  }
+
+  .submit-button {
+    min-width: 0;
   }
 
   .button {

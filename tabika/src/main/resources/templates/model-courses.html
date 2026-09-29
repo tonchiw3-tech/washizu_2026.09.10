@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>おすすめの過ごし方 - 旅香</title><link rel="stylesheet" href="/css/style.css"></head>
-<body><header><div class="page-container page-header"><a class="page-title" href="/">旅香 - TABIKA -</a><a class="button button-primary header-link" href="/recommend">条件から探す</a></div></header>
+<body><header><div class="page-container page-header"><a class="page-title" href="/">旅香 - TABIKA -</a><nav class="site-nav" aria-label="メインナビゲーション"><a href="/#plan-search">過ごし方を探す</a><a href="https://tonchiw3-tech.github.io/washizu_2026.09.10/#experience" target="_blank" rel="noopener noreferrer">香りづくり体験</a><a href="https://tonchiw3-tech.github.io/washizu_2026.09.10/#access" target="_blank" rel="noopener noreferrer">アクセス</a><a class="header-cta" href="https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/" target="_blank" rel="noopener noreferrer">空き状況を見る</a></nav></div></header>
 <main><div class="page-container"><p class="eyebrow">MODEL COURSES</p><h1>おすすめの過ごし方</h1><p>旅の余白に合う、浅草での時間を見つけてみてください。</p>
 <div class="course-grid" th:if="${!#lists.isEmpty(courses)}">
 <article class="card course-card" th:each="course : ${courses}"><p class="course-scene" th:text="${course.scene}">おすすめシーン</p><h2 th:text="${course.courseName}">コース名</h2><dl class="card-meta"><div><dt>所要時間</dt><dd th:text="${course.duration}"></dd></div><div><dt>次の目的地</dt><dd th:text="${course.departurePoint ?: '予定に合わせて'}"></dd></div></dl><p th:text="${course.description}">説明</p><a class="button button-primary" th:href="@{/courses/{id}(id=${course.id})}">この過ごし方を見る</a></article>

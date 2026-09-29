@@ -30,4 +30,15 @@ class HomeControllerRecommendationTests {
         assertThat(result.remainingMinutes()).isEqualTo(80);
         assertThat(result.workshopPossible()).isTrue();
     }
+
+    @Test
+    void calculatesShibuyaToTokyoDome() {
+        HomeController.TopRecommendation result = controller.createTopRecommendation(
+                "渋谷", "", null, LocalTime.of(12, 0),
+                "東京ドーム", "", null, LocalTime.of(15, 0));
+
+        assertThat(result.requiredMinutes()).isEqualTo(140);
+        assertThat(result.remainingMinutes()).isEqualTo(40);
+        assertThat(result.workshopPossible()).isTrue();
+    }
 }

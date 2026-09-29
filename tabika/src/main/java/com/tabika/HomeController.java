@@ -75,19 +75,6 @@ public class HomeController {
         return null;
     }
 
-    @GetMapping("/recommend")
-    public String recommend() { return "recommend"; }
-
-    @GetMapping("/recommend/result")
-    public String recommendResult() { return "redirect:/recommend"; }
-
-    @PostMapping("/recommend/result")
-    public String recommendResultPost(@RequestParam String nextPlan,
-            @RequestParam String destination, @RequestParam LocalTime arrivalTime, Model model) {
-        model.addAttribute("plan", createRecommendation(nextPlan, destination, arrivalTime));
-        return "recommend-result";
-    }
-
     @GetMapping("/courses")
     public String courses(Model model) {
         model.addAttribute("courses", allCourses());
@@ -169,7 +156,7 @@ public class HomeController {
         } else if (remainingMinutes < 60) {
             suggestion = "香りづくり体験後、余裕をもって次の目的地へ向かうプラン";
         } else {
-            suggestion = "香りづくり体験に加えて、時間に余裕があれば浅草散策やカフェも楽しめます";
+            suggestion = "香りづくり体験後、余裕をもって次の目的地へ向かうプラン";
         }
 
         String originLabel = "その他".equals(origin) && !originOther.isBlank() ? originOther : origin;
@@ -189,6 +176,9 @@ public class HomeController {
         return switch (origin) {
             case "浅草" -> 10;
             case "上野" -> 20;
+            case "東京駅" -> 30;
+            case "新宿" -> 40;
+            case "渋谷" -> 45;
             case "東京ドーム" -> 35;
             case "両国国技館" -> 20;
             case "日本武道館" -> 35;
