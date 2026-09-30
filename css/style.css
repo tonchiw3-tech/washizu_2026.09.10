@@ -2813,6 +2813,39 @@ img {
   }
 }
 
+/* Homepage journey additions */
+.hero-actions { display:flex; justify-content:center; gap:12px; margin-top:28px; flex-wrap:wrap; }
+.hero-actions .pill { width:auto; min-width:220px; padding:0 20px; height:48px; font-size:14px; }
+.pill-outline { background:rgba(255,255,255,.72); color:var(--ink); border:1px solid rgba(255,255,255,.9); }
+.section-eyebrow { margin:0 0 6px; text-align:center; color:var(--accent); font-size:12px; letter-spacing:.2em; }
+.section-lead { margin:-8px auto 28px; text-align:center; color:var(--muted); font-size:14px; }
+.scenes { padding-top:100px; }
+.scene-grid, .course-grid, .info-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; }
+.scene-card { overflow:hidden; border:1px solid var(--line); border-radius:20px; background:#fff; box-shadow:0 5px 18px rgba(51,37,45,.06); }
+.scene-card img { width:100%; height:150px; object-fit:cover; }
+.scene-card h3, .scene-card p, .scene-card span { margin-left:18px; margin-right:18px; }
+.scene-card h3 { margin-top:15px; margin-bottom:4px; font-family:"Noto Serif JP",serif; font-weight:400; }
+.scene-card p { min-height:52px; margin-top:0; color:var(--muted); font-size:13px; line-height:1.7; }
+.scene-card span { display:block; margin-bottom:18px; color:var(--accent); font-size:13px; }
+.section-next { display:block; width:max-content; margin:34px auto 0; color:var(--muted); font-size:14px; border-bottom:1px solid var(--line); padding-bottom:4px; }
+.plans { padding-top:100px; }
+.course-card { display:flex; flex-direction:column; padding:28px 24px; border:1px solid var(--line); border-radius:20px; background:var(--pink); }
+.course-card h3 { margin:0 0 14px; font-family:"Noto Serif JP",serif; font-weight:400; font-size:20px; }
+.course-card p { margin:0 0 15px; font-size:14px; line-height:2; }
+.course-card span { margin-bottom:22px; color:var(--muted); font-size:13px; }
+.course-card .pill { width:100%; margin-top:auto; }
+.experience .section-lead { margin-bottom:28px; }
+.experience-cta { margin:30px auto 0; }
+.info-grid { grid-template-columns:repeat(2,1fr); margin-bottom:28px; }
+.info-grid > div { padding:20px 22px; border:1px solid var(--line); border-radius:16px; background:#fff; }
+.info-grid h3 { margin:0 0 6px; font-family:"Noto Serif JP",serif; font-size:16px; font-weight:400; }
+.info-grid p { margin:0; color:var(--muted); font-size:13px; }
+.faq-more { width:210px; margin:0 auto; }
+.reserve-cta h2 { margin:0 0 12px; font-family:"Noto Serif JP",serif; font-size:26px; font-weight:400; }
+.reserve-cta a { display:inline-flex; }
+@media (max-width:900px) { .scene-grid,.course-grid { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:700px) { .hero-actions { gap:8px; } .hero-actions .pill { width:100%; } .scenes,.plans { padding-top:64px; } .scene-grid,.course-grid,.info-grid { grid-template-columns:1fr; gap:14px; } .scene-card img { height:130px; } .course-card { padding:22px 18px; } .reserve-cta h2 { font-size:21px; } }
+
 /* Workshop reservation lower page */
 .reservation-page {
   min-height: 100vh;
