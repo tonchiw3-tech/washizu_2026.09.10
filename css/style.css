@@ -1148,6 +1148,17 @@ img {
   padding-bottom: 0;
 }
 
+.site-disclaimer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px 24px 18px;
+  background: var(--pink2);
+  color: #756b6e;
+  font-size: 10px;
+  line-height: 1.7;
+  text-align: center;
+}
+
 .plans-pagination {
   display: none
 }
