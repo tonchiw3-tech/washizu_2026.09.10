@@ -15,7 +15,7 @@ const initialPlans = [
     workshopIncluded: true,
     reservationUrl: 'https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/',
     published: true,
-    image: './assets/rain.png'
+    image: './assets/rain.jpg'
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ const initialPlans = [
     workshopIncluded: true,
     reservationUrl: 'https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/',
     published: true,
-    image: './assets/asakusa.png'
+    image: './assets/asakusa.jpg'
   },
   {
     id: 3,
@@ -47,7 +47,7 @@ const initialPlans = [
     workshopIncluded: true,
     reservationUrl: 'https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/',
     published: true,
-    image: './assets/event.png'
+    image: './assets/event.jpg'
   },
   {
     id: 4,
@@ -63,7 +63,7 @@ const initialPlans = [
     workshopIncluded: true,
     reservationUrl: 'https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/',
     published: true,
-    image: './assets/transit.png'
+    image: './assets/transit.jpg'
   },
   {
     id: 5,
@@ -79,7 +79,7 @@ const initialPlans = [
     workshopIncluded: true,
     reservationUrl: 'https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/',
     published: true,
-    image: './assets/oldtown.png'
+    image: './assets/oldtown.jpg'
   },
   {
     id: 6,
@@ -95,7 +95,7 @@ const initialPlans = [
     workshopIncluded: true,
     reservationUrl: 'https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/',
     published: true,
-    image: './assets/workbench.png'
+    image: './assets/workbench.jpg'
   }
 ];
 
