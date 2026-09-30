@@ -18,6 +18,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: hidden;
   color: var(--ink);
   background: #fff;
   font-family: "Noto Sans JP", sans-serif;
@@ -32,7 +33,8 @@ a {
 
 img {
   display: block;
-  max-width: 100%
+  max-width: 100%;
+  height: auto
 }
 
 .site-header {
@@ -358,6 +360,20 @@ img {
   justify-content: center;
   margin: 20px 0 0 auto;
   clear: both;
+}
+
+.experience-workshop-link {
+  width: min(320px, 100%);
+  margin: 18px auto 0;
+  background: #fff;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.experience-workshop-link:hover,
+.experience-workshop-link:focus-visible {
+  background: var(--accent);
+  color: #fff;
 }
 
 .step-card {
@@ -2560,6 +2576,27 @@ img {
 @media (max-width:480px) {
   body {
     font-size: 14px
+  }
+
+  .header-inner,
+  .section-wide,
+  .footer-inner {
+    min-width: 0
+  }
+
+  .global-nav a,
+  .reserve-small,
+  .pill,
+  .section-title,
+  .section-title span,
+  .plan-link,
+  .plan-description,
+  .plan-more,
+  .reserve-cta p,
+  .access-copy dd,
+  .footer-tagline,
+  .footer-address {
+    overflow-wrap: anywhere
   }
 
   .header-inner {
