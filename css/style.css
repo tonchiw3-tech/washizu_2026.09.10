@@ -358,7 +358,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px 0 0 auto;
+  margin: 20px auto 0;
   clear: both;
 }
 
