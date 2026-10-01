@@ -2876,20 +2876,28 @@ img {
   }
 
   .experience-panel {
+    display: flex;
+    flex-wrap: nowrap;
     width: 100%;
     box-sizing: border-box;
     gap: 0;
     padding-inline: 0;
     overflow: hidden;
+    scroll-snap-type: x mandatory;
   }
 
   .experience-panel .step-card {
     flex: 0 0 100%;
-    min-width: 0;
+    min-width: 100%;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+    margin: 0;
+    align-items: center;
+    text-align: center;
     overflow-wrap: anywhere;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .experience-panel::after {
@@ -2897,10 +2905,19 @@ img {
   }
 
   .experience-panel .step-card img {
+    display: block;
     width: 100%;
     max-width: 100%;
     height: auto;
-    display: block;
+    margin: 0 auto 20px;
+  }
+
+  .experience-panel .step-card h3,
+  .experience-panel .step-card p {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
 }
 
