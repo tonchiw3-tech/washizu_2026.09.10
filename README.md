@@ -356,11 +356,9 @@ inimuには、予約して参加するワークショップだけでなく、予
 
 [https://github.com/tonchiw3-tech/washizu_2026.09.10](https://github.com/tonchiw3-tech/washizu_2026.09.10)
 
-### 公開サイト
+### GitHub Pages
 
-GitHub Pagesを利用して公開しています。
-
-※公開URLはGitHubの「Settings → Pages」に表示されているURLを確認し、ここに記載します。
+[https://tonchiw3-tech.github.io/washizu_2026.09.10/](https://tonchiw3-tech.github.io/washizu_2026.09.10/)
 
 ---
 
