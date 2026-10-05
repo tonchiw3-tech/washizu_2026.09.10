@@ -35,7 +35,26 @@
         </div>
         <div class="ka-saku-room" th:unless="${topPlan.workshopRecommended}">
             <h3>香作室のメニュー</h3>
-            <ul class="menu-card-list"><li>ファブリックミスト</li><li>オードトワレ</li><li>DIYディフューザー</li></ul>
+            <ul class="menu-card-list">
+                <li class="menu-card">
+                    <svg class="menu-card-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M27 17h16v7H27zM31 10h12v7H31zM35 7h8M27 24h18l4 7v21a5 5 0 0 1-5 5H26a5 5 0 0 1-5-5V31l6-7Z"/><path d="M33 35h8M37 31v8M52 18h7M55.5 14.5v7" stroke-dasharray="1 4"/></svg>
+                    <h4>ファブリックミスト</h4>
+                    <p>布製品に使える香りのミスト。<br>好きな香りを選んで作れます。</p>
+                </li>
+                <li class="menu-card">
+                    <svg class="menu-card-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M25 17h14v7H25zM29 10h12v7H29zM22 24h20l5 6v22a5 5 0 0 1-5 5H22a5 5 0 0 1-5-5V30l5-6Z"/><path d="M24 39h20"/></svg>
+                    <h4>オードトワレ</h4>
+                    <p>自分だけの香水づくり。<br>香りの組み合わせも楽しめます。</p>
+                </li>
+                <li class="menu-card">
+                    <svg class="menu-card-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M23 28h20l4 5v20a5 5 0 0 1-5 5H22a5 5 0 0 1-5-5V33l6-5Z"/><path d="M28 28V9M36 28V6M44 28V11M25 36h20"/></svg>
+                    <h4>DIYディフューザー</h4>
+                    <p>お部屋で楽しむ香りづくり。<br>色やラベルも自分好みにできます。</p>
+                </li>
+            </ul>
+        </div>
+        <div class="result-actions ka-saku-detail-action" th:unless="${topPlan.workshopRecommended}">
+            <a class="button result-action-secondary" href="https://inimu.jp/?mode=f18" target="_blank" rel="noopener noreferrer">香作室について詳しく見る <span class="external-link-icon" aria-hidden="true">↗</span></a>
         </div>
         <p class="workshop-note" th:unless="${topPlan.workshopRecommended}">予約制ワークショップの時間には合わないため、今回は予約不要の香作室をご提案します。</p>
         <div class="result-actions" th:if="${topPlan.workshopRecommended}">
