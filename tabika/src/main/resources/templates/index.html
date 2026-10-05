@@ -25,23 +25,19 @@
         <p class="form-error" th:if="${formError}" th:text="${formError}"></p><button class="button button-primary submit-button" type="submit">この時間で楽しめるプランを見る</button>
     </form>
     <section class="card top-result" id="recommendation-result" th:if="${topPlan}" aria-live="polite">
-        <div class="workshop-details" th:if="${topPlan.workshopRecommended}">
-            <p>この時間なら、予約制ワークショップも候補にできます。</p>
-            <p>集合時間: <span th:text="${topPlan.workshopGatherTime}">12:50</span> / 体験時間: <span th:text="${topPlan.workshopExperienceTime}">13:00〜14:00</span></p>
-            <p>移動時間の目安: <span th:text="${topPlan.workshopTravelMinutes + '分'}">20分</span> / 次の予定までの残り時間: <span th:text="${topPlan.workshopRemainingMinutes + '分'}">60分</span></p>
-            <p>予約制です。開催日・空き状況は公式予約ページでご確認ください。</p>
+        <dl class="time-calculation"><div><dt>利用可能時間</dt><dd th:text="${topPlan.availableMinutes + '分'}">0分</dd></div><div><dt>必要時間</dt><dd th:text="${topPlan.requiredMinutes + '分'}">0分</dd></div><div><dt>残り時間</dt><dd th:text="${topPlan.remainingMinutes + '分'}">0分</dd></div></dl>
+        <p class="result-route" th:text="${topPlan.origin + ' → inimu → ' + topPlan.destination}">現在地 → inimu → 目的地</p>
+        <div class="recommendation-summary">
+            <p class="result-suggestion" th:if="${topPlan.workshopRecommended}">今は予約制ワークショップがおすすめです</p>
+            <p class="result-suggestion" th:unless="${topPlan.workshopRecommended}">今は「香作室」がおすすめです</p>
+            <p class="recommendation-subtitle" th:if="${topPlan.workshopRecommended}">予約して香りづくりを体験できます</p>
+            <p class="recommendation-subtitle" th:unless="${topPlan.workshopRecommended}">予約不要で楽しめます</p>
         </div>
         <div class="ka-saku-room" th:unless="${topPlan.workshopRecommended}">
-            <p>予約制ワークショップの時間には合いませんが、予約不要の香作室なら今から楽しめます。</p>
-            <ul><li>ファブリックミスト</li><li>オードトワレ</li><li>DIYディフューザー</li></ul>
-            <p>香作室は予約不要で、当日利用しやすい香りづくりです。所要時間は現地でご確認ください。</p>
+            <h3>香作室のメニュー</h3>
+            <ul class="menu-card-list"><li>ファブリックミスト</li><li>オードトワレ</li><li>DIYディフューザー</li></ul>
         </div>
-        <p class="result-status" th:classappend="${topPlan.workshopRecommended} ? ' is-possible' : ''" th:text="${topPlan.workshopRecommended} ? 'この時間なら、ゆとりを持って予約制ワークショップも候補にできます' : '空き時間に合わせて、予約不要の香作室を中心にご提案します'">判定結果</p>
-        <p class="result-route" th:text="${topPlan.origin + ' → inimu → ' + topPlan.destination}">現在地 → inimu → 目的地</p>
-        <dl class="time-calculation"><div><dt>利用可能時間</dt><dd th:text="${topPlan.availableMinutes + '分'}">0分</dd></div><div><dt>必要時間</dt><dd th:text="${topPlan.requiredMinutes + '分'}">0分</dd></div><div><dt>残り時間</dt><dd th:text="${topPlan.remainingMinutes + '分'}">0分</dd></div></dl>
-        <div class="calculation-detail" aria-label="移動・体験時間の内訳"><span th:text="${topPlan.origin + ' → inimu 約' + topPlan.toInimuMinutes + '分'}">現在地 → inimu</span><span>＋ 香りづくり体験 約60分</span><span th:text="${'＋ inimu → ' + topPlan.destination + ' 約' + topPlan.fromInimuMinutes + '分'}">＋ inimu → 目的地</span></div>
-        <p class="result-suggestion" th:if="${topPlan.workshopRecommended}">予約制ワークショップは、受付・移動・終了後の余裕を含めて90分以上ある場合に候補として表示しています。</p>
-        <p class="result-suggestion" th:unless="${topPlan.workshopRecommended}">香作室：予約不要。空き時間に合わせて、今から香りづくりを楽しめます。</p>
+        <p class="workshop-note" th:unless="${topPlan.workshopRecommended}">予約制ワークショップの時間には合わないため、今回は予約不要の香作室をご提案します。</p>
         <div class="result-actions" th:if="${topPlan.workshopRecommended}">
             <a class="button button-reservation result-action-primary" href="https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/" target="_blank" rel="noopener noreferrer">空き状況を見て予約する <span class="external-link-icon" aria-hidden="true">↗</span></a>
             <a class="button result-action-secondary" href="/courses/-7">香りづくり体験を詳しく見る</a>
@@ -57,7 +53,7 @@
                 <article class="card after-workshop-card"><h3>下町を歩く</h3><p>浅草から蔵前・上野方面へ、街並みを楽しみながら散策する</p><a class="button btn-secondary" href="https://t-navi.city.taito.lg.jp/" target="_blank" rel="noopener noreferrer">台東区のお出かけナビで探す ↗</a></article>
             </div>
         </section>
-        <p class="safety-note">移動時間は目安です。交通状況と体験の予約時刻をご確認のうえ、余裕をもって移動してください。</p>
+        <p class="safety-note">※移動時間は目安です。</p>
     </section>
 </section>
 
