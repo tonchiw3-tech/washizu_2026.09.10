@@ -1200,7 +1200,7 @@ img {
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  margin-top: 8px;
+  margin-top: 22px;
 }
 
 .footer-inimu,
@@ -1327,7 +1327,8 @@ img {
   flex-wrap: wrap
 }
 
-.page-actions .pill {
+.page-actions .pill,
+.faq-page-actions .pill {
   width: auto;
   min-width: 190px;
   min-height: 48px;
@@ -1376,6 +1377,13 @@ img {
   font-size: 20px
 }
 
+.faq-page-actions .pill {
+  min-width: 285px;
+  height: 72px;
+  border-radius: 999px;
+  font-size: 20px
+}
+
 .page-back-actions,
 .edo-back-actions,
 .rainy-back-actions {
@@ -1384,7 +1392,8 @@ img {
 
 .page-back-actions .pill,
 .edo-back-actions .pill,
-.rainy-back-actions .pill {
+.rainy-back-actions .pill,
+.faq-page-actions .faq-page-back {
   min-width: 300px;
   height: 72px;
   border-radius: 999px;
@@ -1638,6 +1647,7 @@ img {
   }
 
   .experience-section .page-actions .pill,
+  .faq-page-actions .pill,
   .page-back-actions .pill,
   .edo-back-actions .pill,
   .rainy-back-actions .pill {
@@ -2043,14 +2053,6 @@ img {
   margin-top: 44px
 }
 
-.faq-page-actions .pill {
-  width: auto;
-  min-width: 220px;
-  height: 60px;
-  padding: 0 26px;
-  font-size: 16px
-}
-
 .faq-page-actions .faq-page-back {
   background: #f3dce9;
   color: var(--muted)
@@ -2108,7 +2110,8 @@ img {
   .faq-page-actions .pill {
     width: 100%;
     min-width: 0;
-    height: 60px
+    height: 60px;
+    font-size: 18px
   }
 
   .faq-page-message {
@@ -2239,7 +2242,7 @@ img {
   }
 
   .footer-contact {
-    margin-top: 6px
+    margin-top: 18px
   }
 }
 
@@ -3285,14 +3288,22 @@ select[aria-invalid="true"] {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  text-align: center;
+  width: min(100%, 380px);
+  box-sizing: border-box;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 14px 24px;
   min-height: 56px;
   border: 0;
   border-radius: 999px;
   background: var(--accent);
   color: #fff;
-  font: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
   letter-spacing: .06em;
+  white-space: nowrap;
   cursor: pointer
 }
 
@@ -3302,14 +3313,14 @@ select[aria-invalid="true"] {
 }
 
 .jalan-button {
-  background: linear-gradient(180deg, #f0b072 0%, #e48d48 100%);
+  background: var(--accent);
   color: #fff;
-  box-shadow: 0 8px 18px rgba(228, 141, 72, .2);
+  box-shadow: 0 8px 18px rgba(187, 143, 189, .22);
 }
 
 .jalan-button:hover,
 .jalan-button:focus-visible {
-  background: linear-gradient(180deg, #e7a15e 0%, #d77a2f 100%);
+  background: #a979ac;
 }
 
 .reservation-button:focus-visible {
@@ -3379,8 +3390,8 @@ select[aria-invalid="true"] {
 .back-button {
   background: #f3dce9;
   color: var(--muted);
-  max-width: 300px;
-  margin: 0 auto
+  font-weight: 400;
+  box-shadow: none
 }
 
 @media (max-width:700px) {
