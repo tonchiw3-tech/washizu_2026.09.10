@@ -462,24 +462,16 @@ img {
   margin: 0;
 }
 
-.plans-heading-link {
-  grid-column: 3;
-  justify-self: end;
-  padding: 9px 18px;
-  border: 1px solid rgba(190, 149, 187, .7);
-  border-radius: 999px;
-  color: #76506f;
-  background: rgba(255, 255, 255, .82);
-  font-size: 14px;
-  line-height: 1.4;
-  text-decoration: none;
-  transition: background-color .2s ease, border-color .2s ease;
+.plans-heading > div {
+  grid-column: 2;
+  text-align: center;
 }
 
-.plans-heading-link:hover,
-.plans-heading-link:focus-visible {
-  border-color: #be95bb;
-  background: #fff;
+.plans-intro {
+  margin: 10px 0 0;
+  color: #6f656d;
+  font-size: .9rem;
+  line-height: 1.8;
 }
 
 .plans-panel {
@@ -1237,6 +1229,27 @@ img {
 .plans-pagination {
   display: none
 }
+
+.plans-app-cta {
+  margin: 56px auto 0;
+  padding: 38px 28px 40px;
+  max-width: 760px;
+  border: 1px solid rgba(190, 149, 187, .65);
+  border-radius: 20px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(68, 48, 54, .06);
+}
+
+.plans-app-cta h3 { margin: 0; color: #411818; font-family: "Noto Serif JP", serif; font-size: 1.25rem; font-weight: 500; }
+.plans-app-cta p { margin: 14px 0 24px; color: #6f656d; font-size: .95rem; line-height: 1.9; }
+.plans-app-cta-button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-width: 280px;
+  padding: 13px 28px; border-radius: 8px; background: #411818; color: #fff; font-size: .9rem;
+  white-space: nowrap; text-decoration: none;
+  transition: background-color .2s ease, transform .2s ease;
+}
+.plans-app-cta-button:hover, .plans-app-cta-button:focus-visible { background: #6f3a3a; transform: translateY(-2px); }
 
 .experience-pagination {
   display: none
@@ -2324,9 +2337,8 @@ img {
     order: 1;
   }
 
-  .plans-heading-link {
-    order: 2;
-    align-self: center;
+  .plans-heading > div {
+    order: 1;
   }
 
   .section-head-row {
