@@ -30,7 +30,7 @@
         <dl class="time-calculation"><div><dt>利用可能時間</dt><dd th:text="${topPlan.availableMinutes + '分'}">0分</dd></div><div><dt>必要時間</dt><dd th:text="${topPlan.requiredMinutes + '分'}">0分</dd></div><div><dt>残り時間</dt><dd th:text="${topPlan.remainingMinutes + '分'}">0分</dd></div></dl>
         <div class="calculation-detail" aria-label="移動・体験時間の内訳"><span th:text="${topPlan.origin + ' → inimu 約' + topPlan.toInimuMinutes + '分'}">現在地 → inimu</span><span>＋ 香りづくり体験 約60分</span><span th:text="${'＋ inimu → ' + topPlan.destination + ' 約' + topPlan.fromInimuMinutes + '分'}">＋ inimu → 目的地</span></div>
         <p class="result-suggestion" th:if="${topPlan.workshopRecommended}">予約制ワークショップは、受付・移動・終了後の余裕を含めて90分以上ある場合に候補として表示しています。</p>
-        <p class="result-suggestion" th:unless="${topPlan.workshopRecommended}">香作室：予約不要。今から楽しめます。空き時間に合わせて香りづくりをお楽しみください。</p>
+        <p class="result-suggestion" th:unless="${topPlan.workshopRecommended}">香作室：予約不要。空き時間に合わせて、今から香りづくりを楽しめます。</p>
         <div class="result-actions" th:if="${topPlan.workshopRecommended}">
             <a class="button button-reservation result-action-primary" href="https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/" target="_blank" rel="noopener noreferrer">空き状況を見て予約する <span class="external-link-icon" aria-hidden="true">↗</span></a>
             <a class="button result-action-secondary" href="/courses/-7">香りづくり体験を詳しく見る</a>
