@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
     private static final int WORKSHOP_MINUTES = 60;
-    private static final int WORKSHOP_RECOMMENDATION_MINUTES = 90;
+    private static final List<WorkshopSlot> WORKSHOP_SLOTS = List.of(
+            new WorkshopSlot(LocalTime.of(10, 50), LocalTime.of(11, 0), LocalTime.of(12, 0)),
+            new WorkshopSlot(LocalTime.of(12, 50), LocalTime.of(13, 0), LocalTime.of(14, 0)),
+            new WorkshopSlot(LocalTime.of(14, 50), LocalTime.of(15, 0), LocalTime.of(16, 0)));
     private final ModelCourseMapper modelCourseMapper;
 
     public HomeController(ModelCourseMapper modelCourseMapper) {
@@ -149,7 +152,8 @@ public class HomeController {
         int remainingMinutes = availableMinutes - requiredMinutes;
         boolean possible = remainingMinutes >= 0;
         int freeTimeMinutes = availableMinutes - toInimuMinutes - fromInimuMinutes;
-        boolean workshopRecommended = freeTimeMinutes >= WORKSHOP_RECOMMENDATION_MINUTES;
+        WorkshopMatch workshop = findNextWorkshop(startTime, arrivalTime, toInimuMinutes, fromInimuMinutes);
+        boolean workshopRecommended = workshop != null;
         boolean extendedPlan = freeTimeMinutes >= 180;
         boolean halfDayPlan = freeTimeMinutes >= 240;
         boolean oneDayPlan = freeTimeMinutes >= 360;
@@ -178,7 +182,21 @@ public class HomeController {
         return new TopRecommendation(originLabel, destinationLabel, startTime.format(formatter),
                 arrivalTime.format(formatter), toInimuMinutes, fromInimuMinutes, availableMinutes,
                 requiredMinutes, remainingMinutes, possible, workshopRecommended, extendedPlan,
-                halfDayPlan, oneDayPlan, suggestion);
+                halfDayPlan, oneDayPlan, suggestion,
+                workshop == null ? "" : workshop.gatherTime().format(formatter),
+                workshop == null ? "" : workshop.experienceStart().format(formatter) + "〜"
+                        + workshop.experienceEnd().format(formatter),
+                workshop == null ? 0 : toInimuMinutes,
+                workshop == null ? 0 : (int) Duration.between(workshop.experienceEnd(), arrivalTime).toMinutes());
+    }
+
+    private WorkshopMatch findNextWorkshop(LocalTime start, LocalTime arrival, int toInimu, int fromInimu) {
+        return WORKSHOP_SLOTS.stream()
+                .filter(slot -> !slot.gatherTime().isBefore(start.plusMinutes(toInimu)))
+                .filter(slot -> !slot.experienceEnd().plusMinutes(fromInimu).isAfter(arrival))
+                .findFirst()
+                .map(slot -> new WorkshopMatch(slot.gatherTime(), slot.experienceStart(), slot.experienceEnd()))
+                .orElse(null);
     }
 
     private int positiveMinutes(Integer minutes) {
@@ -280,7 +298,11 @@ public class HomeController {
     public record TopRecommendation(String origin, String destination, String startTime, String arrivalTime,
             int toInimuMinutes, int fromInimuMinutes, int availableMinutes, int requiredMinutes,
             int remainingMinutes, boolean workshopPossible, boolean workshopRecommended,
-            boolean extendedPlan, boolean halfDayPlan, boolean oneDayPlan, String suggestion) {}
+            boolean extendedPlan, boolean halfDayPlan, boolean oneDayPlan, String suggestion,
+            String workshopGatherTime, String workshopExperienceTime, int workshopTravelMinutes,
+            int workshopRemainingMinutes) {}
+    public record WorkshopSlot(LocalTime gatherTime, LocalTime experienceStart, LocalTime experienceEnd) {}
+    private record WorkshopMatch(LocalTime gatherTime, LocalTime experienceStart, LocalTime experienceEnd) {}
     public record RecommendationStep(String time, String activity, String note) {}
     public record CourseStep(String time, String activity) {}
 }
