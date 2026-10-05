@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
     private static final int WORKSHOP_MINUTES = 60;
+    private static final int WORKSHOP_RECOMMENDATION_MINUTES = 90;
     private final ModelCourseMapper modelCourseMapper;
 
     public HomeController(ModelCourseMapper modelCourseMapper) {
@@ -147,10 +148,21 @@ public class HomeController {
         int requiredMinutes = toInimuMinutes + WORKSHOP_MINUTES + fromInimuMinutes;
         int remainingMinutes = availableMinutes - requiredMinutes;
         boolean possible = remainingMinutes >= 0;
+        int freeTimeMinutes = availableMinutes - toInimuMinutes - fromInimuMinutes;
+        boolean workshopRecommended = freeTimeMinutes >= WORKSHOP_RECOMMENDATION_MINUTES;
+        boolean extendedPlan = freeTimeMinutes >= 180;
+        boolean halfDayPlan = freeTimeMinutes >= 240;
+        boolean oneDayPlan = freeTimeMinutes >= 360;
 
         String suggestion;
         if (remainingMinutes < 0) {
             suggestion = "次の目的地への移動を優先するプラン";
+        } else if (oneDayPlan) {
+            suggestion = "浅草観光・食事・香り体験を組み合わせ、体験後は4つのテーマから過ごし方を選ぶ1日プラン";
+        } else if (halfDayPlan) {
+            suggestion = "浅草観光・街歩きと香り体験を組み合わせる半日プラン";
+        } else if (extendedPlan) {
+            suggestion = "香り体験の前後に浅草散策や休憩を組み合わせるプラン";
         } else if (remainingMinutes < 30) {
             suggestion = "香りづくり体験後、そのまま次の目的地へ向かうプラン";
         } else if (remainingMinutes < 60) {
@@ -165,7 +177,8 @@ public class HomeController {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         return new TopRecommendation(originLabel, destinationLabel, startTime.format(formatter),
                 arrivalTime.format(formatter), toInimuMinutes, fromInimuMinutes, availableMinutes,
-                requiredMinutes, remainingMinutes, possible, suggestion);
+                requiredMinutes, remainingMinutes, possible, workshopRecommended, extendedPlan,
+                halfDayPlan, oneDayPlan, suggestion);
     }
 
     private int positiveMinutes(Integer minutes) {
@@ -266,7 +279,8 @@ public class HomeController {
             int travelBufferMinutes, boolean workshopPossible, String message, List<RecommendationStep> steps) {}
     public record TopRecommendation(String origin, String destination, String startTime, String arrivalTime,
             int toInimuMinutes, int fromInimuMinutes, int availableMinutes, int requiredMinutes,
-            int remainingMinutes, boolean workshopPossible, String suggestion) {}
+            int remainingMinutes, boolean workshopPossible, boolean workshopRecommended,
+            boolean extendedPlan, boolean halfDayPlan, boolean oneDayPlan, String suggestion) {}
     public record RecommendationStep(String time, String activity, String note) {}
     public record CourseStep(String time, String activity) {}
 }

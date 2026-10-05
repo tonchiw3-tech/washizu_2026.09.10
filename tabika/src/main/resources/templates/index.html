@@ -25,18 +25,27 @@
         <p class="form-error" th:if="${formError}" th:text="${formError}"></p><button class="button button-primary submit-button" type="submit">この時間で楽しめるプランを見る</button>
     </form>
     <section class="card top-result" id="recommendation-result" th:if="${topPlan}" aria-live="polite">
-        <p class="result-status" th:classappend="${topPlan.workshopPossible} ? ' is-possible' : ' is-difficult'" th:text="${topPlan.workshopPossible} ? 'この時間なら、浅草で香りづくり体験ができます' : '今回は香りづくり体験を入れるのが難しいです'">判定結果</p>
+        <p class="result-status" th:classappend="${topPlan.workshopRecommended} ? ' is-possible' : ''" th:text="${topPlan.workshopRecommended} ? 'この時間なら、ゆとりを持って予約制ワークショップも候補にできます' : '空き時間に合わせて、予約不要の香作室を中心にご提案します'">判定結果</p>
         <p class="result-route" th:text="${topPlan.origin + ' → inimu → ' + topPlan.destination}">現在地 → inimu → 目的地</p>
         <dl class="time-calculation"><div><dt>利用可能時間</dt><dd th:text="${topPlan.availableMinutes + '分'}">0分</dd></div><div><dt>必要時間</dt><dd th:text="${topPlan.requiredMinutes + '分'}">0分</dd></div><div><dt>残り時間</dt><dd th:text="${topPlan.remainingMinutes + '分'}">0分</dd></div></dl>
-        <div class="calculation-detail" th:if="${topPlan.workshopPossible}" aria-label="移動・体験時間の内訳"><span th:text="${topPlan.origin + ' → inimu 約' + topPlan.toInimuMinutes + '分'}">現在地 → inimu</span><span>＋ 香りづくり体験 約60分</span><span th:text="${'＋ inimu → ' + topPlan.destination + ' 約' + topPlan.fromInimuMinutes + '分'}">＋ inimu → 目的地</span></div>
-        <p class="result-suggestion" th:if="${topPlan.workshopPossible and topPlan.remainingMinutes >= 60}"><strong th:text="${'残り' + topPlan.remainingMinutes + '分あります。'}">残り時間があります。</strong><br>香りづくりの前後には、浅草散策やカフェも楽しめます。</p>
-        <p class="result-suggestion" th:if="${topPlan.workshopPossible and topPlan.remainingMinutes < 60}" th:text="${topPlan.suggestion}">おすすめプラン</p>
-        <p class="result-suggestion" th:unless="${topPlan.workshopPossible}" th:text="${topPlan.suggestion}">おすすめプラン</p>
-        <div class="result-actions" th:if="${topPlan.workshopPossible}">
+        <div class="calculation-detail" aria-label="移動・体験時間の内訳"><span th:text="${topPlan.origin + ' → inimu 約' + topPlan.toInimuMinutes + '分'}">現在地 → inimu</span><span>＋ 香りづくり体験 約60分</span><span th:text="${'＋ inimu → ' + topPlan.destination + ' 約' + topPlan.fromInimuMinutes + '分'}">＋ inimu → 目的地</span></div>
+        <p class="result-suggestion" th:if="${topPlan.workshopRecommended}">予約制ワークショップは、受付・移動・終了後の余裕を含めて90分以上ある場合に候補として表示しています。</p>
+        <p class="result-suggestion" th:unless="${topPlan.workshopRecommended}">香作室：予約不要。今から楽しめます。空き時間に合わせて香りづくりをお楽しみください。</p>
+        <div class="result-actions" th:if="${topPlan.workshopRecommended}">
             <a class="button button-reservation result-action-primary" href="https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/" target="_blank" rel="noopener noreferrer">空き状況を見て予約する <span class="external-link-icon" aria-hidden="true">↗</span></a>
             <a class="button result-action-secondary" href="/courses/-7">香りづくり体験を詳しく見る</a>
             <a class="button result-action-tertiary" href="https://t-navi.city.taito.lg.jp/spot?areaIds=5" target="_blank" rel="noopener noreferrer">浅草周辺のおでかけ情報を見る <span class="external-link-icon" aria-hidden="true">↗</span></a>
         </div>
+        <section class="after-workshop" th:if="${topPlan.halfDayPlan}" aria-labelledby="after-workshop-heading">
+            <h2 id="after-workshop-heading">このあと、どう過ごしますか？</h2>
+            <p>香り体験の前後に、浅草周辺のテーマを選んで過ごせます。</p>
+            <div class="after-workshop-grid">
+                <article class="card after-workshop-card"><h3>御朱印をめぐる</h3><p>浅草寺や浅草神社など、浅草周辺の寺社をめぐる</p></article>
+                <article class="card after-workshop-card"><h3>歴史を歩く</h3><p>浅草の歴史や下町文化を感じながら周辺を散策する</p></article>
+                <article class="card after-workshop-card"><h3>甘味を楽しむ</h3><p>浅草らしい甘味や喫茶を探してひと休み</p><a class="button btn-secondary" href="https://t-navi.city.taito.lg.jp/" target="_blank" rel="noopener noreferrer">台東区のお出かけナビで探す ↗</a></article>
+                <article class="card after-workshop-card"><h3>下町を歩く</h3><p>浅草から蔵前・上野方面へ、街並みを楽しみながら散策する</p><a class="button btn-secondary" href="https://t-navi.city.taito.lg.jp/" target="_blank" rel="noopener noreferrer">台東区のお出かけナビで探す ↗</a></article>
+            </div>
+        </section>
         <p class="safety-note">移動時間は目安です。交通状況と体験の予約時刻をご確認のうえ、余裕をもって移動してください。</p>
     </section>
 </section>
