@@ -60,6 +60,7 @@ select, input[type="time"], input[type="text"], input[type="number"] { width: 10
 .submit-button { min-width: 18rem; }
 .top-search-section { max-width: 960px; }
 .top-search-form { margin-top: 0; }
+.recommendation-notice { margin: 0.75rem 0 0; color: var(--color-muted); text-align: center; }
 .choice-grid-six { grid-template-columns: repeat(3, 1fr); }
 .choice-grid-two { max-width: 440px; grid-template-columns: repeat(2, 1fr); }
 .conditional-fields { display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; gap: 1rem; margin-top: 1rem; padding: 1rem; border-left: 3px solid var(--color-accent); background: var(--color-background); }

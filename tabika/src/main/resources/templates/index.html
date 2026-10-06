@@ -23,6 +23,7 @@
             <label class="choice-card"><input type="radio" name="startMode" value="specified" th:checked="${submittedStartMode == 'specified'}"><span>時刻を指定</span></label>
         </div><div class="conditional-fields compact-field" id="start-time-field" hidden><label>開始時刻<input type="time" name="startTime" th:value="${submittedStartTime}"></label></div></div><div class="compact-field"><label>終了時刻（次の予定への到着希望時刻）<input type="time" name="arrivalTime" th:value="${submittedArrivalTime}" required></label></div></div></fieldset>
         <p class="form-error" th:if="${formError}" th:text="${formError}"></p><button class="button button-primary submit-button" type="submit">この時間で楽しめるプランを見る</button>
+        <p class="recommendation-notice">おすすめプラン検索機能は現在準備中です。</p>
     </form>
     <section class="card top-result" id="recommendation-result" th:if="${topPlan}" aria-live="polite">
         <dl class="time-calculation"><div><dt>利用可能時間</dt><dd th:text="${topPlan.availableMinutes + '分'}">0分</dd></div><div><dt>必要時間</dt><dd th:text="${topPlan.requiredMinutes + '分'}">0分</dd></div><div><dt>残り時間</dt><dd th:text="${topPlan.remainingMinutes + '分'}">0分</dd></div></dl>
