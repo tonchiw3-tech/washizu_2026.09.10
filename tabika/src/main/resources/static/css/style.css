@@ -33,16 +33,7 @@
 .hero-copy { color: var(--color-primary-dark); font-size: clamp(1.25rem, 3vw, 1.8rem); }
 .eyebrow { margin-bottom: 0; color: var(--color-accent); font-weight: 700; letter-spacing: 0.16em; }
 .section-heading { margin: 4rem 0 1.5rem; text-align: center; }
-.scene-grid, .course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-.scene-suggestions { margin-top: clamp(4rem, 8vw, 7rem); }
-.scene-heading { margin-top: 0; }
-.scene-grid { align-items: stretch; }
-.scene-card { display: flex; flex-direction: column; padding: 1.25rem; color: inherit; text-decoration: none; }
-.scene-card h3 { margin: 0 0 0.75rem; color: var(--color-primary-dark); font-size: 1.2rem; }
-.scene-card p { color: var(--color-muted); }
-.scene-card-link { margin-top: auto; color: var(--color-primary); font-weight: 700; }
-.scene-card:hover { border-color: var(--color-accent); color: inherit; }
-.scene-card:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+.course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 .form-container { max-width: 880px; }
 .search-form { margin-top: 2rem; padding: clamp(1.25rem, 4vw, 2.5rem); }
 .search-form fieldset { min-width: 0; margin: 0 0 2rem; padding: 0; border: 0; }
@@ -191,7 +182,7 @@ select, input[type="time"], input[type="text"], input[type="number"] { width: 10
 
 @media (max-width: 600px) {
   .hero-logo { width: 250px; max-width: 70%; margin: 24px auto; }
-  .scene-grid, .course-grid, .choice-grid, .choice-grid-small, .choice-grid-four, .support-links, .time-calculation { grid-template-columns: 1fr; }
+  .course-grid, .choice-grid, .choice-grid-small, .choice-grid-four, .support-links, .time-calculation { grid-template-columns: 1fr; }
   .menu-card-list { grid-template-columns: 1fr; }
   .after-workshop-grid { grid-template-columns: 1fr; }
   .conditional-fields, .time-range-fields { grid-template-columns: 1fr; }
@@ -206,7 +197,6 @@ select, input[type="time"], input[type="text"], input[type="number"] { width: 10
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
-  .scene-grid { grid-template-columns: 1fr; }
   .choice-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
