@@ -146,8 +146,9 @@ public class HomeController {
         int fromInimuMinutes = "その他".equals(destination)
                 ? positiveMinutes(destinationTravelMinutes)
                 : inimuToDestinationMinutes(destination);
+        // The form represents times on the same day; never roll an earlier
+        // arrival time over to the next day.
         int availableMinutes = (int) Duration.between(startTime, arrivalTime).toMinutes();
-        if (availableMinutes <= 0) availableMinutes += 24 * 60;
         int requiredMinutes = toInimuMinutes + WORKSHOP_MINUTES + fromInimuMinutes;
         int remainingMinutes = availableMinutes - requiredMinutes;
         boolean possible = remainingMinutes >= 0;

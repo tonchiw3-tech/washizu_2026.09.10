@@ -41,4 +41,25 @@ class HomeControllerRecommendationTests {
         assertThat(result.remainingMinutes()).isEqualTo(40);
         assertThat(result.workshopPossible()).isTrue();
     }
+
+    @Test
+    void calculatesAvailableTimeAsSameDayMinutes() {
+        HomeController.TopRecommendation result = controller.createTopRecommendation(
+                "豬・拷", "", null, LocalTime.of(15, 0),
+                "豬・拷", "", null, LocalTime.of(16, 0));
+
+        assertThat(result.availableMinutes()).isEqualTo(60);
+        assertThat(result.requiredMinutes()).isEqualTo(60);
+        assertThat(result.remainingMinutes()).isZero();
+    }
+
+    @Test
+    void doesNotTurnEarlierArrivalIntoNextDay() {
+        HomeController.TopRecommendation result = controller.createTopRecommendation(
+                "豬・拷", "", null, LocalTime.of(15, 0),
+                "豬・拷", "", null, LocalTime.of(14, 59));
+
+        assertThat(result.availableMinutes()).isEqualTo(-1);
+        assertThat(result.workshopPossible()).isFalse();
+    }
 }
