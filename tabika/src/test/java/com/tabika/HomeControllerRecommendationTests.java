@@ -3,10 +3,31 @@ package com.tabika;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalTime;
+import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
 class HomeControllerRecommendationTests {
     private final HomeController controller = new HomeController(null);
+
+    @Test
+    void doesNotRecommendWorkshopOnWeekday() {
+        HomeController.TopRecommendation result = controller.createTopRecommendation(
+                "豬・拷", "", null, LocalTime.of(10, 0), "譚ｱ莠ｬ鬧・", "", null, LocalTime.of(14, 0),
+                LocalDate.of(2026, 10, 6));
+
+        assertThat(result.workshopRecommended()).isFalse();
+        assertThat(result.suggestion()).contains("土日祝日");
+    }
+
+    @Test
+    void reports受付終了AfterLastGathering() {
+        HomeController.TopRecommendation result = controller.createTopRecommendation(
+                "豬・拷", "", null, LocalTime.of(15, 15), "譚ｱ莠ｬ鬧・", "", null, LocalTime.of(18, 0),
+                LocalDate.of(2026, 10, 10));
+
+        assertThat(result.workshopRecommended()).isFalse();
+        assertThat(result.suggestion()).contains("受付時間は終了");
+    }
 
     @Test
     void calculatesTokyoDomeRoundTripIncludingBothTravelLegs() {
@@ -72,5 +93,18 @@ class HomeControllerRecommendationTests {
 
         assertThat(result.availableMinutes()).isEqualTo(-1);
         assertThat(result.workshopPossible()).isFalse();
+    }
+
+    @Test
+    void doesNotRecommendWorkshopWhenRequiredTimeExceedsAvailableTime() {
+        HomeController.TopRecommendation result = controller.createTopRecommendation(
+                "豬・拷", "", null, LocalTime.of(14, 0),
+                "譚ｱ莠ｬ鬧・", "", null, LocalTime.of(15, 20));
+
+        assertThat(result.requiredMinutes()).isEqualTo(100);
+        assertThat(result.availableMinutes()).isEqualTo(80);
+        assertThat(result.remainingMinutes()).isEqualTo(-20);
+        assertThat(result.workshopPossible()).isFalse();
+        assertThat(result.workshopRecommended()).isFalse();
     }
 }

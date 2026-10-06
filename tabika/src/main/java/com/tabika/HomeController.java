@@ -1,6 +1,7 @@
 package com.tabika;
 
 import java.time.Duration;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -38,6 +39,7 @@ public class HomeController {
             @RequestParam(required = false, defaultValue = "") String originOther,
             @RequestParam(required = false) Integer originTravelMinutes,
             @RequestParam String startMode,
+            @RequestParam(required = false) LocalDate activityDate,
             @RequestParam(required = false) LocalTime startTime,
             @RequestParam String destination,
             @RequestParam(required = false, defaultValue = "") String destinationOther,
@@ -47,6 +49,7 @@ public class HomeController {
         LocalTime effectiveStart = "now".equals(startMode)
                 ? LocalTime.now(JAPAN_ZONE).withSecond(0).withNano(0)
                 : startTime;
+        LocalDate effectiveDate = activityDate == null ? LocalDate.now(JAPAN_ZONE) : activityDate;
         String validationError = validateTopRecommendation(origin, originOther, originTravelMinutes,
                 effectiveStart, destination, destinationOther, destinationTravelMinutes);
         if (validationError != null) {
@@ -54,13 +57,14 @@ public class HomeController {
         } else {
             model.addAttribute("topPlan", createTopRecommendation(origin, originOther,
                     originTravelMinutes, effectiveStart, destination, destinationOther,
-                    destinationTravelMinutes, arrivalTime));
+                    destinationTravelMinutes, arrivalTime, effectiveDate));
         }
         model.addAttribute("submittedOrigin", origin);
         model.addAttribute("submittedOriginOther", originOther);
         model.addAttribute("submittedOriginTravelMinutes", originTravelMinutes);
         model.addAttribute("submittedStartMode", startMode);
         model.addAttribute("submittedStartTime", startTime);
+        model.addAttribute("submittedActivityDate", activityDate);
         model.addAttribute("submittedDestination", destination);
         model.addAttribute("submittedDestinationOther", destinationOther);
         model.addAttribute("submittedDestinationTravelMinutes", destinationTravelMinutes);
@@ -143,6 +147,13 @@ public class HomeController {
     TopRecommendation createTopRecommendation(String origin, String originOther, Integer originTravelMinutes,
             LocalTime startTime, String destination, String destinationOther, Integer destinationTravelMinutes,
             LocalTime arrivalTime) {
+        return createTopRecommendation(origin, originOther, originTravelMinutes, startTime, destination,
+                destinationOther, destinationTravelMinutes, arrivalTime, LocalDate.of(2026, 1, 3));
+    }
+
+    TopRecommendation createTopRecommendation(String origin, String originOther, Integer originTravelMinutes,
+            LocalTime startTime, String destination, String destinationOther, Integer destinationTravelMinutes,
+            LocalTime arrivalTime, LocalDate activityDate) {
         int toInimuMinutes = "その他".equals(origin)
                 ? positiveMinutes(originTravelMinutes)
                 : originToInimuMinutes(origin);
@@ -157,14 +168,20 @@ public class HomeController {
         int remainingMinutes = availableMinutes - requiredMinutes;
         boolean possible = remainingMinutes >= 0;
         int freeTimeMinutes = availableMinutes - toInimuMinutes - fromInimuMinutes;
-        WorkshopMatch workshop = findNextWorkshop(startTime, arrivalTime, toInimuMinutes, fromInimuMinutes);
-        boolean workshopRecommended = workshop != null;
+        WorkshopMatch workshop = isWorkshopDay(activityDate)
+                ? findNextWorkshop(startTime, arrivalTime, toInimuMinutes, fromInimuMinutes) : null;
+        boolean workshopRecommended = possible && workshop != null;
         boolean extendedPlan = freeTimeMinutes >= 180;
         boolean halfDayPlan = freeTimeMinutes >= 240;
         boolean oneDayPlan = freeTimeMinutes >= 360;
 
         String suggestion;
-        if (remainingMinutes < 0) {
+        if (!isWorkshopDay(activityDate)) {
+            suggestion = "予約制ワークショップは土日祝日のみ開催しています。今日は予約不要の香作室をご提案します。";
+        } else if (workshop == null && !hasWorkshopGatheringLeft(startTime, toInimuMinutes)) {
+            suggestion = "本日の予約制ワークショップの受付時間は終了しています";
+        } else if (remainingMinutes < 0) {
+            suggestion = "次の予定に間に合うよう、そろそろ目的地へ向かうのがおすすめです";
             suggestion = "次の目的地への移動を優先するプラン";
         } else if (oneDayPlan) {
             suggestion = "浅草観光・食事・香り体験を組み合わせ、体験後は4つのテーマから過ごし方を選ぶ1日プラン";
@@ -207,6 +224,24 @@ public class HomeController {
                 .findFirst()
                 .map(slot -> new WorkshopMatch(slot.gatherTime(), slot.experienceStart(), slot.experienceEnd()))
                 .orElse(null);
+    }
+
+    private boolean hasWorkshopGatheringLeft(LocalTime start, int toInimu) {
+        return WORKSHOP_SLOTS.stream()
+                .anyMatch(slot -> !slot.gatherTime().isBefore(start.plusMinutes(toInimu)));
+    }
+
+    private boolean isWorkshopDay(LocalDate date) {
+        DayOfWeek day = date.getDayOfWeek();
+        return day == DayOfWeek.SATURDAY || day == DayOfWeek.SUNDAY || isJapaneseFixedHoliday(date);
+    }
+
+    private boolean isJapaneseFixedHoliday(LocalDate date) {
+        int month = date.getMonthValue();
+        int day = date.getDayOfMonth();
+        return (month == 1 && day == 1) || (month == 2 && (day == 11 || day == 23))
+                || (month == 4 && day == 29) || (month == 5 && day >= 3 && day <= 5)
+                || (month == 8 && day == 11) || (month == 11 && (day == 3 || day == 23));
     }
 
     private int positiveMinutes(Integer minutes) {
