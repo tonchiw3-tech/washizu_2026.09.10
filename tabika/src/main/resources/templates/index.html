@@ -22,7 +22,7 @@
             <label class="choice-card"><input type="radio" name="startMode" value="now" th:checked="${submittedStartMode == null || submittedStartMode == 'now'}" required><span>今から</span></label>
             <label class="choice-card"><input type="radio" name="startMode" value="specified" th:checked="${submittedStartMode == 'specified'}"><span>時刻を指定</span></label>
         </div><div class="conditional-fields compact-field" id="start-time-field" hidden><label>開始時刻<input type="time" name="startTime" th:value="${submittedStartTime}"></label></div></div><div class="compact-field"><label>終了時刻（次の予定への到着希望時刻）<input type="time" name="arrivalTime" th:value="${submittedArrivalTime}" required></label></div></div></fieldset>
-        <p class="form-error" th:if="${formError}" th:text="${formError}"></p><button class="button button-primary submit-button" type="submit">この時間で楽しめるプランを見る</button>
+        <p class="form-error" th:if="${formError}" th:text="${formError}"></p><a class="button button-primary submit-button" href="https://tabika-app.onrender.com/">条件からおすすめを探す →</a>
         <p class="recommendation-notice">おすすめプラン検索機能は現在準備中です。</p>
     </form>
     <section class="card top-result" id="recommendation-result" th:if="${topPlan}" aria-live="polite">
