@@ -304,6 +304,7 @@ a:hover {
   margin: 0;
   color: inherit;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .site-nav {
@@ -408,6 +409,26 @@ a:hover {
 .button-primary:hover {
   background: var(--color-action-hover);
   color: #fffdf9;
+}
+
+.back-home-section {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0 0;
+}
+
+.back-home-button {
+  min-width: 12rem;
+  border-color: var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-primary-dark);
+  box-shadow: var(--shadow-soft);
+}
+
+.back-home-button:hover {
+  border-color: var(--color-primary);
+  background: #eee5d9;
+  color: var(--color-primary-dark);
 }
 
 .empty-message {

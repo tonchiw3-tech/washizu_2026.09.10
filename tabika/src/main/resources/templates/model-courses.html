@@ -5,4 +5,6 @@
 <main><div class="page-container"><p class="eyebrow">MODEL COURSES</p><h1>おすすめの過ごし方</h1><p>旅の余白に合う、浅草での時間を見つけてみてください。</p>
 <div class="course-grid" th:if="${!#lists.isEmpty(courses)}">
 <article class="card course-card" th:each="course : ${courses}"><p class="course-scene" th:text="${course.scene}">おすすめシーン</p><h2 th:text="${course.courseName}">コース名</h2><dl class="card-meta"><div><dt>所要時間</dt><dd th:text="${course.duration}"></dd></div><div><dt>次の目的地</dt><dd th:text="${course.departurePoint ?: '予定に合わせて'}"></dd></div></dl><p th:text="${course.description}">説明</p><a class="button button-primary" th:href="@{/courses/{id}(id=${course.id})}">この過ごし方を見る</a></article>
-</div><p class="empty-message" th:if="${#lists.isEmpty(courses)}">公開中のコースはありません。</p></div></main><footer th:replace="~{fragments/footer :: site-footer}"></footer></body></html>
+</div><p class="empty-message" th:if="${#lists.isEmpty(courses)}">公開中のコースはありません。</p>
+<div class="back-home-section"><a class="button back-home-button" href="/">トップページへ戻る</a></div>
+</div></main><footer th:replace="~{fragments/footer :: site-footer}"></footer></body></html>
