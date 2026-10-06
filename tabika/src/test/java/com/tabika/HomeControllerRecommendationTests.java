@@ -54,6 +54,17 @@ class HomeControllerRecommendationTests {
     }
 
     @Test
+    void calculates15_15To18_00As165MinutesOnTheSameDay() {
+        HomeController.TopRecommendation result = controller.createTopRecommendation(
+                "荳｡蝗ｽ蝗ｽ謚鬢ｨ", "", null, LocalTime.of(15, 15),
+                "譚ｱ莠ｬ繝峨・繝", "", null, LocalTime.of(18, 0));
+
+        assertThat(result.availableMinutes()).isEqualTo(165);
+        assertThat(result.requiredMinutes()).isEqualTo(115);
+        assertThat(result.remainingMinutes()).isEqualTo(50);
+    }
+
+    @Test
     void doesNotTurnEarlierArrivalIntoNextDay() {
         HomeController.TopRecommendation result = controller.createTopRecommendation(
                 "豬・拷", "", null, LocalTime.of(15, 0),

@@ -1,8 +1,10 @@
 package com.tabika;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Stream;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
+    private static final ZoneId JAPAN_ZONE = ZoneId.of("Asia/Tokyo");
     private static final int WORKSHOP_MINUTES = 60;
     private static final List<WorkshopSlot> WORKSHOP_SLOTS = List.of(
             new WorkshopSlot(LocalTime.of(10, 50), LocalTime.of(11, 0), LocalTime.of(12, 0)),
@@ -42,7 +45,7 @@ public class HomeController {
             @RequestParam LocalTime arrivalTime,
             Model model) {
         LocalTime effectiveStart = "now".equals(startMode)
-                ? LocalTime.now().withSecond(0).withNano(0)
+                ? LocalTime.now(JAPAN_ZONE).withSecond(0).withNano(0)
                 : startTime;
         String validationError = validateTopRecommendation(origin, originOther, originTravelMinutes,
                 effectiveStart, destination, destinationOther, destinationTravelMinutes);
@@ -98,7 +101,7 @@ public class HomeController {
     }
 
     private Recommendation createRecommendation(String nextPlan, String destination, LocalTime arrivalTime) {
-        LocalDateTime now = LocalDateTime.now().withSecond(0).withNano(0);
+        LocalDateTime now = LocalDateTime.now(JAPAN_ZONE).withSecond(0).withNano(0);
         LocalDateTime arrival = now.with(arrivalTime);
         if (!arrival.isAfter(now)) arrival = arrival.plusDays(1);
 
@@ -146,9 +149,10 @@ public class HomeController {
         int fromInimuMinutes = "その他".equals(destination)
                 ? positiveMinutes(destinationTravelMinutes)
                 : inimuToDestinationMinutes(destination);
-        // The form represents times on the same day; never roll an earlier
-        // arrival time over to the next day.
-        int availableMinutes = (int) Duration.between(startTime, arrivalTime).toMinutes();
+        // The form represents JST clock times on the same day. Build both
+        // values on one fixed local date so no date rollover or UTC
+        // conversion can add an unintended 24-hour offset.
+        int availableMinutes = sameDayMinutesBetween(startTime, arrivalTime);
         int requiredMinutes = toInimuMinutes + WORKSHOP_MINUTES + fromInimuMinutes;
         int remainingMinutes = availableMinutes - requiredMinutes;
         boolean possible = remainingMinutes >= 0;
@@ -189,6 +193,11 @@ public class HomeController {
                         + workshop.experienceEnd().format(formatter),
                 workshop == null ? 0 : toInimuMinutes,
                 workshop == null ? 0 : (int) Duration.between(workshop.experienceEnd(), arrivalTime).toMinutes());
+    }
+
+    private int sameDayMinutesBetween(LocalTime startTime, LocalTime endTime) {
+        LocalDate sameDay = LocalDate.of(2000, 1, 1);
+        return (int) Duration.between(sameDay.atTime(startTime), sameDay.atTime(endTime)).toMinutes();
     }
 
     private WorkshopMatch findNextWorkshop(LocalTime start, LocalTime arrival, int toInimu, int fromInimu) {
