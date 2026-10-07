@@ -961,6 +961,12 @@ img {
   padding-top: 165px
 }
 
+@media (min-width:1200px) {
+  .plans + .faq {
+    padding-top: 80px
+  }
+}
+
 .faq-panel {
   background: var(--pink);
   padding: 44px 44px 35px;
