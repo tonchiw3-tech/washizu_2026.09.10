@@ -20,9 +20,9 @@
         <div class="doc-category">DOCUMENT 01</div>
         <h1 class="doc-title">企画提案書</h1>
         <div class="doc-meta">
-          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-09-10</span>
-          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者：鷲巣友香</span>
-          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.0</span>
+            <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-10-07</span>
+            <span><span class="material-symbols-outlined icon-sm">person</span> 作成者：鷲巣 友香</span>
+            <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 2.0</span>
         </div>
       </header>
 
@@ -73,8 +73,8 @@
           <div class="fill-label">コンセプト <span class="required">必須</span></div>
           <div class="fill-hint">サービスを一言で表す説明（キャッチコピー＋1〜2文の説明）</div>
           <div class="fill-content">
-            <h3>浅草で、香りを旅の記憶に。</h3>
-            <p>旅香 - TABIKA - は、浅草観光や東京滞在中の予定・時間・天候などから、inimuの香りづくり体験を発見し、予約へつなげるWebサービスです。ものづくりのまち・浅草で、自分だけの香りを旅の思い出として持ち帰る体験を提案します。</p>
+            <h3>浅草で、自分だけの日本の香りをつくる旅。</h3>
+            <p>旅香 - TABIKA - は、浅草観光や空き時間、雨の日、一人時間など、その日の状況からinimuの香りづくり体験を発見し、<strong>「予約する」まで迷わず進めるWebサービス</strong>です。</p>
             <p>浅草を含む台東地域は、江戸時代から多くの職人が集まり、ものづくりの技術や文化が受け継がれてきた地域である。旅香 - TABIKA - では、こうした<strong>「ものづくりのまち・浅草」</strong>という背景と、inimuの香りづくり体験を結びつける。</p>
             <p>既に魅力のあるinimuのワークショップを新しく作り直すのではなく、<strong>浅草観光や東京滞在の予定に組み込みやすい体験として見せ、発見から予約までをつなぐ新しいWeb導線を構築する。</strong></p>
           </div>
@@ -191,7 +191,7 @@
           <div class="fill-content">
             <p>「旅香 - TABIKA -」では、<strong>観光・ものづくり・空き時間・一人時間・イベント・雨天</strong>など、ユーザーの状況や興味からinimuの香りづくりワークショップを発見し、予約へ進めるWebサイトを制作する。</p>
 
-            <p>ファーストビューでは、<strong>「浅草で、香りを旅の記憶に。」</strong>というコンセプトを伝える。あわせて、浅草には古くからものづくり文化が受け継がれてきたことを簡潔に紹介し、<strong>「浅草で香りをつくる意味」</strong>を伝える。</p>
+            <p>ファーストビューでは、<strong>「浅草で、自分だけの日本の香りをつくる旅。」</strong>というコンセプトを伝える。あわせて、浅草には古くからものづくり文化が受け継がれてきたことを簡潔に紹介し、<strong>「浅草で香りをつくる意味」</strong>を伝える。</p>
 
             <h3>1. トップページ</h3>
             <p><strong>目的：</strong>旅香 - TABIKA - のコンセプトを伝え、各ページへの入口をつくる。</p>
@@ -215,7 +215,7 @@
 
             <h3>6. 予約ページ</h3>
             <p><strong>目的：</strong>体験に興味を持ったユーザーを予約へつなげる。</p>
-            <p><strong>主要コンテンツ：</strong><strong>「空き状況を見る」「ワークショップを予約する」</strong>CTA、既存予約サービスへのリンク。</p>
+            <p><strong>主要コンテンツ：</strong><strong>「予約する」</strong>CTA、予約入力ページへの導線。</p>
 
             <h3>サイト全体の役割</h3>
             <p>本サイトでは、<strong>今の予定・興味・状況から体験を探す → 自分に合った過ごし方を知る → 浅草のものづくり文化を知る → 香りづくりに興味を持つ → 体験内容・不安点を確認する → 空き状況を確認する → 予約する</strong>という流れを構築する。</p>
@@ -226,10 +226,9 @@
           <div class="fill-label">Webアプリケーション（サーバーサイド）の範囲 <span class="required">必須</span></div>
           <div class="fill-hint">制作するWebアプリケーションの機能概要</div>
           <div class="fill-content">
-            <p>「旅香 - TABIKA -」では、ユーザーの予定・空き時間・天候・過ごし方などに応じて、inimuの香りづくり体験を含むおすすめの過ごし方を提示するWebアプリケーションを制作する。</p>
+            <p>サーバーサイドでは、フロントエンドで制作した「予約する」導線の先に、デモ予約システムを実装する。目的は、実際の決済や本番運用ではなく、<strong>予約入力から確認、完了までの一連の流れを体験できるようにすること</strong>である。</p>
 
-            <h3>管理者向け機能</h3>
-            <p>管理者が管理画面からコンテンツを更新し、公開側の体験情報やおすすめの過ごし方、アクセス情報、FAQへ反映できるようにする。</p>
+            <h3>利用者向け予約機能</h3>
             <table class="doc-table">
               <thead>
                 <tr>
@@ -239,43 +238,19 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td><strong>管理者ログイン機能</strong></td><td>管理者のみが管理画面へ入れるように、メールアドレス・パスワードで認証する</td><td><strong>Must</strong></td></tr>
-                <tr><td><strong>香りづくり体験情報管理</strong></td><td>体験内容、料金、所要時間、完成品、体験の流れなどを登録・編集・削除する</td><td><strong>Must</strong></td></tr>
-                <tr><td><strong>おすすめの過ごし方管理</strong></td><td>浅草観光、すき間時間、イベント前後、一人時間、雨の日などの情報を登録・編集・削除する</td><td><strong>Must</strong></td></tr>
-                <tr><td><strong>アクセス情報管理</strong></td><td>主要駅・空港・イベント会場などからのアクセス情報や移動時間を登録・編集・削除する</td><td><strong>Must</strong></td></tr>
-                <tr><td><strong>FAQ管理</strong></td><td>予約方法、料金、一人参加、持ち物、雨天時などの質問と回答を登録・編集・削除する</td><td><strong>Must</strong></td></tr>
-                <tr><td><strong>一覧・検索機能</strong></td><td>登録済みの体験情報、過ごし方、アクセス、FAQを一覧表示し、必要な情報を検索できるようにする</td><td><strong>Should</strong></td></tr>
-                <tr><td><strong>公開・非公開管理</strong></td><td>登録した情報をすぐ公開するか、一時的に非公開にするかを切り替えられるようにする</td><td><strong>Should</strong></td></tr>
-                <tr><td><strong>表示順管理</strong></td><td>おすすめの過ごし方やFAQなどの表示順を管理できるようにする</td><td><strong>Could</strong></td></tr>
-                <tr><td><strong>更新日時表示</strong></td><td>各情報がいつ更新されたかを確認できるようにする</td><td><strong>Could</strong></td></tr>
-                <tr><td><strong>ログアウト機能</strong></td><td>管理画面から安全にログアウトできるようにする</td><td><strong>Must</strong></td></tr>
+                <tr><td><strong>予約入力機能</strong></td><td>予約日、予約時間、人数、氏名、メールアドレス、電話番号、備考を入力する</td><td><strong>Must</strong></td></tr>
+                <tr><td><strong>予約内容確認機能</strong></td><td>入力内容を確認し、修正または予約確定へ進める</td><td><strong>Must</strong></td></tr>
+                <tr><td><strong>予約完了機能</strong></td><td>予約完了メッセージと予約内容を表示する</td><td><strong>Must</strong></td></tr>
+                <tr><td><strong>予約情報保存</strong></td><td>Spring BootとMySQLを使用して予約情報を保存する</td><td><strong>Should</strong></td></tr>
+                <tr><td><strong>予約一覧・管理機能</strong></td><td>管理者が予約内容を確認できるようにする</td><td><strong>Could</strong></td></tr>
               </tbody>
             </table>
 
-            <h3>利用者向け機能</h3>
-            <h3>1. 利用シーン選択・おすすめプラン表示機能</h3>
-            <p>ユーザーが「浅草観光」「ものづくり体験」「空き時間」「一人時間」「イベント前後」「雨の日」などの利用シーンを選択すると、それに合ったおすすめプランを表示する。</p>
-
-            <h3>2. 空き時間に合わせたプラン検索機能</h3>
-            <p>ユーザーが「2時間」「3時間」「半日」など、利用可能な時間を入力または選択すると、その時間内で利用できるおすすめプランを表示する。</p>
-            <p>ワークショップ時間と移動時間を考慮し、<strong>無理のない過ごし方</strong>を提示する。</p>
-
-            <h3>3. 一人時間に合わせたプラン表示機能</h3>
-            <p>一人旅やイベント前後など、一人で過ごす時間がある利用者に対して、<strong>「自分のペースで香りと向き合う」</strong>という体験として香りづくりを提案する。一人利用を特別なものとして扱うのではなく、旅の自然な過ごし方の一つとして表示する。</p>
-
-            <h3>4. 出発地点に合わせたプラン表示機能</h3>
-            <p>浅草、上野、両国などの出発地点を選択すると、inimuまでの移動を考慮したおすすめプランを表示する。イベント会場についても、必要に応じて出発地点の候補として選択できるようにする。</p>
-
-            <h3>5. 天候に応じたおすすめ表示機能</h3>
-            <p>天気情報を取得し、雨天時には<strong>「雨の日におすすめ」</strong>としてinimuの室内香りづくり体験を表示する。これにより、観光中に予定変更が必要になったユーザーへ、新しい過ごし方を提案する。</p>
-
-            <h3>6. ワークショップ予約への導線機能</h3>
-            <p>おすすめプランやワークショップ紹介ページから、<strong>「空き状況を見る」「ワークショップを予約する」</strong>ボタンを設置し、既存の予約サービスへ遷移できるようにする。</p>
-            <p>予約システムそのものは新規開発せず、既存サービスを活用する。</p>
+            <h3>予約画面の流れ</h3>
+            <p><strong>予約入力 → 予約内容確認 → 予約完了</strong>の3段階で構成する。フロントエンドの各ページに設置した「予約する」ボタンから予約ページへ遷移し、入力した内容を確認してから完了できるようにする。</p>
 
             <h3>Webアプリケーション全体の流れ</h3>
-            <p><strong>ユーザーの現在の状況・興味を選択<br>↓<br>空き時間・一人時間・出発地点・天候などの条件を指定<br>↓<br>条件に合ったモデルコースを表示<br>↓<br>浅草のものづくり文化を知る<br>↓<br>inimuの香りづくり体験を知る<br>↓<br>詳しい体験内容を確認<br>↓<br>既存予約ページへ進む</strong></p>
-            <p>これにより、香水づくりを最初から目的としていないユーザーにも、<strong>その時の状況に合った浅草のものづくり体験としてinimuを提案する。</strong></p>
+            <p><strong>現在の予定・状況から探す<br>↓<br>自分に合った過ごし方を知る<br>↓<br>香りづくり体験を知る<br>↓<br>体験内容・アクセス・FAQを確認する<br>↓<br>予約する<br>↓<br>予約入力<br>↓<br>予約内容確認<br>↓<br>予約完了</strong></p>
           </div>
         </div>
 
@@ -289,10 +264,10 @@
           <thead><tr><th>区分</th><th>技術</th><th>用途</th></tr></thead>
           <tbody>
           <tr class="template-row"><td>フロントエンド</td><td>HTML / CSS / JavaScript</td><td>Webサイトの構造、デザイン、画面操作の実装</td></tr>
-          <tr class="template-row"><td>バックエンド</td><td>Java / Spring Boot</td><td>Webアプリケーション、管理画面、CRUD処理の実装</td></tr>
+          <tr class="template-row"><td>バックエンド</td><td>Java / Spring Boot</td><td>予約入力・確認・完了のデモ予約システム実装</td></tr>
           <tr class="template-row"><td>テンプレートエンジン</td><td>Thymeleaf</td><td>Spring Bootから取得したデータの画面表示</td></tr>
           <tr class="template-row"><td>O/Rマッピング</td><td>MyBatis</td><td>Javaとデータベース間のデータ操作</td></tr>
-          <tr class="template-row"><td>データベース</td><td>MySQL</td><td>体験情報、おすすめの過ごし方、アクセス情報、FAQなどの保存</td></tr>
+          <tr class="template-row"><td>データベース</td><td>MySQL</td><td>予約情報の保存</td></tr>
           <tr class="template-row"><td>開発環境</td><td>Docker</td><td>MySQLなどの開発環境を構築・管理</td></tr>
           <tr class="template-row"><td>デザインツール</td><td>Figma</td><td>サイトマップ、ワイヤーフレーム、UIデザインの作成</td></tr>
           <tr class="template-row"><td>バージョン管理</td><td>Git / GitHub</td><td>ソースコードの管理、変更履歴の保存</td></tr>
@@ -304,8 +279,8 @@
         <div class="fill-block">
           <div class="fill-label">技術選定の考え方</div>
           <div class="fill-content">
-            <p>今回の目的は、高機能な予約システムを新規開発することではなく、<strong>ユーザーの状況からinimuを発見し、既存予約サービスへつなげるWeb導線を作ること</strong>である。</p>
-            <p>そのため、開発範囲を必要以上に広げず、<strong>「探す → 提案される → 知る → 予約へ進む」</strong>という体験の実現を優先する。</p>
+            <p>フロントエンドでは、ユーザーの状況からinimuの体験を発見し、「予約する」までの導線を実現する。サーバーサイドでは、その先の<strong>「予約入力 → 確認 → 完了」</strong>をデモシステムとして実装する。</p>
+            <p>実際の決済や本番予約との連携は対象外とし、学習成果として予約処理の基本的な流れを確認できる範囲に絞る。</p>
           </div>
         </div>
 
@@ -317,15 +292,14 @@
         <table class="doc-table">
           <thead><tr><th>期間</th><th>フェーズ</th><th>内容</th></tr></thead>
           <tbody>
-          <tr class="template-row"><td>9/10〜9/12</td><td>企画</td><td>マーケットリサーチ・企画提案書・サービスコンセプト整理</td></tr>
-          <tr class="template-row"><td>9/13〜9/15</td><td>設計</td><td>ペルソナ・カスタマージャーニー・サイトマップ作成</td></tr>
-          <tr class="template-row"><td>9/16〜9/18</td><td>デザイン</td><td>ワイヤーフレーム・デザインガイドライン作成</td></tr>
-          <tr class="template-row"><td>9/19〜9/23</td><td>フロント実装</td><td>HTML / CSS / JavaScriptによるWebサイト構築</td></tr>
-          <tr class="template-row"><td>9/24</td><td>フロント確認・公開準備</td><td>レスポンシブ確認・リンク確認・GitHub Pages公開準備</td></tr>
-          <tr class="template-row"><td>9/25〜9/26</td><td>バックエンド設計</td><td>画面仕様書・DB設計書・管理機能設計</td></tr>
-          <tr class="template-row"><td>9/27〜9/29</td><td>バックエンド実装</td><td>Spring Bootによる管理画面・CRUD・ログイン機能の実装</td></tr>
-          <tr class="template-row"><td>9/30</td><td>テスト・最終調整</td><td>動作確認・バグ修正・ドキュメント整理・振り返り</td></tr>
-          <tr class="template-row"><td>10/1</td><td>最終提出</td><td>GitHub・プロジェクトアーカイブ・制作物の最終確認と提出</td></tr>
+          <tr class="template-row"><td>完了</td><td>企画・調査</td><td>企画提案書・市場調査・サービスコンセプト整理</td></tr>
+          <tr class="template-row"><td>完了</td><td>設計・デザイン</td><td>サイトマップ・ワイヤーフレーム・デザインガイドライン作成</td></tr>
+          <tr class="template-row"><td>完了</td><td>フロント実装</td><td>HTML / CSS / JavaScriptによるWebサイト構築</td></tr>
+          <tr class="template-row"><td>完了</td><td>公開</td><td>レスポンシブ確認・リンク確認・GitHub Pages公開</td></tr>
+          <tr class="template-row"><td>予定</td><td>バックエンド設計</td><td>予約画面仕様・予約項目・DB設計</td></tr>
+          <tr class="template-row"><td>予定</td><td>バックエンド実装</td><td>Spring Bootによる予約入力・確認・完了機能の実装</td></tr>
+          <tr class="template-row"><td>予定</td><td>テスト</td><td>予約入力→確認→完了の動作確認・バグ修正</td></tr>
+          <tr class="template-row"><td>予定</td><td>公開・提出</td><td>GitHub・Render等での公開、ドキュメント整理、最終提出</td></tr>
           </tbody>
         </table>
 
@@ -344,12 +318,12 @@
                 <li>「アクセス・周辺情報」ページの閲覧数</li>
                 <li>FAQページの閲覧数</li>
                 <li>「空き状況を見る」「ワークショップを予約する」CTAのクリック数</li>
-                <li>既存予約サービスへの遷移率</li>
+                <li>予約入力ページへの遷移率</li>
                 <li>検索・SNSなどの流入元</li>
                 <li>各ページの離脱率</li>
                 <li>トップページから予約までの遷移状況</li>
               </ul>
-              <p>特に、<strong>サイト訪問 → 香りづくり体験を知る → 自分の予定への組み込み方を確認する → アクセス・不安を確認する → 空き状況を見る → 既存予約サービスへ進む</strong>という流れの中で、どの段階で利用者が離脱しているかを確認する。</p>
+              <p>特に、<strong>サイト訪問 → 香りづくり体験を知る → 自分の予定への組み込み方を確認する → アクセス・不安を確認する → 予約入力 → 予約完了</strong>という流れの中で、どの段階で利用者が離脱しているかを確認する。</p>
               <p>予約数だけでなく、<strong>新しいWeb導線によって、これまで香水づくりを目的としていなかった利用者がinimuを発見し、体験への興味や予約行動につながったか</strong>を検証する。</p>
             </div>
           </div>
