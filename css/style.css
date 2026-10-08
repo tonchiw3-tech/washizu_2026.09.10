@@ -395,7 +395,7 @@ img {
 
 .experience-workshop-link {
   width: min(320px, 100%);
-  margin: 18px auto 0;
+  margin: 24px auto 0;
   background: #fff;
   color: var(--accent);
   border: 1px solid var(--accent);
