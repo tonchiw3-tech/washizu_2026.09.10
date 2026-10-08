@@ -342,6 +342,10 @@ img {
   padding-top: 100px
 }
 
+#experience .section-lead {
+  text-align: center;
+}
+
 .section-head-row {
   position: relative;
   display: flex;
