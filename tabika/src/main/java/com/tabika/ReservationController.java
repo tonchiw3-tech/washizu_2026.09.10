@@ -1,0 +1,8 @@
+package com.tabika;
+import java.time.LocalDate; import jakarta.servlet.http.HttpSession; import jakarta.validation.Valid; import org.springframework.stereotype.Controller; import org.springframework.ui.Model; import org.springframework.validation.BindingResult; import org.springframework.web.bind.annotation.*;
+@Controller public class ReservationController { private final ReservationService service; public ReservationController(ReservationService s){service=s;}
+ @GetMapping("/reservation") public String form(@RequestParam(required=false) LocalDate date, Model m){LocalDate d=date==null?LocalDate.now().plusDays(1):date; m.addAttribute("date",d);m.addAttribute("slots",service.available(d));m.addAttribute("reservation",new Reservation());return "reservation";}
+ @PostMapping("/reservation") public String submit(@Valid @ModelAttribute Reservation r, BindingResult b, @RequestParam LocalDate date, Model m){if(!b.hasErrors())try{service.reserve(r);return "reservation-complete";}catch(RuntimeException e){b.reject("reservation",e.getMessage());}m.addAttribute("date",date);m.addAttribute("slots",service.available(date));return "reservation";}
+ @GetMapping("/admin/reservations") public String admin(HttpSession session, Model m){if(!Boolean.TRUE.equals(session.getAttribute("admin")))return "redirect:/admin/login";m.addAttribute("reservations",service.allReservations());return "admin-reservations";}
+ @GetMapping("/admin/login") public String login(){return "admin-login";}
+ @PostMapping("/admin/login") public String login(@RequestParam String loginId,@RequestParam String password,HttpSession s){if("admin".equals(loginId)&&"tabika2026".equals(password)){s.setAttribute("admin",true);return "redirect:/admin/reservations";}return "redirect:/admin/login?error";}}
