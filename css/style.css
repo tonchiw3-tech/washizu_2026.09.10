@@ -1176,6 +1176,7 @@ img {
   width: min(180px, 45vw);
   height: auto;
   margin: 0 auto;
+  content: url("../assets/背景なしlogo.png");
 }
 
 .footer-tagline {
