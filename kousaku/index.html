@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>香作 予約・顧客管理</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header"><a href="#home" class="brand" data-screen="home"><span>香作</span><small>KOSAKU</small></a><div class="header-note">inimu fragrance workshop</div></header>
+  <main class="app-shell">
+    <section id="home" class="screen active" aria-labelledby="home-title">
+      <div class="hero-card"><p class="eyebrow">INIMU / FRAGRANCE WORKSHOP</p><h1 id="home-title">香作 予約・顧客管理</h1><p>香作ワークショップの予約と顧客情報を管理するアプリ</p></div>
+      <div class="entry-grid"><button class="entry-card customer" data-screen="booking"><span class="entry-icon">✦</span><strong>お客様用<br>予約する</strong><span>ワークショップを予約</span></button><button class="entry-card staff" data-screen="admin"><span class="entry-icon">▦</span><strong>スタッフ用<br>管理画面</strong><span>予約と顧客情報を確認</span></button></div>
+    </section>
+
+    <section id="booking" class="screen" aria-labelledby="booking-title"><div class="section-heading"><p class="eyebrow">CUSTOMER RESERVATION</p><h1 id="booking-title">ワークショップ予約</h1><p>土日祝開催・60分の香水づくり体験</p></div><div class="notice"><strong>集合時間のご案内</strong><br>各回、体験開始10分前までにお集まりください。</div>
+      <form id="booking-form" class="form-card"><div class="form-grid"><label>希望日<span class="required">必須</span><input id="date" name="date" type="date" required></label><label>希望時間<span class="required">必須</span><select id="slot" name="slot" required><option value="">選択してください</option><option value="1">11:00〜12:00（集合 10:50）</option><option value="2">13:00〜14:00（集合 12:50）</option><option value="3">15:00〜16:00（集合 14:50）</option></select></label><label>人数<span class="required">必須</span><input name="guests" type="number" min="1" max="20" value="1" required></label><label>氏名<span class="required">必須</span><input name="name" type="text" autocomplete="name" placeholder="香作 花子" required></label><label>メールアドレス<span class="required">必須</span><input name="email" type="email" autocomplete="email" placeholder="example@email.com" required></label><label>年代<span class="required">必須</span><select name="age" required><option value="">選択してください</option><option>10代</option><option>20代</option><option>30代</option><option>40代</option><option>50代</option><option>60代以上</option></select></label><label>初回 / リピーター<span class="required">必須</span><select name="visit" required><option value="">選択してください</option><option>初めて</option><option>2回目</option><option>3回以上</option></select></label><label>どこで知りましたか<span class="optional">任意</span><select name="source"><option value="">選択してください</option><option>Google検索</option><option>Instagram</option><option>口コミ</option><option>店頭</option><option>知人の紹介</option><option>その他</option></select></label><label class="full">備考<span class="optional">任意</span><textarea name="note" rows="4" placeholder="ご質問やご要望があればご記入ください"></textarea></label></div><button class="primary-button" type="submit">予約内容を確認する <span>→</span></button></form>
+    </section>
+
+    <section id="confirm" class="screen" aria-labelledby="confirm-title"><div class="section-heading"><p class="eyebrow">CHECK YOUR RESERVATION</p><h1 id="confirm-title">予約内容の確認</h1><p>内容をご確認のうえ、予約を確定してください。</p></div><div id="confirm-content" class="summary-card"></div><div class="button-row"><button class="secondary-button" data-screen="booking">修正する</button><button id="confirm-button" class="primary-button">予約を確定する <span>→</span></button></div></section>
+
+    <section id="complete" class="screen" aria-labelledby="complete-title"><div class="complete-card"><div class="success-mark">✓</div><p class="eyebrow">RESERVATION COMPLETE</p><h1 id="complete-title">ご予約を受け付けました。</h1><p>ご入力いただいたメールアドレスを控えとして、予約内容をご確認ください。</p><button class="primary-button" data-screen="home">トップへ戻る</button></div></section>
+
+    <section id="admin" class="screen" aria-labelledby="admin-title"><div class="section-heading admin-heading"><div><p class="eyebrow">STAFF DASHBOARD</p><h1 id="admin-title">スタッフ用管理画面</h1><p>予約状況と顧客情報を確認できます。</p></div><button class="secondary-button small" data-screen="booking">＋ 予約を登録</button></div><div id="metrics" class="metrics-grid"></div><div class="admin-layout"><div class="table-card"><div class="card-heading"><h2>予約一覧</h2><span id="reservation-count"></span></div><div id="reservation-list" class="reservation-list"></div></div><aside id="detail-panel" class="detail-panel" aria-live="polite"><p class="empty-state">一覧の「詳細を見る」から<br>予約内容を確認できます。</p></aside></div></section>
+  </main>
+  <footer>© inimu / 香作 予約・顧客管理 <span>デモ版・ブラウザ内保存</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
