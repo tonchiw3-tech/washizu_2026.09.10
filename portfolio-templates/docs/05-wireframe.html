@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -20,9 +20,9 @@
         <div class="doc-category">DOCUMENT 05</div>
         <h1 class="doc-title">ワイヤーフレーム</h1>
         <div class="doc-meta">
-          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-09-19</span>
+          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-10-09</span>
           <span><span class="material-symbols-outlined icon-sm">person</span> 作成者：鷲巣 友香</span>
-          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.0</span>
+          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 2.1</span>
         </div>
       </header>
 
@@ -226,71 +226,25 @@
 </section>
 <section class="section" id="sec4"><h2 class="section-title"><span class="section-icon">4</span> Webアプリケーション画面</h2>
 <p>本制作では、管理画面ではなく、利用者が条件を選択しておすすめの過ごし方を探すWebアプリケーションを制作する。</p>
-<p>そのため、テンプレートに記載されている「ログイン・一覧・登録・編集」ではなく、本企画に必要な画面をワイヤーフレームとして作成する。</p>
-<h3>① 条件選択画面</h3>
-<p>利用者が、</p>
-<h4>利用シーン</h4>
-<ul>
-<li>浅草観光</li>
-<li>ものづくり</li>
-<li>空き時間</li>
-<li>一人時間</li>
-<li>イベント前後</li>
-<li>雨の日</li>
-</ul>
-<h4>利用できる時間</h4>
-<ul>
-<li>2時間</li>
-<li>3時間</li>
-<li>半日</li>
-</ul>
-<h4>出発地点</h4>
-<ul>
-<li>浅草</li>
-<li>上野</li>
-<li>東京ドーム</li>
-<li>両国</li>
-<li>日本武道館</li>
-<li>東京国際フォーラム</li>
-</ul>
-<h4>天候</h4>
-<ul>
-<li>晴れ</li>
-<li>雨</li>
-</ul>
-<p>などの条件を選択できるようにする。</p>
-<p>画面下部に、</p>
-<p><strong>「おすすめを見る」</strong></p>
-<p>ボタンを配置する。</p>
-<h3>② おすすめプラン一覧画面</h3>
-<p>選択した条件に合わせて、</p>
-<ul>
-<li>モデルコース名</li>
-<li>所要時間</li>
-<li>香りづくり体験</li>
-<li>移動時間</li>
-<li>おすすめポイント</li>
-</ul>
-<p>をカード形式で表示する。</p>
-<p>利用者が複数の候補を比較し、自分に合ったプランを選べるようにする。</p>
-<h3>③ おすすめプラン詳細画面</h3>
-<p>選択したモデルコースについて、</p>
-<ul>
-<li>タイムスケジュール</li>
-<li>移動</li>
-<li>観光スポット</li>
-<li>香りづくり体験</li>
-<li>所要時間</li>
-<li>アクセス</li>
-</ul>
-<p>を詳しく表示する。</p>
-<p>最後に、</p>
-<p><strong>「空き状況を見る」</strong></p>
-<p>CTAを配置し、既存予約ページへつなげる。</p>
+<p>画面設計は、利用者が迷わず予約できる導線と、管理者が予約情報を確認できる最小限の管理機能を対象とする。個人情報を扱うため、管理画面は認証後のみ利用できる前提とする。</p>
+<h3>① 予約入力画面（利用者向け）</h3>
+<div class="fill-block"><div class="fill-label">予約入力画面 ワイヤーフレーム</div><p>画像配置予定（Figmaから書き出した画像は未配置）</p><p>保存先：<code>../images/wireframe/reservation-input-pc.png</code></p><pre><code>&lt;img src="../images/wireframe/reservation-input-pc.png" alt="予約入力画面 ワイヤーフレーム"&gt;</code></pre></div>
+<p>予約日、予約時間、参加人数、氏名、メールアドレス、電話番号、備考を入力する。必須項目と入力エラーを明確に表示し、入力途中で迷わない構成にする。</p>
+<h3>② 予約内容確認画面（利用者向け）</h3>
+<div class="fill-block"><div class="fill-label">予約内容確認画面 ワイヤーフレーム</div><p>画像配置予定（Figmaから書き出した画像は未配置）</p><p>保存先：<code>../images/wireframe/reservation-confirm-pc.png</code></p><pre><code>&lt;img src="../images/wireframe/reservation-confirm-pc.png" alt="予約内容確認画面 ワイヤーフレーム"&gt;</code></pre></div>
+<p>入力内容を一覧で確認できるようにし、「修正する」と「予約を確定する」を分けて配置する。確定前に誤入力を発見できることで、予約ミスを防ぐ。</p>
+<h3>③ 予約完了画面（利用者向け）</h3>
+<div class="fill-block"><div class="fill-label">予約完了画面 ワイヤーフレーム</div><p>画像配置予定（Figmaから書き出した画像は未配置）</p><p>保存先：<code>../images/wireframe/reservation-complete-pc.png</code></p><pre><code>&lt;img src="../images/wireframe/reservation-complete-pc.png" alt="予約完了画面 ワイヤーフレーム"&gt;</code></pre></div>
+<p>予約完了メッセージ、予約内容、予約番号を表示し、利用者が処理結果を確実に確認できるようにする。トップページへ戻る導線も設ける。</p>
+<h3>④ 管理者ログイン画面</h3>
+<div class="fill-block"><div class="fill-label">管理者ログイン画面 ワイヤーフレーム</div><p>画像配置予定（Figmaから書き出した画像は未配置）</p><p>保存先：<code>../images/wireframe/admin-login-pc.png</code></p><pre><code>&lt;img src="../images/wireframe/admin-login-pc.png" alt="管理者ログイン画面 ワイヤーフレーム"&gt;</code></pre></div>
+<p>メールアドレスまたはユーザー名とパスワードを入力する。予約情報を扱うため、管理画面への入口を認証で保護する。</p>
+<h3>⑤ 予約一覧・管理画面</h3>
+<div class="fill-block"><div class="fill-label">予約一覧・管理画面 ワイヤーフレーム</div><p>画像配置予定（Figmaから書き出した画像は未配置）</p><p>保存先：<code>../images/wireframe/admin-reservations-pc.png</code></p><pre><code>&lt;img src="../images/wireframe/admin-reservations-pc.png" alt="予約一覧・管理画面 ワイヤーフレーム"&gt;</code></pre></div>
+<p>予約ID、予約日、予約時間、氏名、人数、予約状況を一覧表示し、日付検索・キーワード検索・並び替え・ページネーションを配置する。行を選択すると予約詳細を確認できる。</p>
 <h3>Webアプリケーションの基本フロー</h3>
-<p><strong>トップページ → 利用シーンを選ぶ → 時間・出発地点・天候を選ぶ → おすすめプラン一覧 → プラン詳細 → 香りづくり体験を確認 → 空き状況を見る → 既存予約ページ</strong></p>
-<p>という流れとする。</p>
-</section>
+<p><strong>トップページ → 予約する → 予約入力 → 予約内容確認 → 予約完了</strong></p>
+<p>管理者は<strong>ログイン → 予約一覧 → 予約詳細</strong>の流れで予約情報を確認する。利用者向け画面と管理者向け画面を分け、予約の成立と管理のしやすさを両立する。</p></section>
 <section class="section" id="sec5"><h2 class="section-title"><span class="section-icon">5</span> スマートフォン版</h2>
 <p>トップページを中心に、スマートフォン版のワイヤーフレームを作成する。</p>
 <div class="fill-block"><div class="fill-label">トップページ スマートフォン版 ワイヤーフレーム</div><p>画像配置予定（Figmaから書き出した画像は未配置）</p><p>保存先：<code>../images/wireframe/top-sp.png</code></p><pre><code>&lt;img src="../images/wireframe/top-sp.png" alt="トップページ スマートフォン版 ワイヤーフレーム"&gt;</code></pre></div>
