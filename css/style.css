@@ -386,6 +386,9 @@ img {
   align-items: start;
 }
 
+.experience-carousel-wrap { position: relative; }
+.experience-arrow { display: none; }
+
 .experience-cta {
   position: relative;
   z-index: 2;
@@ -3026,6 +3029,11 @@ img {
   body {
     overflow-x: hidden;
   }
+
+  .experience-arrow { display: grid; place-items: center; position: absolute; z-index: 2; top: 50%; width: 40px; height: 40px; padding: 0 0 4px; border: 1px solid var(--line); border-radius: 50%; background: rgba(255,255,255,.9); color: var(--accent); font-size: 30px; line-height: 1; transform: translateY(-50%); cursor: pointer; }
+  .experience-arrow-prev { left: 8px; }
+  .experience-arrow-next { right: 8px; }
+  .experience-arrow:disabled { opacity: .3; cursor: default; }
 
   .experience-panel {
     display: flex;

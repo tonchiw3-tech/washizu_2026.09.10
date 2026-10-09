@@ -101,6 +101,8 @@
   const initExperienceCarousel = () => {
     const track = document.querySelector('#experience-carousel');
     const pagination = document.querySelector('.experience-pagination');
+    const previous = document.querySelector('.experience-arrow-prev');
+    const next = document.querySelector('.experience-arrow-next');
     if (!track || !pagination) return;
     const cards = [...track.querySelectorAll('.step-card')];
     if (!cards.length) return;
@@ -131,6 +133,20 @@
       pagination.append(dot);
       return dot;
     });
+    const goTo = (index) => {
+      if (!mobile.matches) return;
+      const target = Math.max(0, Math.min(index, cards.length - 1));
+      track.scrollTo({ left: position(cards[target]), behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+      setActive(target);
+    };
+    previous?.addEventListener('click', () => goTo(activeIndex - 1));
+    next?.addEventListener('click', () => goTo(activeIndex + 1));
+    track.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        goTo(activeIndex + (event.key === 'ArrowRight' ? 1 : -1));
+      }
+    });
     const update = () => {
       frame = 0;
       if (!mobile.matches) return;
@@ -139,6 +155,8 @@
         if (Math.abs(position(card) - track.scrollLeft) < Math.abs(position(cards[nearest]) - track.scrollLeft)) nearest = index;
       });
       setActive(nearest);
+      if (previous) previous.disabled = !mobile.matches || nearest === 0;
+      if (next) next.disabled = !mobile.matches || nearest === cards.length - 1;
     };
     track.addEventListener('scroll', () => {
       if (!frame) frame = window.requestAnimationFrame(update);
@@ -155,6 +173,8 @@
       track.tabIndex = mobile.matches ? 0 : -1;
       track.scrollTo({ left: mobile.matches ? position(cards[activeIndex]) : 0, behavior: 'instant' });
       setActive(activeIndex);
+      if (previous) previous.disabled = !mobile.matches || activeIndex === 0;
+      if (next) next.disabled = !mobile.matches || activeIndex === cards.length - 1;
     };
     mobile.addEventListener('change', syncLayout);
     window.addEventListener('resize', syncLayout);
