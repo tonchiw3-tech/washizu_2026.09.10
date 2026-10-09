@@ -1,104 +1,58 @@
-# DOCUMENT 08 DB設計書（予約システムMust）
+# DOCUMENT 08
 
-## 1. 方針
+# データベース設計書
 
-DOCUMENT 07のMust要件（予約入力、空き状況確認、予約登録）を対象とする。既存の`model_course`等のテーブル・データは変更せず、予約機能に必要な新規テーブルのみを追加する。氏名・メールアドレス等の個人情報は管理者画面の認証済みセッションでのみ表示する。
+**対象システム：香作（こうさく）／香作室**  
+**作成日：2026年10月9日**  
+**作成者：鷲巣 友香**  
+**Ver 1.0（現行実装確認前）**
+
+## 1. ER図
+
+現行のデータベース実装は未確認のため、ER図は未確定です。データベースを使用していない場合、テーブル間のリレーションは存在せず、ER図は対象外とします。
+
+利用者（PC・スマートフォン） → 香作Webサイト（ワークショップ紹介、体験情報、アクセス、FAQ、予約案内） → HTML / CSS / JavaScript
 
 ## 2. テーブル定義
 
-### reservation_slot（予約枠）
+実際にデータベースで管理している情報を対象とします。現時点ではMySQLのテーブル構造やSQLファイルを確認できていないため、テーブル名・カラム名・主キー・外部キーは未確定です。
 
-|カラム|型|キー|制約|
-|---|---|---|---|
-|id|BIGINT|PK|AUTO_INCREMENT|
-|reserved_date|DATE||NOT NULL|
-|start_time|TIME||NOT NULL|
-|capacity|INT||NOT NULL, 1以上|
-|created_at|TIMESTAMP||NOT NULL DEFAULT CURRENT_TIMESTAMP|
-|updated_at|TIMESTAMP||NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP|
+| 項目 | 現在の確認状況 |
+| :--- | :--- |
+| データベース管理システム | 未確認 |
+| データベース名 | 未確認 |
+| テーブル数 | 未確認 |
+| 主キー（PK） | 未確認 |
+| 外部キー（FK） | 未確認 |
+| 作成日時・更新日時 | 未確認 |
+| ログインユーザー管理 | 実装未確認 |
+| 予約データ管理 | 実装未確認 |
 
-`reserved_date, start_time` はUNIQUE。定員は枠単位で管理する。
+HTMLやJavaScriptに直接記載した紹介文、料金、画像、FAQはデータベースのテーブルではありません。DBを使用しない場合、テーブル定義は「該当なし」とします。
 
-### reservation（予約）
+## 3. インデックス設計
 
-|カラム|型|キー|制約|
-|---|---|---|---|
-|id|BIGINT|PK|AUTO_INCREMENT|
-|slot_id|BIGINT|FK|reservation_slot(id), NOT NULL|
-|guest_name|VARCHAR(100)||NOT NULL|
-|email|VARCHAR(255)||NOT NULL|
-|guest_count|INT||NOT NULL, 1以上|
-|note|VARCHAR(1000)||NULL|
-|status|VARCHAR(20)||NOT NULL DEFAULT 'CONFIRMED'|
-|created_at|TIMESTAMP||NOT NULL DEFAULT CURRENT_TIMESTAMP|
+データベースのテーブルと検索処理が未確認であるため、インデックスは未定義です。DBを使用しない構成の場合は対象外です。
 
-同一枠・同一メールアドレス・有効状態の組合せをUNIQUEとし、二重登録を防止する。取消時は物理削除せず`CANCELLED`とする。
+| テーブル名 | インデックス名 | 対象カラム | 種類 | 設定理由 |
+| :--- | :--- | :--- | :--- | :--- |
+| 未確定 | 未確定 | 未確定 | 未確定 | DB構造確認後に判断 |
 
-## 3. ER図・リレーション
+## 4. 初期データ
 
-```mermaid
-erDiagram
-  RESERVATION_SLOT ||--o{ RESERVATION : "has"
-  RESERVATION_SLOT {
-    BIGINT id PK
-    DATE reserved_date
-    TIME start_time
-    INT capacity
-  }
-  RESERVATION {
-    BIGINT id PK
-    BIGINT slot_id FK
-    VARCHAR guest_name
-    VARCHAR email
-    INT guest_count
-    VARCHAR status
-  }
-```
+SQLによる初期データ投入処理の有無は未確認です。対象候補はワークショップ情報、料金・所要時間、画像情報、アクセス情報、FAQです。現時点では作成対象テーブルが未確定のため、INSERT文は記載しません。
 
-予約枠1件に対して予約は0件以上。残席は `capacity - SUM(guest_count)` で算出する。
+## 計画変更に伴う設計上の整理
 
-## 4. CREATE TABLE
+| 項目 | 当初計画（旅香） | 変更後（香作） |
+| :--- | :--- | :--- |
+| アプリの目的 | 観光条件からおすすめプランを検索 | 香りづくり体験の紹介 |
+| データベース | MySQLによるプラン管理を想定 | 実装確認が必要 |
+| 条件検索 | 利用シーン・時間・場所・天候 | 現行実装への採用は未確認 |
+| 外部API | 天気情報などを利用する計画 | 外部連携を前提としない |
+| 予約情報 | 既存予約サービスとの接続を計画 | データ連携は対象外 |
+| ER図・SQL | 当初の構想段階 | 実装に合わせて確定 |
 
-```sql
-CREATE TABLE IF NOT EXISTS reservation_slot (
-  id BIGINT NOT NULL AUTO_INCREMENT,
-  reserved_date DATE NOT NULL,
-  start_time TIME NOT NULL,
-  capacity INT NOT NULL,
-  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (id), UNIQUE KEY uq_reservation_slot_time (reserved_date, start_time),
-  CONSTRAINT chk_reservation_slot_capacity CHECK (capacity > 0)
-) ENGINE=InnoDB;
+## まとめ
 
-CREATE TABLE IF NOT EXISTS reservation (
-  id BIGINT NOT NULL AUTO_INCREMENT,
-  slot_id BIGINT NOT NULL,
-  guest_name VARCHAR(100) NOT NULL,
-  email VARCHAR(255) NOT NULL,
-  guest_count INT NOT NULL,
-  note VARCHAR(1000), status VARCHAR(20) NOT NULL DEFAULT 'CONFIRMED',
-  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (id),
-  UNIQUE KEY uq_reservation_active (slot_id, email, status),
-  KEY idx_reservation_slot_status (slot_id, status),
-  CONSTRAINT fk_reservation_slot FOREIGN KEY (slot_id) REFERENCES reservation_slot(id),
-  CONSTRAINT chk_reservation_guest_count CHECK (guest_count > 0),
-  CONSTRAINT chk_reservation_status CHECK (status IN ('CONFIRMED','CANCELLED'))
-) ENGINE=InnoDB;
-```
-
-## 5. 初期データ
-
-```sql
-INSERT INTO reservation_slot (reserved_date, start_time, capacity) VALUES
-('2026-10-10','11:00:00',5), ('2026-10-10','13:00:00',5), ('2026-10-10','15:00:00',5);
-```
-
-## 6. MyBatis Mapper設計
-
-`ReservationSlotMapper`：枠一覧、枠ID取得、残席数取得、予約枠の行ロック取得。
-
-`ReservationMapper`：有効予約の人数集計、メール重複確認、予約登録、管理者向け個人情報一覧。
-
-登録処理はServiceの`@Transactional`内で枠を`SELECT ... FOR UPDATE`し、重複確認と定員確認後にINSERTする。これにより同時リクエストでも定員超過を防止する。
+本書は計画変更後の「香作」を対象とします。実装していないデータベースや管理機能を、実装済みとして記載しないことを基本方針とします。
