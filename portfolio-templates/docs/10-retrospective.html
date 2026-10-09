@@ -3,198 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>振り返り・技術記事 -  プロジェクトアーカイブ</title>
+  <title>振り返り・技術記事 - プロジェクトアーカイブ</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <button class="hamburger" aria-label="メニュー">
-    <span></span><span></span><span></span>
-  </button>
-
-  <div class="page-wrapper">
-  <aside class="sidebar" data-nav-level="docs"></aside>
-
-    <main class="main-content">
-      <header class="doc-header">
-        <div class="doc-category">DOCUMENT 10</div>
-        <h1 class="doc-title">振り返り・技術記事</h1>
-        <div class="doc-meta">
-          <span><span class="material-symbols-outlined icon-sm">calendar_today</span> 作成日：2026-XX-XX</span>
-          <span><span class="material-symbols-outlined icon-sm">person</span> 作成者：（氏名を入力）</span>
-          <span><span class="material-symbols-outlined icon-sm">push_pin</span> Ver 1.0</span>
-        </div>
-      </header>
-
-      <div class="doc-body">
-
-        <div class="external-link-box">
-          <div class="external-link-box-title">
-            <span class="material-symbols-outlined">link</span>
-            詳細ドキュメント（Google スプレッドシート）
-          </div>
-          <div class="external-link-box-desc">
-            このページは概要のみを記載しています。詳細な振り返りは以下のリンクからご確認ください。
-          </div>
-          <div class="external-link-input">
-            <input type="text" placeholder="https://docs.google.com/spreadsheets/d/xxxxx" id="external-link-10">
-            <a href="#" class="link-btn" onclick="window.open(document.getElementById('external-link-10').value || 'https://docs.google.com', '_blank'); return false;">
-              <span class="material-symbols-outlined">open_in_new</span>
-              開く
-            </a>
-          </div>
-        </div>
-
-        <div class="toc">
-          <div class="toc-title">目次</div>
-          <ol class="toc-list">
-            <li><a href="#sec1">プロジェクト振り返り</a></li>
-            <li><a href="#sec2">技術記事</a></li>
-            <li><a href="#sec3">自己評価</a></li>
-            <li><a href="#sec4">今後の学習計画</a></li>
-          </ol>
-        </div>
-
-        <section class="section" id="sec1">
-          <h2 class="section-title"><span class="section-icon">1</span> プロジェクト振り返り</h2>
-
-        <div class="fill-block">
-          <div class="fill-label">企画・設計段階の振り返り <span class="required">必須</span></div>
-          <div class="fill-hint">マーケットリサーチ、ペルソナ設計、情報設計について</div>
-          <div class="fill-content">
-            <p>マーケットリサーチでは、最初は「ワークショップの予約数を増やす」という課題に対して、施策の方向性が広がりすぎてしまい、企画の軸を決めることに苦労しました。競合分析や自社データを整理する中で、ワークショップ自体には既に実績があり、課題は体験そのものよりも、ユーザーがどのように体験を知り予約へ進むかというWeb導線にあると考えました。ペルソナや利用シーンを整理したことで、「浅草観光」「空き時間」「一人時間」「雨天」などから体験へつなげる情報設計ができました。次回は、事実・仮説・施策を早い段階で分け、企画の軸をより早く定めたいです。</p>
-          </div>
-        </div>
-        <div class="fill-block">
-          <div class="fill-label">デザイン段階の振り返り <span class="required">必須</span></div>
-          <div class="fill-hint">デザインガイドライン、ワイヤーフレーム、Figma作業について</div>
-          <div class="fill-content">
-            <p>デザイン段階では、ワイヤーフレームを作成する中で、見た目だけでなく、利用者がどの順番で情報を知りたいかを考えて配置することを意識しました。特に、体験内容、利用シーン、アクセス、FAQ、予約CTAまでの流れを整理し、迷わず予約へ進める画面構成を目指しました。一方で、Figmaではフレーム、余白、文字サイズ、画像配置などの調整に時間がかかりました。また、デザイン画像では良く見えても、実際のWeb画面では印象が変わることも学びました。今後はAuto Layoutやコンポーネントを活用し、修正しやすく、実装しやすいデザインデータを作れるようになりたいです。</p>
-          </div>
-        </div>
-        <div class="fill-block">
-          <div class="fill-label">フロントエンド実装の振り返り <span class="required">必須</span></div>
-          <div class="fill-hint">HTML/CSS/JavaScript の実装について</div>
-          <div class="fill-content">
-            <p>HTML/CSS/JavaScriptの実装では、Figmaで作成したデザインをWeb上で再現することの難しさを感じました。特に、文字の重なり、画像やアイコンの大きさ、余白、住所の折り返しなど、細かな部分を一つずつ確認しながら修正しました。また、AIへ修正を依頼するときも、「見た目がおかしい」という曖昧な指示ではなく、「どの要素を、どのように変えたいか」を具体的に伝える必要があると学びました。今後はHTMLの構造とCSSの役割をより理解し、AIが作成したコードでも、自分で問題箇所を見つけて修正できる力を身につけたいです。</p>
-          </div>
-        </div>
-        <div class="fill-block">
-          <div class="fill-label">バックエンド実装の振り返り <span class="required">必須</span></div>
-          <div class="fill-hint">Java/Spring Boot の実装について</div>
-          <div class="fill-content">
-            <p>今回の「旅香 - TABIKA -」では、フロントエンド制作を優先したため、Java/Spring Bootを使ったバックエンド実装までは行いませんでした。ただし、企画段階では、利用シーン、空き時間、出発地点などの条件からおすすめプランを表示するWebアプリ機能を想定しました。これまでの学習では、Spring Boot、MyBatis、MySQLを使用したTodoアプリを制作し、画面からデータベースまで処理がつながる仕組みを経験しています。今後は、その知識を活かして旅香にもバックエンドを追加し、条件検索とデータベースを連携させたいです。今回、実装範囲を絞る重要性と、次の開発段階を見据えて設計することの大切さを学びました。</p>
-          </div>
-        </div>
-        <div class="fill-block">
-          <div class="fill-label">全体を通しての学び <span class="required">必須</span></div>
-          <div class="fill-hint">32日間のプロジェクト全体を通して学んだこと</div>
-          <div class="fill-content">
-            <p>32日間のプロジェクトを通して最も成長したのは、制作を始める前に「誰の、どのような課題を、どのような方法で解決するか」を考える力です。一番苦労したのは、マーケットリサーチ、ペルソナ、サイト構造、Figma、フロントエンド実装までを一貫した考え方でつなげることでした。プロンプトプログラミングでは、AIに任せれば完成するのではなく、指示する側が目的や修正箇所を具体的に理解していることが重要だと感じました。特にHTML/CSS、Spring Boot、Git/GitHubのチュートリアルで学んだ内容が、実際の制作を通してつながりました。今後はAIの出力をそのまま使うのではなく、自分で内容を確認・判断・修正できる力を伸ばし、利用者と現場双方にとって使いやすいサービスを作れるようになりたいです。</p>
-          </div>
-        </div>
-
-        </section>
-
-        <section class="section" id="sec2">
-          <h2 class="section-title"><span class="section-icon">2</span> 技術記事</h2>
-
-
-          <div class="fill-block">
-            <div class="fill-label">技術記事タイトル <span class="required">必須</span></div>
-            <div class="fill-content"><p><strong>Git/GitHubでWeb制作物をコミット・プッシュするまで ― 初学者がつまずいたポイントと解決方法</strong></p></div>
-          </div>
-
-        <div class="fill-block">
-          <div class="fill-label">記事本文 <span class="required">必須</span></div>
-          <div class="fill-hint">上記の構成に沿って記事本文を記載。コードブロックを含めてください。</div>
-          <div class="fill-content">
-            <h3>1. はじめに</h3>
-            <p>卒業制作では、HTML/CSS/JavaScriptで制作したWebサイトをGitHubへ登録し、提出する必要がありました。授業の中でGitやGitHubについて学習した経験はありましたが、実際に自分の制作物を更新しながら操作すると、思っていた以上に分からないことが多くありました。</p>
-            <p>特に困ったのは、変更したファイルがソース管理に表示されない、コミットしたつもりでもGitHubに反映されない、どのリポジトリに接続されているのか分からない、VS CodeとGitHubの関係が分からなくなる、といった問題です。</p>
-            <h3>2. 課題</h3>
-            <p>最初に分かりにくかったのは、「保存」「コミット」「プッシュ」の違いでした。VS Codeでファイルを保存するとパソコン上のファイルは更新されますが、その時点ではGitHubには何も送られていません。Gitでは、変更、ステージング、コミット、プッシュの順で作業します。</p>
-            <h3>3. 調査</h3>
-            <p>問題が起きたときは、VS Codeの画面だけで判断せず、ターミナルでGitの状態を確認しました。</p>
-            <pre><code># 現在のGitの状態を確認する
-git status
-
-# GitHubの接続先を確認する
-git remote -v
-
-# 現在のブランチを確認する
-git branch</code></pre>
-            <p><code>git status</code>では変更されたファイルを、<code>git remote -v</code>では接続先を、<code>git branch</code>では現在のブランチを確認できます。</p>
-            <h3>4. 実装</h3>
-            <pre><code># 1. 現在の変更内容を確認
-git status
-
-# 2. 変更したファイルをステージング
-git add .
-
-# 3. 変更内容をコミット
-git commit -m "Webサイトのデザインを修正"
-
-# 4. GitHubへ送信
-git push</code></pre>
-            <p><code>git add .</code>は変更を次のコミットに含める操作、<code>git commit</code>はローカルへ記録する操作、<code>git push</code>はGitHubへ送信する操作です。保存しただけではGitHubには送られません。</p>
-            <h3>5. 結果</h3>
-            <p>「修正する → 状態を確認する → ステージングする → コミットする → プッシュする → GitHubで確認する」という流れを意識することで、作業のどの段階にいるのかが分かりやすくなりました。GitHubは単なる提出先ではなく、制作物の変更履歴を保存できる場所だと理解できました。</p>
-            <h3>6. 学び</h3>
-            <p>エラーやトラブルが発生したときは、すぐに操作を繰り返すのではなく、現在の状態を確認することが重要だと学びました。AIに質問するときも、どの画面で止まっているか、どの操作まで行ったか、<code>git status</code>の表示、エラーメッセージを伝えた方が、より正確な回答を得られます。今後はブランチ、マージ、コンフリクトなども練習したいです。</p>
-          </div>
-        </div>
-
-        </section>
-
-        <section class="section" id="sec3">
-          <h2 class="section-title"><span class="section-icon">3</span> 自己評価</h2>
-
-          <div class="fill-block">
-            <div class="fill-label">スキル自己評価 <span class="required">必須</span></div>
-            <div class="fill-hint">各スキルを5段階（★）で自己評価し、コメントを記載してください</div>
-        <table class="doc-table">
-          <thead><tr><th>スキル領域</th><th>自己評価</th><th>コメント</th></tr></thead>
-          <tbody>
-          <tr><td>HTML/CSS</td><td>★★★☆☆</td><td>基本構造とデザイン調整ができる。レスポンシブ対応やCSS整理が課題。</td></tr>
-          <tr><td>JavaScript</td><td>★★☆☆☆</td><td>基本的な表示切り替えを理解している。処理を自力で組み立てる力が課題。</td></tr>
-          <tr><td>Java</td><td>★★★☆☆</td><td>基本文法やクラス、メソッドを学習した。自力で書く練習が必要。</td></tr>
-          <tr><td>Spring Boot</td><td>★★★☆☆</td><td>Controller、Service、Mapper、DB連携の基本構造を学習した。</td></tr>
-          <tr><td>データベース</td><td>★★★☆☆</td><td>MySQL、SQL、CRUDを経験した。テーブル設計をさらに学びたい。</td></tr>
-          <tr><td>UI/UXデザイン</td><td>★★★★☆</td><td>ペルソナやユーザーフローから導線と情報配置を考えられる。</td></tr>
-          <tr><td>Figma</td><td>★★★☆☆</td><td>ワイヤーフレームとWebデザインを作成できる。Auto Layoutが課題。</td></tr>
-          <tr><td>Git/GitHub</td><td>★★☆☆☆</td><td>コミット、プッシュ、公開を経験した。エラー原因の判断が課題。</td></tr>
-          <tr><td>AI活用（プロンプト）</td><td>★★★★☆</td><td>企画整理、文章、コード生成、修正指示に活用できる。</td></tr>
-          <tr><td>マーケティング</td><td>★★★★☆</td><td>3C、SWOT、STP、4P/4C、競合分析をWeb施策につなげられる。</td></tr>
-          </tbody>
-        </table>
-
-          </div>
-        </section>
-
-        <section class="section" id="sec4">
-          <h2 class="section-title"><span class="section-icon">4</span> 今後の学習計画</h2>
-
-        <div class="fill-block">
-          <div class="fill-label">今後学びたい技術・分野 <span class="required">必須</span></div>
-          <div class="fill-hint">今後のキャリアに向けて学習したい技術やスキル</div>
-          <div class="fill-content">
-            <p>今後は、フロントエンド、Java/Spring Boot、データベース、UI/UX、AI活用を一つのWebサービスとして組み合わせて開発できる力を身につけたいです。特に「旅香 - TABIKA -」を発展させ、バックエンドまで含むWebアプリとして完成させます。</p>
-            <h3>短期：1か月以内</h3>
-            <p>Java／Spring Bootで、利用シーン、空き時間、出発地点に応じておすすめプランを表示する仕組みを作ります。MySQLへの登録、データ取得、条件検索、画面表示、フロントエンド連携を目指します。</p>
-            <h3>中期：半年〜1年</h3>
-            <p>ログイン・認証、データベース設計、REST API、バリデーション、例外処理、外部API連携、テスト、セキュリティを学習します。利用者の使いやすさと業務課題の解決も意識して設計できるようになりたいです。</p>
-            <h3>推奨する学習リソース</h3>
-            <p>授業資料やTodoアプリを復習し、MDN Web Docs、Spring Boot公式ドキュメント、MySQL公式ドキュメント、GitHub Docs、Java公式ドキュメントなどの一次情報を確認します。自分で考える → AIに相談する → 出力を確認する → 動かす → エラーを確認する → 自分の言葉で説明する、という学習方法を続けます。</p>
-          </div>
-        </div>
-
-        </section>
-
-      </div>
-    </main>
-  </div>
-
-  <script src="../js/main.js"></script>
+<button class="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+<div class="page-wrapper"><aside class="sidebar" data-nav-level="docs"></aside><main class="main-content">
+<header class="doc-header"><div class="doc-category">DOCUMENT 10</div><h1 class="doc-title">振り返り・技術記事</h1><div class="doc-meta"><span>📅 2026-10-09</span><span>👤 鷲巣 友香</span><span>📌 Ver 1.0</span></div></header>
+<div class="doc-body">
+<div class="toc"><div class="toc-title">目次</div><ol class="toc-list"><li><a href="#sec1">プロジェクト振り返り</a></li><li><a href="#sec2">技術記事</a></li><li><a href="#sec3">自己評価</a></li><li><a href="#sec4">今後の学習計画</a></li></ol></div>
+<section class="section" id="sec1"><h2 class="section-title"><span class="section-icon">1</span> プロジェクト振り返り</h2>
+<div class="fill-block"><div class="fill-label">企画・設計段階の振り返り <span class="required">必須</span></div><div class="fill-content"><p>当初は「旅香 - TABIKA -」として、観光やイベントの前後に生まれる空き時間を活用し、香りづくり体験を提案するサービスを企画しました。市場調査、競合分析、SWOT分析、4C分析、ペルソナ設計を行い、利用者が体験を知り、予約まで進む導線を整理しました。</p><p>制作中に外部サービスとの連携や実装期間に課題があることが分かり、実現可能性を見直しました。その結果、サービスの核を「香りをつくる体験」へ整理し、現在の「香作（こうさく）」に計画を変更しました。企画の魅力だけでなく、実装可能性と制作期間を早期に確認する重要性を学びました。</p></div></div>
+<div class="fill-block"><div class="fill-label">デザイン段階の振り返り <span class="required">必須</span></div><div class="fill-content"><p>Figmaでサイトマップ、ワイヤーフレーム、画面構成を作成しました。利用者が最初に必要とする情報を考え、体験内容から予約まで迷わず進める導線を意識しました。実際のブラウザ表示で画像、文字、アイコン、住所表示を確認しながら修正し、UI/UXは見た目だけでなく情報の伝わりやすさと操作性が重要だと学びました。</p></div></div>
+<div class="fill-block"><div class="fill-label">フロントエンド実装の振り返り <span class="required">必須</span></div><div class="fill-content"><p>HTMLで構造を作り、CSSでレイアウトや配色を調整し、JavaScriptで画面操作を実装しました。画像やファイルの参照先、PCとスマートフォンの表示差、修正内容が公開ページに反映されない問題に苦労しました。VS Code、Codex、GitHub、SourceTreeを組み合わせ、動作確認、修正、バージョン管理までが開発工程であることを学びました。</p></div></div>
+<div class="fill-block"><div class="fill-label">バックエンド実装の振り返り <span class="required">必須</span></div><div class="fill-content"><p>職業訓練ではJava・Spring Boot・MySQLを学びました。一方、今回の卒業制作では静的なWebサイト制作を優先したため、Java・Spring Boot・MySQLによるバックエンド機能や外部サービス連携は実装していません。実装した内容と、今後実装したい内容を区別して考える重要性を学びました。</p></div></div>
+<div class="fill-block"><div class="fill-label">全体を通しての学び <span class="required">必須</span></div><div class="fill-content"><p>32日間の制作で、課題を整理し、必要な機能を考え、画面として形にする力が成長しました。AIの回答と実際のファイル変更が一致するとは限らないため、ソースコード、ブラウザ表示、Gitの変更履歴を確認し、修正と検証を繰り返すことが開発だと学びました。</p></div></div></section>
+<section class="section" id="sec2"><h2 class="section-title"><span class="section-icon">2</span> 技術記事</h2><div class="fill-block"><div class="fill-label">技術記事タイトル</div><div class="fill-content"><p><strong>GitHub PagesでWebサイトが正しく表示されない原因と解決方法――ファイル配置と相対パスを学ぶ</strong></p><h3>はじめに</h3><p>卒業制作ではHTML・CSS・JavaScriptでWebサイトを制作し、GitHub Pagesで公開しました。ローカルでは表示できても、公開先でトップページが表示されなかったり、修正内容が反映されなかったりする問題がありました。</p><h3>原因と修正</h3><p>GitHub Pagesでは、公開元に設定したフォルダと、そこにある<code>index.html</code>の配置が重要です。公開元がリポジトリのルートであれば、トップページの<code>index.html</code>もルートに配置します。CSS・JavaScript・画像はHTMLから見た相対パスにします。例：<code>./css/style.css</code>、<code>./js/main.js</code>、<code>./assets/main.jpg</code>。</p><h3>結果と学び</h3><p>サイト一式をサブフォルダからリポジトリ直下へ移動し、関連ファイルの階層をそろえました。ローカルでの確認、GitHubへの反映、公開サイトでの確認はそれぞれ異なる状態です。AIに修正を依頼した場合も、実際のファイル、ブラウザ表示、Gitの変更履歴を確認することが重要だと学びました。</p></div></div></section>
+<section class="section" id="sec3"><h2 class="section-title"><span class="section-icon">3</span> 自己評価</h2><div class="fill-block"><div class="fill-content"><table class="doc-table"><thead><tr><th>スキル領域</th><th>評価</th><th>コメント</th></tr></thead><tbody><tr><td>HTML/CSS</td><td>★★★☆☆</td><td>基本構造とレイアウト調整ができる。</td></tr><tr><td>JavaScript</td><td>★★☆☆☆</td><td>基本動作を理解し始めた。</td></tr><tr><td>Java / Spring Boot</td><td>★★☆☆☆</td><td>基礎を学習した。実装経験を増やしたい。</td></tr><tr><td>データベース</td><td>★★☆☆☆</td><td>MySQL・SQLの基本操作を学んだ。</td></tr><tr><td>UI/UX・Figma</td><td>★★★☆☆</td><td>導線設計とワイヤーフレーム作成を経験した。</td></tr><tr><td>Git/GitHub</td><td>★★☆☆☆</td><td>コミット、プッシュ、Pages公開を経験した。</td></tr><tr><td>AI活用</td><td>★★★☆☆</td><td>コード修正依頼と結果の検証を実践した。</td></tr><tr><td>マーケティング</td><td>★★★☆☆</td><td>市場調査、競合分析、ペルソナ設計に取り組んだ。</td></tr></tbody></table></div></div></section>
+<section class="section" id="sec4"><h2 class="section-title"><span class="section-icon">4</span> 今後の学習計画</h2><div class="fill-block"><div class="fill-content"><p>今後はJava・Spring Boot・データベースを活用したWebアプリケーション開発の力を高めます。前職の看護経験を活かし、医療現場の業務改善や医療DXに関わるシステム開発にも挑戦したいです。</p><h3>短期目標（1か月以内）</h3><ul><li>HTML・CSS・JavaScript、Git・GitHubの基礎を復習する。</li><li>Java・Spring BootのWebアプリ開発を復習する。</li><li>MySQLで登録・一覧・更新・削除を実装する。</li><li>READMEと仕様書を整理する。</li></ul><h3>中期目標（半年〜1年）</h3><ul><li>Spring Bootとデータベースを利用したWebアプリを完成させる。</li><li>API、エラー処理、認証、セキュリティ、テストを学ぶ。</li><li>医療現場の業務改善をテーマにしたアプリ制作に取り組む。</li></ul><h3>将来の目標</h3><p>看護の現場で経験した課題をITの力で改善できる人材を目指します。利用者が本当に必要としていることを理解し、システムの機能や画面設計に落とし込めるよう、技術力と課題解決力を高めます。</p></div></div></section>
+<section class="section"><h2 class="section-title"><span class="section-icon">5</span> 総括</h2><div class="fill-block"><div class="fill-content"><p>今回の卒業制作では、企画を「旅香」から「香作」へ変更しながら、マーケティング、Figmaによる設計、HTML・CSS・JavaScriptによる制作、GitHub Pagesでの公開までを経験しました。実現可能性の確認と優先順位の判断の大切さを学び、今後はより実用的なWebアプリケーションの開発に取り組みます。</p></div></div></section>
+</div></main></div>
+<script src="../js/main.js"></script>
 </body>
 </html>
