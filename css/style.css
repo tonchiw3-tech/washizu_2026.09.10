@@ -66,10 +66,15 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 42px;
+  gap: clamp(18px, 3.5vw, 42px);
   font-size: 14px;
   letter-spacing: .04em;
   white-space: nowrap;
+}
+
+.global-nav a {
+  line-height: 1.5;
+  text-align: center;
 }
 
 .reserve-small,
@@ -1242,6 +1247,11 @@ img {
   gap: 8px;
   margin-top: 2px;
   width: 100%;
+}
+
+.footer-links a:last-child span {
+  margin-left: 0.25em;
+  font-size: 0.8em;
 }
 
 .footer-col a {
