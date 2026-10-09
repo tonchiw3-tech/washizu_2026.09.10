@@ -407,6 +407,50 @@ img {
   color: #fff;
 }
 
+.occasion {
+  padding-top: 110px;
+  text-align: center;
+}
+
+.occasion-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.occasion-card {
+  overflow: hidden;
+  background: linear-gradient(145deg, #fff, var(--pink2));
+  border: 1px solid #f0e1eb;
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgba(112, 77, 105, .1);
+  text-align: center;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.occasion-card:hover,
+.occasion-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(112, 77, 105, .16);
+}
+
+.occasion-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.occasion-card h3 {
+  margin: 0;
+  padding: 18px 14px 20px;
+  color: var(--ink);
+  font-family: "Noto Serif JP", serif;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-align: center;
+}
+
 .step-card {
   display: flex;
   flex-direction: column;
@@ -4067,5 +4111,31 @@ select[aria-invalid="true"] {
 
   .admin-heading {
     flex-direction: column
+  }
+}
+
+@media (max-width: 768px) {
+  .occasion {
+    padding-top: 90px;
+  }
+
+  .occasion-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .occasion-card h3 {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .occasion {
+    padding-top: 76px;
+  }
+
+  .occasion-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
