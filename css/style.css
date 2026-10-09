@@ -4126,7 +4126,11 @@ select[aria-invalid="true"] {
 
 @media (max-width: 768px) {
   .occasion {
-    padding-top: 90px;
+    padding-top: 40px;
+  }
+
+  .occasion .section-title {
+    margin-bottom: 24px;
   }
 
   .occasion-grid {
@@ -4141,7 +4145,7 @@ select[aria-invalid="true"] {
 
 @media (max-width: 480px) {
   .occasion {
-    padding-top: 76px;
+    padding-top: 40px;
   }
 
   .occasion-grid {
