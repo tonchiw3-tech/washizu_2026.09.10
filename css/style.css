@@ -351,6 +351,36 @@ img {
   text-align: center;
 }
 
+.experience-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 880px;
+  margin: 28px auto 32px;
+  text-align: center;
+}
+
+.experience-details > div {
+  padding: 16px 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+}
+
+.experience-details dt {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.experience-details dd {
+  margin: 0;
+  color: var(--accent);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
 .section-head-row {
   position: relative;
   display: flex;
@@ -4159,5 +4189,27 @@ select[aria-invalid="true"] {
   .occasion-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  .experience-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 22px auto 28px;
+  }
+
+  .experience-details > div {
+    padding: 14px 10px;
+  }
+
+  .experience-details dd {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .experience-details {
+    grid-template-columns: 1fr;
   }
 }
