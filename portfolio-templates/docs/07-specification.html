@@ -17,7 +17,7 @@
 <body>
   <button class="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
   <div class="page-wrapper"><aside class="sidebar" data-nav-level="docs"></aside><main class="main-content">
-    <header class="doc-header"><div class="doc-category">DOCUMENT 07</div><h1 class="doc-title">仕様書（機能仕様書）</h1><div class="doc-meta"><span>作成日：2026-10-14</span><span>作成者：鷲巣 友香</span><span>Ver 1.1（Spring Boot対応版）</span></div></header>
+    <header class="doc-header"><div class="doc-category">DOCUMENT 07</div><h1 class="doc-title">仕様書（機能仕様書）</h1><div class="doc-meta"><span>作成日：2026-10-14</span><span>最終更新日：2026-10-21</span><span>作成者：鷲巣 友香</span><span>Ver 1.2（Spring Boot対応版）</span></div></header>
     <div class="doc-body"><article class="fill-block"><div class="fill-content spec-source">**対象システム：香作（こうさく）／香作室**
 
 ---
@@ -197,7 +197,7 @@
 | 料金    | 1人5,500円       |
 | 完成品   | 香水10ml         |
 | 持ち帰り品 | 選択した香料各10ml    |
-| 開催日   | 土曜日・日曜日・祝日     |
+| 開催日   | 土曜日・日曜日（祝日判定は未実装）     |
 
 **処理フロー**
 
@@ -228,15 +228,15 @@
 
 | 項目名     | データ型    | 必須 | バリデーション        | 備考       |
 | ------- | ------- | -- | -------------- | -------- |
-| 希望日     | Date    | ○  | 過去日不可・土日祝のみ    | 予約日      |
-| 希望時間    | String  | ○  | 選択肢との一致        | 開催枠      |
-| 人数      | Integer | ○  | 1以上の整数         | 予約人数     |
+| 希望日     | Date    | ○  | 土曜日・日曜日のみ（祝日判定は未実装）    | 予約日      |
+| 希望時間    | String  | ○  | 11:00 / 13:00 / 15:00のみ        | 開催枠      |
+| 人数      | Integer | ○  | 1〜10の整数         | 予約人数     |
 | 氏名      | String  | ○  | 空欄不可・100文字以内   | 予約者      |
 | メールアドレス | String  | ○  | メール形式・254文字以内  | 連絡先      |
-| 年代      | String  | ○  | 定義済み選択肢        | 20代等     |
+| 年代      | String  | ○  | 10代 / 20代 / 30代 / 40代 / 50代 / 60代以上        | 年齢区分     |
 | 利用区分    | String  | ○  | FIRST / REPEAT | 初回・リピーター |
 
-希望時間の具体的な選択肢、人数の上限、祝日判定に用いるデータは実装前に確定し、フロントエンドとサーバーで一致させる。
+サーバー側では希望時間を11:00・13:00・15:00、人数を1〜10名、年代を定義済みの6区分、利用区分をFIRST / REPEATに制限する。祝日データを用いる判定は未実装であり、現時点では土曜日・日曜日のみを予約可能日として検証する。
 
 **処理フロー**
 
@@ -349,27 +349,50 @@
 
 **画面レイアウト**
 
-予約一覧にステータス選択欄と更新ボタンを配置する。
+予約一覧から予約詳細を開き、予約対応の進捗をチェックリストで表示する。進捗は「予約内容を確認済み」「当日の受け入れ準備完了」「ワークショップ実施済み」の順に操作する。現在の予約ステータス、キャンセル操作、完了済み予約の訂正理由入力欄を表示する。
+
+**予約ステータスの定義**
+
+| 値 | 表示名 | 説明 |
+| --- | --- | --- |
+| `RECEIVED` | 予約受付 | 予約登録直後の初期状態。 |
+| `CONFIRMED` | 予約確認 | スタッフが予約内容を確認済みの状態。 |
+| `READY` | 準備完了 | 当日の受け入れ準備が完了した状態。 |
+| `COMPLETED` | 体験完了 | 予約開始時刻を過ぎ、体験の実施完了を確認した状態。 |
+| `CANCELED` | キャンセル | スタッフがキャンセル処理を行った状態。予約データは保持する。 |
 
 **入力項目一覧**
 
 | 項目名   | データ型   | 必須 | バリデーション | 備考                              |
 | ----- | ------ | -- | ------- | ------------------------------- |
 | 予約ID  | Long   | ○  | 存在確認    | 更新対象                            |
-| ステータス | String | ○  | 定義済み値   | RECEIVED / CONFIRMED / CANCELED |
+| ステータス | String | ○  | 定義済み値   | 5種類の定義値。`/status`では RECEIVED / CONFIRMED / READY / COMPLETED を使用し、CANCELED はキャンセルAPIで設定する。 |
 
 **処理フロー**
 
-1. スタッフがステータスを選択する。
-2. 更新APIへ送信する。
-3. MyBatisがDBを更新する。
-4. 更新結果を画面に反映する。
+1. スタッフが予約詳細のチェックリストで進捗を操作する、またはキャンセル・訂正操作を行う。
+2. 進捗更新はステータス更新API、キャンセルはキャンセルAPI、完了後の訂正は訂正APIへ送信する。
+3. Serviceが現在のステータス、遷移条件および完了時刻の条件を確認する。
+4. MyBatisが予約ステータスを更新し、訂正時は訂正履歴も登録する。
+5. 更新後の予約情報を画面に反映する。
 
-**正常時：** 新しいステータスが表示される。
+**ステータス遷移条件**
+
+| 現在のステータス | 許可される遷移 | 条件 |
+| --- | --- | --- |
+| `RECEIVED` | `CONFIRMED`、`CANCELED` | 確認済みへの更新、またはキャンセル操作。 |
+| `CONFIRMED` | `RECEIVED`、`READY`、`CANCELED` | 確認の取消、準備完了への更新、またはキャンセル操作。 |
+| `READY` | `RECEIVED`、`CONFIRMED`、`COMPLETED`、`CANCELED` | 確認・準備の取消、体験完了への更新、またはキャンセル操作。`COMPLETED`は予約開始日時以後のみ可能。 |
+| `COMPLETED` | `READY`（訂正のみ） | 通常の更新・キャンセルは不可。スタッフが訂正理由（1〜1000文字）を入力した場合のみ訂正APIで可能。 |
+| `CANCELED` | なし | 終端状態。通常の更新、キャンセル、訂正は不可。 |
+
+完了後の訂正は、`COMPLETED`から`READY`へ戻す処理のみを実装する。訂正時は予約ID、訂正前後のステータス、訂正日時、操作者のユーザー名、訂正理由を`reservation_status_corrections`に保存する。訂正履歴の一覧表示・取得APIは今回の実装範囲外とする。
+
+**正常時：** 更新後のステータスと予約情報が表示される。訂正時は訂正履歴も同一トランザクションで保存される。
 
 キャンセルはF-008のステータス更新として扱い、予約ステータスを`CANCELED`に変更する。キャンセル後も予約データはMySQLに保持する。物理削除はF-009で別途処理する。
 
-**エラー時：** 不正値は400、予約が存在しない場合は404を返す。
+**エラー時：** 不正なステータス値・訂正理由は400、予約が存在しない場合は404、許可されない遷移・終端状態への操作・予約開始前の完了操作は409を返す。訂正APIはスタッフ認証がない場合403を返す。
 
 **遷移先：** スタッフ管理画面
 
@@ -460,13 +483,19 @@
 
 | HTTP  | URL                                 | 処理        | 認証 |
 | ----- | ----------------------------------- | --------- | -- |
-| POST  | /api/reservations/validate          | 入力検証・料金計算 | 不要 |
 | POST  | /api/reservations                   | 予約登録      | 不要 |
 | GET   | /api/staff/reservations             | 予約一覧取得    | 必須 |
 | GET   | /api/staff/reservations/{id}        | 予約詳細取得    | 必須 |
 | PATCH | /api/staff/reservations/{id}/status | ステータス更新   | 必須 |
 | PATCH | /api/staff/reservations/{id}/cancel | キャンセル処理   | 必須 |
+| PATCH | /api/staff/reservations/{id}/revert-status | 直前の進捗ステータスへ戻す | 必須 |
+| PATCH | /api/staff/reservations/{id}/correction | 完了済み予約を準備完了へ訂正し、訂正履歴を保存 | 必須 |
 | DELETE | /api/staff/reservations/{id}         | 予約データの物理削除 | 必須 |
+| GET | /api/staff/calendar?year={year}&amp;month={month} | 月別予約カレンダー | 必須 |
+| GET | /api/staff/calendar/{date} | 日別予約・準備状況 | 必須 |
+| POST | /api/inquiries | 問い合わせ登録 | 不要 |
+| GET | /api/inquiries/status?inquiryNumber={番号} | 問い合わせ状況照会 | 不要 |
+| GET / PATCH | /api/staff/inquiries/** | 問い合わせ一覧・詳細・状態更新・返信 | 必須 |
 
 ### JSON定義
 
@@ -474,12 +503,12 @@
 
 ```
 {
-  &quot;reservationDate&quot;: &quot;2026-10-24&quot;,
-  &quot;reservationTime&quot;: &quot;10:00&quot;,
+  &quot;reservationDate&quot;: &quot;2026-10-25&quot;,
+  &quot;reservationTime&quot;: &quot;11:00&quot;,
   &quot;participants&quot;: 2,
   &quot;customerName&quot;: &quot;山田 花子&quot;,
   &quot;email&quot;: &quot;hanako@example.com&quot;,
-  &quot;ageGroup&quot;: &quot;20s&quot;,
+  &quot;ageGroup&quot;: &quot;20代&quot;,
   &quot;visitType&quot;: &quot;FIRST&quot;
 }
 ```
@@ -504,6 +533,32 @@
   &quot;status&quot;: &quot;CONFIRMED&quot;
 }
 ```
+
+予約ステータスの定義値は`RECEIVED`、`CONFIRMED`、`READY`、`COMPLETED`、`CANCELED`の5種類である。`/status`に指定できる進捗更新値は`RECEIVED`、`CONFIRMED`、`READY`、`COMPLETED`であり、実際に更新できる値はF-008のステータス遷移条件に従う。`CANCELED`への変更は`/cancel`を使用する。
+
+**予約ステータス更新レスポンス**
+
+```
+{
+  &quot;id&quot;: 1,
+  &quot;reservationNumber&quot;: &quot;KS-20261024-0001&quot;,
+  &quot;reservationDate&quot;: &quot;2026-10-24&quot;,
+  &quot;reservationTime&quot;: &quot;10:00:00&quot;,
+  &quot;status&quot;: &quot;READY&quot;
+}
+```
+
+**予約完了後の訂正リクエスト**
+
+```
+{
+  &quot;reason&quot;: &quot;体験完了の登録を訂正するため&quot;
+}
+```
+
+訂正APIは`COMPLETED`の予約に対してのみ使用でき、成功時は`status`が`READY`の予約情報を返す。
+
+`/revert-status`は、`CONFIRMED`から`RECEIVED`、`READY`から`CONFIRMED`、`COMPLETED`から`READY`へ、それぞれ1段階戻す。`RECEIVED`および`CANCELED`には使用できない。
 
 **入力エラーレスポンス**
 
@@ -600,6 +655,7 @@ WEB制作総合演習2の課題要件であるSpring Boot・MyBatis、REST API�
 ### 今後の課題・対象外
 
 - 実際の空席照会・二重予約防止
+- 祝日を予約可能日として判定する機能（現実装は土曜日・日曜日のみ）
 - 決済
 - メール通知
 - 外部予約システム連携
@@ -615,9 +671,17 @@ WEB制作総合演習2の課題要件であるSpring Boot・MyBatis、REST API�
 
 Ver 1.1では、既存のHTML・CSS・JavaScriptを活用しながら、Spring Boot・MyBatis・MySQLによるバックエンドを構築する。
 
+実装照合時点では、予約・問い合わせ・スタッフ予約管理・カレンダーAPIを実装済みと確認した。一方、予約確認・完了の独立URL、CSV出力、予約訂正履歴の一覧取得、スタッフ情報テーブルは実装されていないため、本書では実装済みとして扱わない。
+
 予約情報をデータベースで一元管理し、スタッフが認証後に予約状況を確認・更新できるシステムを目指す。
 
 本演習では、設計・実装・テスト・GitHub納品・Render公開までの一連の開発工程を経験する。
+
+## 変更履歴
+
+| 日付 | バージョン | 変更内容 |
+| --- | --- | --- |
+| 2026-10-21 | Ver 1.2 | 最終更新日を追加し、バージョンを更新。 |
 
 ## 学校のテンプレートとの対応確認
 

@@ -95,6 +95,17 @@ img {
   width: 168px
 }
 
+.reservation-cta-link {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(187, 143, 189, .22);
+}
+
+.reservation-cta-link:hover,
+.reservation-cta-link:focus-visible {
+  background: #a979ac;
+}
+
 .hero {
   width: 1200px;
   height: 694px;
@@ -429,6 +440,11 @@ img {
   justify-content: center;
   margin: 20px auto 0;
   clear: both;
+}
+
+.experience-cta .reservation-cta-link {
+  width: min(320px, 100%);
+  height: 56px;
 }
 
 .experience-workshop-link {
@@ -1461,6 +1477,15 @@ img {
 
 .experience-section .page-actions {
   margin-top: 42px
+}
+
+.experience-section .reservation-actions {
+  margin-top: 32px;
+}
+
+.reservation-actions .reservation-cta-link {
+  background: var(--accent);
+  color: #fff;
 }
 
 .experience-section .page-actions .pill:first-child {
@@ -4194,7 +4219,7 @@ select[aria-invalid="true"] {
 
 @media (max-width: 700px) {
   .experience-details {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     gap: 10px;
     margin: 22px auto 28px;
   }

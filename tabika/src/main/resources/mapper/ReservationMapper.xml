@@ -2,4 +2,6 @@
 <select id="countGuests" resultType="int">SELECT COALESCE(SUM(guest_count),0) FROM reservation WHERE slot_id=#{slotId} AND status='CONFIRMED'</select>
 <select id="countByEmail" resultType="int">SELECT COUNT(*) FROM reservation WHERE slot_id=#{slotId} AND email=#{email} AND status='CONFIRMED'</select>
 <insert id="insert" useGeneratedKeys="true" keyProperty="id">INSERT INTO reservation(slot_id,guest_name,email,guest_count,note,status) VALUES(#{slotId},#{guestName},#{email},#{guestCount},#{note},'CONFIRMED')</insert>
-<select id="findAll" resultType="com.tabika.Reservation">SELECT id,slot_id,guest_name,email,guest_count,note,status FROM reservation ORDER BY created_at DESC</select></mapper>
+<select id="findAll" resultType="com.tabika.Reservation">SELECT id,slot_id,guest_name,email,guest_count,note,status FROM reservation ORDER BY created_at DESC</select>
+<select id="findStaffCalendar" resultType="com.tabika.StaffReservation">SELECT r.id, s.reserved_date, s.start_time, r.guest_name, r.email, r.guest_count, r.note, r.status FROM reservation r JOIN reservation_slot s ON s.id=r.slot_id WHERE r.status='CONFIRMED' ORDER BY s.reserved_date, s.start_time, r.id</select>
+<select id="findStaffReservationsByDate" resultType="com.tabika.StaffReservation">SELECT r.id, s.reserved_date, s.start_time, r.guest_name, r.email, r.guest_count, r.note, r.status FROM reservation r JOIN reservation_slot s ON s.id=r.slot_id WHERE r.status='CONFIRMED' AND s.reserved_date=#{date} ORDER BY s.start_time, r.id</select></mapper>
