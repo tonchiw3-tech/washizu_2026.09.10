@@ -13,7 +13,7 @@ const initialPlans = [
     scene: '雨天',
     modelCourse: '上野駅集合 → 浅草へ移動 → 屋内スポット散策 → inimuで香りづくり体験',
     workshopIncluded: true,
-    reservationUrl: 'https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/',
+    reservationUrl: 'https://kousaku.onrender.com/',
     published: true,
     image: './assets/rain.jpg'
   },
@@ -29,7 +29,7 @@ const initialPlans = [
     scene: '観光',
     modelCourse: '浅草駅 → 仲見世通り → 浅草寺 → 周辺散策 → inimuで香りづくり体験',
     workshopIncluded: true,
-    reservationUrl: 'https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/',
+    reservationUrl: 'https://kousaku.onrender.com/',
     published: true,
     image: './assets/asakusa.jpg'
   },
@@ -45,7 +45,7 @@ const initialPlans = [
     scene: 'イベント',
     modelCourse: '両国駅 → 浅草へ移動 → 軽い散策 → inimuで香りづくり体験 → イベント会場へ',
     workshopIncluded: true,
-    reservationUrl: 'https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/',
+    reservationUrl: 'https://kousaku.onrender.com/',
     published: true,
     image: './assets/event.jpg'
   },
@@ -61,7 +61,7 @@ const initialPlans = [
     scene: '空き時間',
     modelCourse: '東京駅 → 浅草へ移動 → 雷門周辺散策 → inimuで香りづくり体験 → 次の目的地へ',
     workshopIncluded: true,
-    reservationUrl: 'https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/',
+    reservationUrl: 'https://kousaku.onrender.com/',
     published: true,
     image: './assets/transit.jpg'
   },
@@ -77,7 +77,7 @@ const initialPlans = [
     scene: '一人時間',
     modelCourse: '浅草駅 → 路地散歩 → カフェ休憩 → inimuで香りづくり体験',
     workshopIncluded: true,
-    reservationUrl: 'https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/',
+    reservationUrl: 'https://kousaku.onrender.com/',
     published: true,
     image: './assets/oldtown.jpg'
   },
@@ -93,7 +93,7 @@ const initialPlans = [
     scene: 'ものづくり',
     modelCourse: '浅草駅 → ものづくりスポット見学 → 周辺散策 → inimuで香りづくり体験',
     workshopIncluded: true,
-    reservationUrl: 'https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/',
+    reservationUrl: 'https://kousaku.onrender.com/',
     published: true,
     image: './assets/workbench.jpg'
   }
@@ -185,7 +185,7 @@ window.TabikaPlans = { loadPlans, savePlans, initialPlans };
             <div><dt>モデルコース</dt><dd>${plan.modelCourse}</dd></div>
             <div><dt>inimuへのアクセス</dt><dd>浅草駅から徒歩圏内。体験前後の散策と組み合わせやすい立地です。</dd></div>
           </dl>
-          <a class="app-button reserve-link" href="https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/" target="_blank" rel="noopener noreferrer">空き状況・予約を見る</a>
+          <a class="app-button reserve-link" href="https://kousaku.onrender.com/" target="_blank" rel="noopener noreferrer">空き状況・予約を見る</a>
         </div>
       </div>
     `;

@@ -54,7 +54,7 @@
       });
     } else {
       editorForm.elements.published.checked = true;
-      editorForm.elements.reservationUrl.value = 'https://www.jalan.net/kankou/spt_guide000000223856/activity/l000051249/';
+      editorForm.elements.reservationUrl.value = 'https://kousaku.onrender.com/';
     }
     adminPanel.hidden = true;
     editorPanel.hidden = false;
